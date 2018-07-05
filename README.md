@@ -1,4 +1,4 @@
-# RED SOCIAL:Easy Food
+# RED SOCIAL: Easy Food
 
 Esta red social es creada especialmente para personas a las cuales les gusta cocinar como hobby o pasatiempo, en donde los usuarios pueden encontar recetas especificas y/o compartir sus propias recetas para que el resto de los usuarios de esta aplicacion puedan evaluarla y tambien hacer comentarior y dar opiniones al respecto.
 
