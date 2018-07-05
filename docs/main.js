@@ -41,11 +41,11 @@ window.onload = (()=>{
   });
 });
 
-window.logIn =(()=>{
+
   //login con facebook
 const logFb = document.getElementById("loginFb");
 
 logFb.addEventListener('click',()=>{
-  console.log();
+  window.loginFb();
 });
-});
+
