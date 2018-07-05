@@ -1,4 +1,4 @@
-window.onload(()=>{
+window.onload=(()=>{
 // Inicializando Firebase
 var config = {
   apiKey: "AIzaSyC6fl3QVT10nD3Wbxyqalw8Gtv_Gi3-Me4",
@@ -9,4 +9,4 @@ var config = {
   messagingSenderId: "637972476194"
 };
 firebase.initializeApp(config);
-});
+}); //fin de window.onload
