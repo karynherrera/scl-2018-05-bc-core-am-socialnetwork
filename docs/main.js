@@ -41,6 +41,12 @@ window.onload = (()=>{
   });
 });
 
+//=========================================================================================
+//Se definen las secciones
+const seccionLogin = document.getElementById("login");
+const seccionCenter = document.getElementById("center");
+//====================================================================
+//Funcionalidad Login
 
   //login con facebook
 const logFb = document.getElementById("loginFb");
@@ -49,6 +55,8 @@ logFb.addEventListener('click',()=>{
 firebase.auth().signInWithRedirect(provider).then(function(result) {
   let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
   let user = result.user; //info del usuario logado
+  seccionLogin.style.display="none";
+  seccionCenter.style.display="block";
 }).catch(function(error) {
   let errorCode = error.code;
   let errorMessage = error.message;
@@ -64,6 +72,8 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
     firebase.auth().signInWithRedirect(provider).then(function(result) {
       let token = result.credential.accessToken; //se obtiene el token de OAuth de google
       let user = result.user; //info del usuario logado
+      seccionLogin.style.display="none";
+      seccionCenter.style.display="block";
     }).catch(function(error) {
       let errorCode = error.code;
       let errorMessage = error.message;
@@ -72,3 +82,18 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
     });
   });// fin evento click del boton login Google
 
+  //registrarse con email normal
+  const emailUser = document.getElementById("inputCorreo").value;
+  const passwordUser = document.getElementById("inputPass").value;
+  const btnLogin = document.getElementById("btnLogin");
+  
+//login
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    seccionLogin.style.display="none";
+    seccionCenter.style.display="block";
+  } else {
+    seccionLogin.style.display="block";
+    seccionCenter.style.display="none";
+  }
+});
