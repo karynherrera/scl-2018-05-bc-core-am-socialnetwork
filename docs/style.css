@@ -1,69 +1,69 @@
 /****************************************Estilos Login**************************************************/
 .login{
-	font-size: 200%;
+	font-size: 100%;
 }
 #logo{
 	text-align: center;
 	width: 80vw;
 	margin:10%;
 	margin-left: 10%;
-	margin-top: 35%;
+	margin-top: 20%;
 	margin-bottom: 2%;
 }
 .inputLogin{
 	text-align: center;
   border-radius: 0%;
   border: 0px;
-  width: 70vw;
-	height: 8vh;
+  width: 60vw;
+	height: 6vh;
 	display: block;
-	margin-left: 15%;
-	margin-top: 1%;
+	margin-left: 20%;
+	margin-top: 2%;
 }
 .btnLogIn{
 	background-color: #22B4BD;
 	border: 0px;
 	cursor: pointer;
 	margin: 4em auto;
-	width: 70vw;
-	height: 8vh;
+	width: 60vw;
+	height: 6vh;
 	display: block;
 	color: #FFF;  
 	text-align: center;
 	margin-bottom: 2%;
-	margin-top:1%;
+	margin-top:2%;
 }
 .btnFb{
 	background-color: #4267B2;
 	border: 0px;
 	cursor: pointer;
 	margin: 4em auto;
-	width: 70vw;
-	height: 8vh;
+	width: 60vw;
+	height: 6vh;
 	display: block;
 	color: #FFF;  
 	text-align: center;
-	margin-top:1%;
-	margin-bottom: 1%;
+	margin-top:2%;
+	margin-bottom: 2%;
 }
 .fab{
 	font-size: 100%;
 }
 .a{
-	padding:  4vw;
+	padding:  1vw;
 }
 .btnGoogle{
 	background-color: red;
 	border: 0px;
 	cursor: pointer;
 	margin: 4em auto;
-	width: 70vw;
-	height: 8vh;
+	width: 60vw;
+	height: 6vh;
 	display: block;
 	color: #FFF;  
 	text-align: center;
-	margin-bottom: 1%;
-	margin-top:1%;
+	margin-bottom: 2%;
+	margin-top:2%;
 }
 
 .textLogin{
@@ -71,7 +71,7 @@
 	display:block;
 	color:black;
 	margin-top:1%;
-	margin-bottom:0%;
+	margin-bottom:2%;
 	font-size: 80%;
 }
 #registrate{
@@ -88,7 +88,7 @@
 body {
 	margin: 0 auto;
 	background-repeat: no-repeat;
-	background-image: url(img/fondo.jpg);
+	background-image: url(img/fotoportada.jpg);
 	background-size: 100%;
 }
 
