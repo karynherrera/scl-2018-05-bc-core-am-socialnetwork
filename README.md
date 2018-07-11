@@ -21,5 +21,9 @@ Para diseñar la interfaz del producto se utilizo el programa "Balsamiq" en dond
 
 ![replica](/src/img/Sketch-2.png)
 
-Tambien se realizo el prototipo de alta fidelidad utilizando el programa "Figma".
+Tambien se realizo el prototipo de alta fidelidad utilizando el programa "Figma":
+
+
+
+
 
