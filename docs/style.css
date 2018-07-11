@@ -1,0 +1,194 @@
+/****************************************Estilos Login**************************************************/
+.login{
+	font-size: 100%;
+}
+#logo{
+	text-align: center;
+	width: 80vw;
+	margin:10%;
+	margin-left: 10%;
+	margin-top: 20%;
+	margin-bottom: 2%;
+}
+.inputLogin{
+	text-align: center;
+  border-radius: 0%;
+  border: 0px;
+  width: 60vw;
+	height: 6vh;
+	display: block;
+	margin-left: 20%;
+	margin-top: 2%;
+}
+.btnLogIn{
+	background-color: #22B4BD;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 60vw;
+	height: 6vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-bottom: 2%;
+	margin-top:2%;
+}
+.btnFb{
+	background-color: #4267B2;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 60vw;
+	height: 6vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-top:2%;
+	margin-bottom: 2%;
+}
+.fab{
+	font-size: 100%;
+}
+.a{
+	padding:  1vw;
+}
+.btnGoogle{
+	background-color: red;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 60vw;
+	height: 6vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-bottom: 2%;
+	margin-top:2%;
+}
+
+.textLogin{
+	text-align: center;
+	display:block;
+	color:black;
+	margin-top:1%;
+	margin-bottom:2%;
+	font-size: 80%;
+}
+#registrate{
+	color:green;
+	cursor: pointer;
+}
+
+/****************************************fin login**************************************************/
+/* Reseteo márgenes browser y color body */
+.center{
+	display: none;
+}
+
+body {
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	background-image: url(img/fotoportada.jpg);
+	background-size: 100%;
+}
+
+/* Estilos generales */
+.center {
+	text-align: center;
+}
+
+/* Estilos Header */
+header {
+	background-color: #FFF;
+	text-align: center;
+}
+
+header div img {
+	width: 10em;
+}
+
+/* Estilos imágen y su contenedor */
+
+.photo{
+	text-align: center;
+}
+
+textarea {
+	width: 70%;
+	height: 4em;	
+	font-size: 15%;
+	padding: 1em;	
+	outline: 0.1em solid #E5E3F2;
+	margin: 0 auto;
+}
+
+/* Estilos botón agregar */
+#btn {
+	background-color: #16C7D3;
+	border: 0px;
+	cursor: pointer;
+	text-align: center;
+	margin: 3em auto;
+	width: 130px;
+	height: 30px;
+	display: block;
+  color: #FFF;  
+}
+
+#btn:hover {
+	background-color: #16D3A2;
+}
+
+#btn:focus, textarea:focus{
+	outline: none;
+}
+
+/* Estilos contenedor comentarios */
+
+
+#cont {
+	border-radius: 4em;
+	margin: 0 auto;
+	color: #4E4D53;
+	text-align: left;
+	margin-bottom: 6em;
+  padding: 0 16%;
+  
+}
+
+#cont span {
+	margin-left: 1em;
+}
+
+#cont div {
+	padding: 0.5em 0.5em;
+	margin-bottom: 2em;
+	outline: 0.1em solid #E5E3F2;
+	background-color: #FFF;
+}
+
+.heart, .trash {
+	margin:1em;
+	float: right;
+	cursor: pointer;
+}
+
+.trash:hover {
+	color: #1DA1F2;
+	cursor: pointer;
+}
+
+.strike-out {
+	text-decoration: line-through;
+	color: #1DA1F2;
+}
+
+.red {
+	color: #FC1E26;
+	cursor: pointer;
+}
+
+p {
+	display: inline-block;
+	margin-left: 0.5em;
+}

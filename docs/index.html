@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Firebase UI-->
+    <!--Vinculación a Firebase UI-->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
     <!--Vinculación Hojas de Estilo fuentes e Iconos-->
@@ -18,9 +18,22 @@
     <title>EasyFood</title>
   </head>
   <body>
+    <!-- Sección Login -->
     <section class="login">
-      <button type="button" id="loginFb">LoginFB</button>
-    </section>
+        <section class="row justify-content-center">
+            <div class="col-12 justify-content-center">
+                <img src="img/logo.png" id="logo" class="img-fluid" alt="Responsive image">
+                <input class="form-control inputLogin" type="email" placeholder="Email address"  id="inputCorreo">
+                <input class="form-control inputLogin" type="password" placeholder="Password"  id="inputPass">
+                <button type="button" id="btnLogin" class="btn-md btnLogIn">ENTRAR</button>
+                <p class="textLogin">ó</p>
+                <button type="button" id="loginFb" class="btn-md btnFb"><i class="fab fa-facebook-f"></i>     <span class="a"></span>LogIn con Facebook</button>
+                <button type="button" id="loginGm" class="btn-md btnGoogle"><i class="fab fa-google"></i> <span class="a"></span>LogIn con Google</button>
+                <p class="textLogin">¿Aun no tienes Cuenta?</p> 
+                <p class="textLogin" id="registrate">Registrate</p>        
+              </div>
+          </section>
+    </section> <!-- fin de login -->
     <!-- Sección textarea, botón y contenedor mensajes -->
     <section class="center">
       <div class="container">
@@ -41,10 +54,11 @@
         </div>
       </div>
     </section>
+    <section><div id="firebaseui-auth-container"></div></section>
     <!--Vinculación Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script>
-      // Inicializando Firebase
+      // Inicializando proyecto de Firebase
       var config = {
         apiKey: 'AIzaSyC6fl3QVT10nD3Wbxyqalw8Gtv_Gi3-Me4',
         authDomain: 'easyfood-b33b5.firebaseapp.com',

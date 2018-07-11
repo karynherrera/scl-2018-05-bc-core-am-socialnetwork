@@ -41,11 +41,34 @@ window.onload = (()=>{
   });
 });
 
-window.logIn =(()=>{
+
   //login con facebook
 const logFb = document.getElementById("loginFb");
-
 logFb.addEventListener('click',()=>{
-  console.log();
+  let provider = new firebase.auth.FacebookAuthProvider();
+firebase.auth().signInWithRedirect(provider).then(function(result) {
+  let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
+  let user = result.user; //info del usuario logado
+}).catch(function(error) {
+  let errorCode = error.code;
+  let errorMessage = error.message;
+  let email = error.email;
+  let credential = error.credential;
 });
-});
+});// fin evento click del boton login Facebook
+
+  //login con Google
+  const logGoogle = document.getElementById("loginGm");
+  logGoogle.addEventListener('click',()=>{
+    let provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+      let token = result.credential.accessToken; //se obtiene el token de OAuth de google
+      let user = result.user; //info del usuario logado
+    }).catch(function(error) {
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      let email = error.email;
+      let credential = error.credential;
+    });
+  });// fin evento click del boton login Google
+
