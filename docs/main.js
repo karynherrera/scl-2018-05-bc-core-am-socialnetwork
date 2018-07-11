@@ -46,23 +46,14 @@ window.onload = (()=>{
 const logFb = document.getElementById("loginFb");
 logFb.addEventListener('click',()=>{
   let provider = new firebase.auth.FacebookAuthProvider();
-firebase.auth().signInWithPopup(provider).then(function(result) {
- 
-  let token = result.credential.accessToken;
-  
-  let user = result.user;
-  
-  // ...
+firebase.auth().signInWithRedirect(provider).then(function(result) {
+  let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
+  let user = result.user; //info del usuario logado
 }).catch(function(error) {
-  // Handle Errors here.
   let errorCode = error.code;
   let errorMessage = error.message;
-  // The email of the user's account used.
   let email = error.email;
-  // The firebase.auth.AuthCredential type that was used.
   let credential = error.credential;
-  // ...
-  
 });
 });// fin evento click del boton login Facebook
 
@@ -70,9 +61,9 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
   const logGoogle = document.getElementById("loginGm");
   logGoogle.addEventListener('click',()=>{
     let provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      let token = result.credential.accessToken;
-      let user = result.user;
+    firebase.auth().signInWithRedirect(provider).then(function(result) {
+      let token = result.credential.accessToken; //se obtiene el token de OAuth de google
+      let user = result.user; //info del usuario logado
     }).catch(function(error) {
       let errorCode = error.code;
       let errorMessage = error.message;

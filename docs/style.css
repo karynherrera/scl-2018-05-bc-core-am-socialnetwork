@@ -1,7 +1,95 @@
+/****************************************Estilos Login**************************************************/
+.login{
+	font-size: 200%;
+}
+#logo{
+	text-align: center;
+	width: 80vw;
+	margin:10%;
+	margin-left: 10%;
+	margin-top: 35%;
+	margin-bottom: 2%;
+}
+.inputLogin{
+	text-align: center;
+  border-radius: 0%;
+  border: 0px;
+  width: 70vw;
+	height: 8vh;
+	display: block;
+	margin-left: 15%;
+	margin-top: 1%;
+}
+.btnLogIn{
+	background-color: #22B4BD;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 70vw;
+	height: 8vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-bottom: 2%;
+	margin-top:1%;
+}
+.btnFb{
+	background-color: #4267B2;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 70vw;
+	height: 8vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-top:1%;
+	margin-bottom: 1%;
+}
+.fab{
+	font-size: 100%;
+}
+.a{
+	padding:  4vw;
+}
+.btnGoogle{
+	background-color: red;
+	border: 0px;
+	cursor: pointer;
+	margin: 4em auto;
+	width: 70vw;
+	height: 8vh;
+	display: block;
+	color: #FFF;  
+	text-align: center;
+	margin-bottom: 1%;
+	margin-top:1%;
+}
+
+.textLogin{
+	text-align: center;
+	display:block;
+	color:black;
+	margin-top:1%;
+	margin-bottom:0%;
+	font-size: 80%;
+}
+#registrate{
+	color:green;
+	cursor: pointer;
+}
+
+/****************************************fin login**************************************************/
 /* Reseteo márgenes browser y color body */
+.center{
+	display: none;
+}
+
 body {
 	margin: 0 auto;
-	background-image: url(img/f0bfdcc0457f290e35a1cc5c95c4e6f8-700.jpg)
+	background-repeat: no-repeat;
+	background-image: url(img/fondo.jpg);
+	background-size: 100%;
 }
 
 /* Estilos generales */
@@ -28,7 +116,7 @@ header div img {
 textarea {
 	width: 70%;
 	height: 4em;	
-	font-size: 15px;
+	font-size: 15%;
 	padding: 1em;	
 	outline: 0.1em solid #E5E3F2;
 	margin: 0 auto;
