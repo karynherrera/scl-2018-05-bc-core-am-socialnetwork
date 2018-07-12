@@ -2,6 +2,7 @@
 .login{
 	font-size: 100%;
 	display: none;
+	
 }
 #logo{
 	text-align: center;
@@ -82,9 +83,16 @@
 
 .register{
 	margin-top:20%;
+	
 }
 
-/****************************************fin login**************************************************/
+.registro{
+	display: none;
+}
+
+
+
+/***********************************fin login*****************************************/
 /****************************************Registro**************************************************/
 #logoRegister{
 	text-align: center;
@@ -105,6 +113,7 @@ body {
 	background-repeat: no-repeat;
 	background-image: url(img/portada2.png);
 	background-size: 200vh;
+	
 }
 
 /* Estilos generales */

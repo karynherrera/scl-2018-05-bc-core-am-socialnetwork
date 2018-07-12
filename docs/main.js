@@ -4,11 +4,11 @@ window.onload = (()=>{
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
       seccionLogin.style.display="none";
-      //seccionCenter.style.display="block";
+      seccionCenter.style.display="block";
       //console.log("user > "+JSON.stringify(user));
     }else{
-      //seccionLogin.style.display="block";
-      //seccionCenter.style.display="none";
+      seccionLogin.style.display="block";
+      seccionCenter.style.display="none";
     }
   });
   // lo que ingresa un usuario
@@ -53,7 +53,11 @@ window.onload = (()=>{
 });
 
 //=========================================================================================
+const seccionLogin = document.getElementById("sectionLogin");
+const seccionCenter = document.getElementById("sectionCenter");
+const seccionRegistro = document.getElementById("registroUser");
 
+//================================================================
 //Funcionalidad Login
 
   //login con facebook
@@ -113,16 +117,24 @@ btnLogin.addEventListener('click',()=>{
     });
 })
 
-const seccionRegistro = document.getElementById("registroUser");
+//link a formulario para registrar usuario nuevo
 const btnFormRegister = document.getElementById("registrate");
+btnFormRegister.addEventListener('click',()=>{
+  seccionRegistro.classList.remove('registro');
+  seccionLogin.style.display="none";
+  seccionCenter.style.display="none";
+})
 
+//Registro de usuario nuevo
 const nombreNewUser = document.getElementById("inputName").value;
 const emailNewUser = document.getElementById("inputEmailUser").value;
 const passNewUser = document.getElementById("inputPassUser").value;
 const btnRegister = document.getElementById("btnRegistrar");
+
 //registro de usuario
-window.register(()=>{
-  firebase.auth().createUserWithEmailAndPassword(emailValue,passwordValue)
+/*
+btnRegister.addEventListener('click',()=>{
+  firebase.auth().createUserWithEmailAndPassword(emailNewUser,passNewUser)
   .then(()=>{
     console.log("Usuario Registrado");
   })
@@ -130,5 +142,5 @@ window.register(()=>{
     console.log("Error de Firebase > "+error.code);
     console.log("Error de Firebase > mensaje"+error.message);
   });
-})
+})*/
 
