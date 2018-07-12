@@ -1,5 +1,16 @@
 window.onload = (()=>{
-
+  const seccionLogin = document.getElementById("sectionLogin");
+  const seccionCenter = document.getElementById("sectionCenter")
+  firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+      seccionLogin.style.display="none";
+      seccionCenter.style.display="block";
+      //console.log("user > "+JSON.stringify(user));
+    }else{
+      seccionLogin.style.display="block";
+      seccionCenter.style.display="none";
+    }
+  });
   // lo que ingresa un usuario
   const boton = document.getElementById('btn');
   boton.addEventListener('click', ()=> {
@@ -42,10 +53,7 @@ window.onload = (()=>{
 });
 
 //=========================================================================================
-//Se definen las secciones
-const seccionLogin = document.getElementById("login");
-const seccionCenter = document.getElementById("center");
-//====================================================================
+
 //Funcionalidad Login
 
   //login con facebook
@@ -55,8 +63,9 @@ logFb.addEventListener('click',()=>{
 firebase.auth().signInWithRedirect(provider).then(function(result) {
   let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
   let user = result.user; //info del usuario logado
-  seccionLogin.style.display="none";
-  seccionCenter.style.display="block";
+ ///document.getElementById("login").style.display = "none";
+ //document.getElementById("center").style.display = "block";
+
 }).catch(function(error) {
   let errorCode = error.code;
   let errorMessage = error.message;
@@ -72,8 +81,8 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
     firebase.auth().signInWithRedirect(provider).then(function(result) {
       let token = result.credential.accessToken; //se obtiene el token de OAuth de google
       let user = result.user; //info del usuario logado
-      seccionLogin.style.display="none";
-      seccionCenter.style.display="block";
+      
+      
     }).catch(function(error) {
       let errorCode = error.code;
       let errorMessage = error.message;
@@ -87,13 +96,13 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
   const passwordUser = document.getElementById("inputPass").value;
   const btnLogin = document.getElementById("btnLogin");
   
-//login
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    seccionLogin.style.display="none";
-    seccionCenter.style.display="block";
-  } else {
-    seccionLogin.style.display="block";
-    seccionCenter.style.display="none";
-  }
+
+  //logout
+window.logout=(()=>{
+  firebase.auth().signOut()
+  .then(()=>{
+    console.log("chao");
+  })
+  .catch();
 });
+
