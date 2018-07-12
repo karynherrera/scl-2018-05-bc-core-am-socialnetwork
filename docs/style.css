@@ -2,7 +2,9 @@
 .login{
 	font-size: 100%;
 	display: none;
-	
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: 200vh;
 }
 .registro {
 	display: none;
@@ -147,9 +149,7 @@ h6{
 
 body {
 	margin: 0 auto;
-	background-repeat: no-repeat;
-	background-image: url(img/portada2.png);
-	background-size: 200vh;
+	
 	
 }
 
