@@ -1,6 +1,13 @@
 /****************************************Estilos Login**************************************************/
 .login{
 	font-size: 100%;
+	display: none;
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: 200vh;
+}
+.registro {
+	display: none;
 }
 #logo{
 	text-align: center;
@@ -73,23 +80,77 @@
 	margin-top:1%;
 	margin-bottom:2%;
 	font-size: 80%;
+	border: 0px;
 }
 #registrate{
 	color:green;
 	cursor: pointer;
 }
 
-/****************************************fin login**************************************************/
-/* Reseteo márgenes browser y color body */
-.center{
+.register{
+	margin-top:20%;
+	
+}
+
+.registro{
 	display: none;
 }
 
+#loginBack{
+	text-align: center;
+	cursor: pointer;
+	font-size: 100%;
+}
+
+/***********************************fin login*****************************************/
+/****************************************Registro**************************************************/
+#logoRegister{
+	text-align: center;
+	width: 60vw;
+	margin:10%;
+	margin-left: 20%;
+	margin-top: 20%;
+	margin-bottom: 2%;
+}
+/****************************************fin Registro**************************************************/
+/* Reseteo márgenes browser y color body */
+/*Estilos de sección publicaciones*/
+.center{
+	
+}
+.behind{
+	text-align: left;
+	background-color: #efefef;
+}
+.icon {
+	padding: 2em;
+}
+.title{
+font-size: 5%;
+}
+h6{
+	text-align: left;
+	margin-left: 4em;
+	font-size: 20%;
+}
+.icona {
+	background-color: #efefef;
+}
+	 
+ .carousel-indicators-numbers li {  
+   margin: 0 3px;
+   width: 10px;
+   height: 10px;
+   border: none;
+   border-radius: 100%;
+   line-height: 30px;
+	 color: #fff; 
+ }
+
 body {
 	margin: 0 auto;
-	background-repeat: no-repeat;
-	background-image: url(img/fotoportada.jpg);
-	background-size: 100%;
+	
+	
 }
 
 /* Estilos generales */
@@ -113,27 +174,26 @@ header div img {
 	text-align: center;
 }
 
-textarea {
-	width: 70%;
-	height: 4em;	
-	font-size: 15%;
-	padding: 1em;	
-	outline: 0.1em solid #E5E3F2;
-	margin: 0 auto;
+.txt {
+	width: 100%;
+	height: 5em;	
+	font-size: 100%;
+  border-color: white;
 }
 
 /* Estilos botón agregar */
 #btn {
-	background-color: #16C7D3;
+	background-color: #22B4BD;
 	border: 0px;
 	cursor: pointer;
-	text-align: center;
-	margin: 3em auto;
-	width: 130px;
+	text-align: center;	
+	width: 100%;
 	height: 30px;
 	display: block;
-  color: #FFF;  
+	color: #FFF; 
+	margin: 1%;	
 }
+
 
 #btn:hover {
 	background-color: #16D3A2;
@@ -148,23 +208,22 @@ textarea {
 
 #cont {
 	border-radius: 4em;
-	margin: 0 auto;
-	color: #4E4D53;
+	margin: 0 auto;	
 	text-align: left;
-	margin-bottom: 6em;
-  padding: 0 16%;
-  
+	margin-top: 0em;
+	padding: 0 0%;
+	width: 100%;
+	height: 10em;
+	border-color: white;  
 }
 
-#cont span {
-	margin-left: 1em;
-}
 
 #cont div {
 	padding: 0.5em 0.5em;
-	margin-bottom: 2em;
-	outline: 0.1em solid #E5E3F2;
+	
 	background-color: #FFF;
+	width: 100%;
+	height: 10em;
 }
 
 .heart, .trash {
@@ -233,7 +292,12 @@ p {
 }
 
 /****************************************MENU**************************************************/
-
+.sideMenu{
+	z-index: 10;
+}
+.bg-dark{
+	z-index: 10;
+}
 .menu{
 	position: absolute;
 	top:0;
