@@ -7,8 +7,8 @@ window.onload = (()=>{
       seccionCenter.style.display="block";
       //console.log("user > "+JSON.stringify(user));
     }else{
-      seccionLogin.style.display="block";
-      seccionCenter.style.display="none";
+      //seccionLogin.style.display="block";
+      //seccionCenter.style.display="none";
     }
   });
   // lo que ingresa un usuario
