@@ -2,6 +2,9 @@
 .login{
 	font-size: 100%;
 	display: none;
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: 200vh;
 }
 .registro {
 	display: none;
@@ -77,6 +80,7 @@
 	margin-top:1%;
 	margin-bottom:2%;
 	font-size: 80%;
+	border: 0px;
 }
 #registrate{
 	color:green;
@@ -85,9 +89,20 @@
 
 .register{
 	margin-top:20%;
+	
 }
 
-/****************************************fin login**************************************************/
+.registro{
+	display: none;
+}
+
+#loginBack{
+	text-align: center;
+	cursor: pointer;
+	font-size: 100%;
+}
+
+/***********************************fin login*****************************************/
 /****************************************Registro**************************************************/
 #logoRegister{
 	text-align: center;
@@ -134,9 +149,8 @@ h6{
 
 body {
 	margin: 0 auto;
-	background-repeat: no-repeat;
-	background-image: url(img/portada2.png);
-	background-size: 200vh;
+	
+	
 }
 
 /* Estilos generales */
