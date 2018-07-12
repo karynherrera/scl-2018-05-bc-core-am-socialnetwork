@@ -125,22 +125,28 @@ btnFormRegister.addEventListener('click',()=>{
   seccionCenter.style.display="none";
 })
 
-//Registro de usuario nuevo
+const btnReturnLogin = document.getElementById("loginBack");
+btnReturnLogin.addEventListener('click',()=>{
+  seccionRegistro.classList.remove('none');
+  seccionLogin.style.display="block";
+  seccionCenter.style.display="none";
+})
+
+//registro de usuario
+const btnRegister = document.getElementById("btnRegistrarse");
+btnRegister.addEventListener('click',()=>{
+  //Registro de usuario nuevo
 const nombreNewUser = document.getElementById("inputName").value;
 const emailNewUser = document.getElementById("inputEmailUser").value;
 const passNewUser = document.getElementById("inputPassUser").value;
-const btnRegister = document.getElementById("btnRegistrar");
 
-//registro de usuario
-/*
-btnRegister.addEventListener('click',()=>{
   firebase.auth().createUserWithEmailAndPassword(emailNewUser,passNewUser)
   .then(()=>{
     console.log("Usuario Registrado");
   })
-  .catch(()=>{
+  .catch((error)=>{
     console.log("Error de Firebase > "+error.code);
     console.log("Error de Firebase > mensaje"+error.message);
   });
-})*/
+})
 
