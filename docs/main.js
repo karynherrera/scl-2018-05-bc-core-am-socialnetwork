@@ -4,11 +4,11 @@ window.onload = (()=>{
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
       seccionLogin.style.display="none";
-      seccionCenter.style.display="block";
+      //seccionCenter.style.display="block";
       //console.log("user > "+JSON.stringify(user));
     }else{
-      seccionLogin.style.display="block";
-      seccionCenter.style.display="none";
+      //seccionLogin.style.display="block";
+      //seccionCenter.style.display="none";
     }
   });
   // lo que ingresa un usuario
@@ -89,13 +89,7 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
       let email = error.email;
       let credential = error.credential;
     });
-  });// fin evento click del boton login Google
-
-  //registrarse con email normal
-  const emailUser = document.getElementById("inputCorreo").value;
-  const passwordUser = document.getElementById("inputPass").value;
-  const btnLogin = document.getElementById("btnLogin");
-  
+  });// fin evento click del boton login Google  
 
   //logout
 window.logout=(()=>{
@@ -105,4 +99,36 @@ window.logout=(()=>{
   })
   .catch();
 });
+
+//logarse con email normal
+const emailUser = document.getElementById("inputCorreo").value;
+const passwordUser = document.getElementById("inputPass").value;
+const btnLogin = document.getElementById("btnLogin");
+btnLogin.addEventListener('click',()=>{
+  firebase.auth().signInWithEmailAndPassword(emailUser,passwordUser)
+    
+    .catch((error)=>{
+      console.log("Error de Firebase > "+ error.code);
+      console.log("Error de Firebase > mensaje"+error.message);
+    });
+})
+
+const seccionRegistro = document.getElementById("registroUser");
+const btnFormRegister = document.getElementById("registrate");
+
+const nombreNewUser = document.getElementById("inputName").value;
+const emailNewUser = document.getElementById("inputEmailUser").value;
+const passNewUser = document.getElementById("inputPassUser").value;
+const btnRegister = document.getElementById("btnRegistrar");
+//registro de usuario
+window.register(()=>{
+  firebase.auth().createUserWithEmailAndPassword(emailValue,passwordValue)
+  .then(()=>{
+    console.log("Usuario Registrado");
+  })
+  .catch(()=>{
+    console.log("Error de Firebase > "+error.code);
+    console.log("Error de Firebase > mensaje"+error.message);
+  });
+})
 

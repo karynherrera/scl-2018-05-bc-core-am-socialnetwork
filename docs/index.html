@@ -34,6 +34,18 @@
               </div>
           </section>
     </section> <!-- fin de login -->
+    <!-- Seccion Registro de Usuario -->
+    <section class="registro" id="registroUser">
+        <section class="row justify-content-center">
+            <div class="col-12 justify-content-center register">
+                <img src="img/logo.png" id="logoRegister" class="img-fluid" alt="Responsive image">
+                <input class="form-control inputLogin"  placeholder="Nombre"  id="inputName">
+                <input class="form-control inputLogin" type="email" placeholder="Email address"  id="inputEmailUser">
+                <input class="form-control inputLogin" type="password" placeholder="Password"  id="inputPassUser">
+                <button type="button" id="btnRegistrarse" class="btn-md btnLogIn">REGISTRATE</button>     
+            </div>
+          </section>
+    </section> <!-- fin de registro de usuario -->
     <!-- Sección textarea, botón y contenedor mensajes -->
     <section class="center" id="sectionCenter" >
       <button onclick="logout()">Logout</button>
@@ -54,7 +66,7 @@
           <!-- aca dejare los comentarios -->
         </div>
       </div>
-    </section>
+    </section> <!--fin de seccion center-->
     <section><div id="firebaseui-auth-container"></div></section>
     <!--Vinculación Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
