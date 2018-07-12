@@ -22,12 +22,13 @@
 
 <body>
   <!-- Sección Login -->
-  <section class="login">
+  <section class="login" id="sectionLogin">
     <section class="row justify-content-center">
       <div class="col-12 justify-content-center">
         <img src="img/logo.png" id="logo" class="img-fluid" alt="Responsive image">
         <input class="form-control inputLogin" type="email" placeholder="Email address" id="inputCorreo">
         <input class="form-control inputLogin" type="password" placeholder="Password" id="inputPass">
+        <div class="alertConteiner" id="alertPassword"></div>
         <button type="button" id="btnLogin" class="btn-md btnLogIn">ENTRAR</button>
         <p class="textLogin">ó</p>
         <button type="button" id="loginFb" class="btn-md btnFb">
@@ -57,7 +58,7 @@
 </section> <!-- fin de registro de usuario -->
 <!-- Sección textarea, botón y contenedor mensajes -->  
      <!-- Seccion publicaciones -->
- <section >
+ <section class="muro" id="sectionMuro">
       <!-- atras -->
     <!-- menu -->
     <div class="pos-f-t">
@@ -93,7 +94,7 @@
       </div>
       <!--Fin menu-->
       
-     <secction class="center">
+     <secction class="center" id="sectionCenter">
     <div class="behind">
          <i class="fas fa-arrow-left"></i>             
          <span class="icon"><i class="far fa-comment"></i> COMENTARIOS</span>
@@ -154,7 +155,7 @@
          </section>
          <!-- Fin carrusel --> 
          <!-- Texarea de comentarios -->
-
+         <button onclick="logout()">Logout</button>
   <!--<button onclick="logout()">Logout</button> -->
   <div class="container">
     <div class="row">
