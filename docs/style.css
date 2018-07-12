@@ -80,8 +80,21 @@
 	cursor: pointer;
 }
 
+.register{
+	margin-top:20%;
+}
 
 /****************************************fin login**************************************************/
+/****************************************Registro**************************************************/
+#logoRegister{
+	text-align: center;
+	width: 60vw;
+	margin:10%;
+	margin-left: 20%;
+	margin-top: 20%;
+	margin-bottom: 2%;
+}
+/****************************************fin Registro**************************************************/
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
 .center{
@@ -106,14 +119,11 @@ h6{
 	background-color: #efefef;
 }
 
-.carousel-indicators-numbers li {  
-  margin: 0 3px;
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-radius: 100%;
-  line-height: 30px;
-  color: #fff;   
+body {
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: 200vh;
 }
 
 /* Estilos generales */
