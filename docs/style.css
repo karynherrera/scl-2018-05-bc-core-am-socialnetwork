@@ -3,6 +3,9 @@
 	font-size: 100%;
 	display: none;
 }
+.registro {
+	display: none;
+}
 #logo{
 	text-align: center;
 	width: 80vw;
@@ -118,6 +121,16 @@ h6{
 .icona {
 	background-color: #efefef;
 }
+	 
+ .carousel-indicators-numbers li {  
+   margin: 0 3px;
+   width: 10px;
+   height: 10px;
+   border: none;
+   border-radius: 100%;
+   line-height: 30px;
+	 color: #fff; 
+ }
 
 body {
 	margin: 0 auto;
