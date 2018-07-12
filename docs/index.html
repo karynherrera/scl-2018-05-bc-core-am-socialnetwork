@@ -1,83 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Vinculación a Firebase UI-->
-    <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-    <!--Vinculación Hojas de Estilo fuentes e Iconos-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <!--Vinculación Hojas de Estilo Bootstrap-->
-    <link rel="stylesheet" 
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <!--Vinculación Hojas de Estilo Propias-->
-    <link rel="stylesheet" href="style.css">
-    <title>EasyFood</title>
-  </head>
-  <body>
-    <!-- Sección Login -->
-    <section class="login">
-        <section class="row justify-content-center">
-            <div class="col-12 justify-content-center">
-                <img src="img/logo.png" id="logo" class="img-fluid" alt="Responsive image">
-                <input class="form-control inputLogin" type="email" placeholder="Email address"  id="inputCorreo">
-                <input class="form-control inputLogin" type="password" placeholder="Password"  id="inputPass">
-                <button type="button" id="btnLogin" class="btn-md btnLogIn">ENTRAR</button>
-                <p class="textLogin">ó</p>
-                <button type="button" id="loginFb" class="btn-md btnFb"><i class="fab fa-facebook-f"></i>     <span class="a"></span>LogIn con Facebook</button>
-                <button type="button" id="loginGm" class="btn-md btnGoogle"><i class="fab fa-google"></i> <span class="a"></span>LogIn con Google</button>
-                <p class="textLogin">¿Aun no tienes Cuenta?</p> 
-                <p class="textLogin" id="registrate">Registrate</p>        
-              </div>
-          </section>
-    </section> <!-- fin de login -->
-    <!-- Sección textarea, botón y contenedor mensajes -->
-    <section class="center">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <textarea class="txt" id="comment" placeholder="Añade un comentario..."></textarea>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" id="btn"><i class="fas fa-plus" aria-hidden="true"></i> Agregar</button>
-          </div>
-        </div>
-        <!-- contenedor comentarios -->
-        <div class="row">
-          <div class="col-12" id="cont"></div>
-          <!-- aca dejare los comentarios -->
-        </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Vinculación a Firebase UI-->
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+  <!--Vinculación Hojas de Estilo fuentes e Iconos-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <!--Vinculación Hojas de Estilo Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <!--Vinculación Hojas de Estilo Propias-->
+  <link rel="stylesheet" href="style.css">
+  <title>EasyFood</title>
+</head>
+
+<body>
+  <!-- Sección Login -->
+  <section class="login">
+    <section class="row justify-content-center">
+      <div class="col-12 justify-content-center">
+        <img src="img/logo.png" id="logo" class="img-fluid" alt="Responsive image">
+        <input class="form-control inputLogin" type="email" placeholder="Email address" id="inputCorreo">
+        <input class="form-control inputLogin" type="password" placeholder="Password" id="inputPass">
+        <button type="button" id="btnLogin" class="btn-md btnLogIn">ENTRAR</button>
+        <p class="textLogin">ó</p>
+        <button type="button" id="loginFb" class="btn-md btnFb">
+          <i class="fab fa-facebook-f"></i>
+          <span class="a"></span>LogIn con Facebook</button>
+        <button type="button" id="loginGm" class="btn-md btnGoogle">
+          <i class="fab fa-google"></i>
+          <span class="a"></span>LogIn con Google</button>
+        <p class="textLogin">¿Aun no tienes Cuenta?</p>
+        <p class="textLogin" id="registrate">Registrate</p>
       </div>
     </section>
-    <section><div id="firebaseui-auth-container"></div></section>
-    <!--Vinculación Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <script>
-      // Inicializando proyecto de Firebase
-      var config = {
-        apiKey: 'AIzaSyC6fl3QVT10nD3Wbxyqalw8Gtv_Gi3-Me4',
-        authDomain: 'easyfood-b33b5.firebaseapp.com',
-        databaseURL: 'https://easyfood-b33b5.firebaseio.com',
-        projectId: 'easyfood-b33b5',
-        storageBucket: '',
-        messagingSenderId: '637972476194'
-      };
-      firebase.initializeApp(config);
-    </script>
-    <!-- Vinculación Jquery --> 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <!-- Vinculación a Fontawesome -->
-    <script src="https://use.fontawesome.com/7873633050.js"></script>
-    <!--Vinculación archivos JS-->
-    <script src="main.js"></script>
-    <script src="data.js"></script>
-  </body>
-</html>
+  </section>
+  <!-- fin de login -->
+  <!-- Sección textarea, botón y contenedor mensajes -->
+  <section class="center">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <textarea class="txt" id="comment" placeholder="Añade un comentario..."></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" id="btn">
+            <i class="fas fa-plus" aria-hidden="true"></i> Agregar</button>
+        </div>
+      </div>
+      <!-- contenedor comentarios -->
+      <div class="row">
+        <div class="col-12" id="cont"></div>
+        <!-- aca dejare los comentarios -->
+      </div>
+    </div>
+  </section>
 
+
+  <!-- menu -->
+    <div class="pos-f-t">
+       
+        <nav class="navbar navbar-dark bg-dark">
+                   <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+     
+        <nav id="sideMenu" class="nav flex-column float-left menu bg-dark menu_closed">
+         
+          <div onclick="toggleMenu()" class="close_button">
+            <span aria-hidden="true">&times;</span>
+          </div>
+          <div class="menu_content">
+            <!--menu_content para separar el menu del botón x-->
+            <a class="nav-link active" href="#"></a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Carnes.svg">  Carnes</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Pescados y Maricos.svg"> Pescados y Mariscos</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Sopas.svg">  Sopas</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Pastas.svg">  Pastas</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Postres.svg"> Postres</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Vegana.svg"> Veganas</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Vegetariana.svg"> Vegetariana</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Sin azucar.svg"> Sin Azúcar</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Sin gluten.svg"> Sin Gluten</a>
+            <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/sin lacteo.svg"> Sin Lácteos</a>
+            <a class="nav-link disabled" href="#">   </a>
+          </div>
+        </nav>
+      </div>
+
+
+
+
+  </body>
+  <section>
+    <div id="firebaseui-auth-container"></div>
+  </section>
+
+
+
+
+
+  <!--Vinculación Firebase-->
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <script>
+    // Inicializando proyecto de Firebase
+    var config = {
+      apiKey: 'AIzaSyC6fl3QVT10nD3Wbxyqalw8Gtv_Gi3-Me4',
+      authDomain: 'easyfood-b33b5.firebaseapp.com',
+      databaseURL: 'https://easyfood-b33b5.firebaseio.com',
+      projectId: 'easyfood-b33b5',
+      storageBucket: '',
+      messagingSenderId: '637972476194'
+    };
+    firebase.initializeApp(config);
+  </script>
+  <!-- Vinculación Jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <!-- Vinculación a Fontawesome -->
+  <script src="https://use.fontawesome.com/7873633050.js"></script>
+  <!--Vinculación archivos JS-->
+  <script src="main.js"></script>
+  <script src="data.js"></script>
+</body>
+
+</html>
