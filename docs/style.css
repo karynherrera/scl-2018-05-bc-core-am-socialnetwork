@@ -225,6 +225,7 @@ header div img {
 	display: block;
 	color: #FFF; 
 	margin: 1%;	
+	/*position: relative;*/
 }
 
 
@@ -246,17 +247,16 @@ header div img {
 	margin-top: 0em;
 	padding: 0 0%;
 	width: 100%;
-	height: 10em;
+	height: 2em;
 	border-color: white;  
 }
 
 
 #cont div {
-	padding: 0.5em 0.5em;
-	
+	padding: 0.5em 0.5em;	
 	background-color: #FFF;
 	width: 100%;
-	height: 10em;
+	height: 2em;
 }
 
 .heart, .trash {
@@ -325,18 +325,26 @@ p {
 }
 
 /****************************************MENU**************************************************/
-.sideMenu{
-	z-index: 10;
+
+.bg-blue{
+	z-index: 100;
+background-color: #22B4BD;
 }
-.bg-dark{
-	z-index: 10;
+.navbar-toggler-icon{
+ color: white;
 }
+
+.logoWhite{
+	width: 25%;
+}
+
 .menu{
 	position: absolute;
 	top:0;
 	height: 100vh; 
 	width: 90vw;
 	transition: 0.5s ease-out;
+	background-color: #22B4BD;
 }
 
 .menu_closed{
@@ -351,13 +359,14 @@ p {
 	font-size: xx-large;
 	color: white;
 	position: absolute;
-	right: 10px;                   
+	right: 10px;           
 }
 
 .menu_content{
 	padding: 10px;
 	margin-top: 20px;
 	color: white;
+	background-color: #22B4BD;
 }
 
 .textMenu{

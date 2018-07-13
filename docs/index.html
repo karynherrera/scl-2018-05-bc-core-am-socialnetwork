@@ -67,21 +67,23 @@
     <!-- menu Navbar-->
     <div class="pos-f-t">
        
-        <nav class="navbar navbar-dark bg-dark">
-                   <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <nav class="navbar navbar bg-blue">
+          <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <img class ="logoWhite" src= "img/Logo Easyfood blanco.png">
         </nav>
      
-        <nav id="sideMenu" class="nav flex-column float-left menu bg-dark menu_closed">
+        <nav id="sideMenu" class="nav flex-column float-left menu bg-blue menu_closed">
          
           <div onclick="toggleMenu()" class="close_button">
             <span aria-hidden="true">&times;</span>
           </div>
           <div class="menu_content">
             <!--menu_content para separar el menu del botón x-->
-            <a class="nav-link active" href="#"></a>
+            <a class="nav-link active"  href="#"></a>
             <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Carnes.svg">  Carnes</a>
             <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Pescados y Maricos.svg"> Pescados y Mariscos</a>
             <a class="nav-link textMenu" href="#"><img class="photoMenu" src ="icono/Sopas.svg">  Sopas</a>
@@ -161,22 +163,28 @@
          <!-- Texarea de comentarios -->
          <button onclick="logout()">Logout</button>
   <!--<button onclick="logout()">Logout</button> -->
-  <div class="container">
+    <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" id="btn" onclick="saveMessage()"><i class="far fa-comments"></i> Publicar</button>
+      </div>
+    </div>
     <div class="row">
       <div class="col-12">
         <textarea class="txt" id="comment" placeholder="Añade un comentario..."></textarea>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <button type="submit" id="btn"><i class="far fa-comments"></i> Publicar</button>
-      </div>
-    </div>        
-    <!-- contenedor comentarios -->
-    <div class="row">
-      <div class="col-12" id="cont"></div>
+    </div> 
+    </div> 
+    <div class="container"> 
+      <!-- contenedor comentarios -->
       <!-- aca dejare los comentarios -->
-    </div>
+     <div class="row">
+         <div class="col-12" id="cont">
+           
+         </div>        
+     </div>  
+     </div>      
+    
   </div> <!--fin de container-->
 </section> <!--fin de seccion center-->
 
