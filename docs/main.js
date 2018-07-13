@@ -183,6 +183,16 @@ btnRegister.addEventListener('click', () => {
   if (checkbox.value === 'off') {
     alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert">Tiene que aceptar los Terminos y Condiciones de Uso </div>`;
   } else {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const currentUser = firebase.auth().currentUser;
+        const newUserKey = firebase.database().ref().child('users').push().key;
+        firebase.database().ref(`users/${newUserKey}`).set({
+          NameUser: nombreNewUser,
+          EmailUser: emailNewUser
+        });
+      } 
+    });
     firebase.auth().createUserWithEmailAndPassword(emailNewUser, passNewUser)
       .then(() => {
         console.log("Usuario Registrado");
