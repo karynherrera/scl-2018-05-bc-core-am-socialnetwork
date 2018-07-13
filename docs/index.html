@@ -33,10 +33,10 @@
         <p class="textLogin">ó</p>
         <button type="button" id="loginFb" class="btn-md btnFb">
           <i class="fab fa-facebook-f"></i>
-          <span class="a"></span>LogIn con Facebook</button>
+          <span class="space"></span>LogIn con Facebook</button>
         <button type="button" id="loginGm" class="btn-md btnGoogle">
           <i class="fab fa-google"></i>
-          <span class="a"></span>LogIn con Google</button>
+          <span class="space"></span>LogIn con Google</button>
         <p class="textLogin">¿Aun no tienes Cuenta?</p>
         <p class="textLogin" id="registrate">Registrate</p>
       </div>
@@ -44,6 +44,7 @@
   </section>
   <!-- fin de login -->
   <!-- Seccion Registro de Usuario -->
+  <div id="modalTerms"></div>
   <section class="registro" id="registroUser">
     <section class="row justify-content-center">
         <div class="col-12 justify-content-center register">
@@ -52,9 +53,10 @@
             <input class="form-control inputLogin" type="email" placeholder="Email address"  id="inputEmailUser" >
             <input class="form-control inputLogin" type="password" placeholder="Password"  id="inputPassUser">
             <div class="alertConteiner" id="alertRegister"></div>
-              <a class="textLogin" id="aceptTerm" href="https://github.com/karynherrera/scl-2018-05-bc-core-am-socialnetwork/blob/master/anexos/politica%20privacidad.pdf"> <input type="checkbox"><span class="a"></span>Aceptar Terminos y Condiciones</a>
-            <button type="button" id="btnRegistrarse" class="btn-md btnLogIn">REGISTRATE</button>  
-            <a class="textLogin" type="button" id="loginBack">Regresar a Login</a>
+              <a class="textLogin"> <input id="aceptTerm" type="checkbox" value="off"><span class="space"></span><p id="terminos" data-toggle="modal" data-target=".bd-example-modal-lg" href="#" onclick="privacyPolicy()">Aceptar Terminos y Condiciones</p></a>
+            <button type="button" id="btnRegistrarse" class="btn-md btnLogIn">REGISTRATE</button> 
+            <p class="textLogin" id="loginBack">Regresar a Login</p>
+
         </div>
       </section>
 </section> <!-- fin de registro de usuario -->
@@ -167,7 +169,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <button type="submit" id="btn"><i class="fas fa-plus" aria-hidden="true"></i> Agregar</button>
+        <button type="submit" id="btn"><i class="far fa-comments"></i> Publicar</button>
       </div>
     </div>        
     <!-- contenedor comentarios -->

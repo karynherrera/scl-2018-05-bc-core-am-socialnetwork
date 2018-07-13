@@ -137,12 +137,14 @@ inputEmailUser.addEventListener('click',()=>{
   inputEmailUser.value="";
     const alertLogin = document.getElementById('alertPassword');
     alertLogin.innerHTML=`<div id="alertPassword"></div>`;
+    
 })
 const inputPasswordUser = document.getElementById("inputPass");
 inputPasswordUser.addEventListener('click',()=>{
     inputPasswordUser.value="";
     const alertLogin = document.getElementById('alertPassword');
     alertLogin.innerHTML=`<div id="alertPassword"></div>`;
+    
 })
 // LINK A FORMULARIO PARA REGISTRAR NUEVO USUARIO
 const btnFormRegister = document.getElementById("registrate");
@@ -163,7 +165,10 @@ alertReg.innerHTML=`<div id="alertPassword"></div>`;
 
 // REGISTRO DE USUARIO NUEVO
 const btnRegister = document.getElementById("btnRegistrarse");
+
 btnRegister.addEventListener('click',()=>{
+  const checkbox = document.getElementById('aceptTerm');
+console.log(checkbox.value);
 const alertReg = document.getElementById('alertRegister');
 alertReg.innerHTML=`<div id="alertPassword"></div>`;
 
@@ -178,9 +183,12 @@ inputEmailNewUser.value="";
 const inputPassNewUser = document.getElementById("inputPassUser");
 inputPassNewUser.value="";
 
-  firebase.auth().createUserWithEmailAndPassword(emailNewUser,passNewUser)
+if(checkbox.value ==='off'){
+    alertRegister.innerHTML=`<div class="alert alert-danger alertConteiner" role="alert">Tiene que aceptar los Terminos y Condiciones de Uso </div>`; 
+}else {
+firebase.auth().createUserWithEmailAndPassword(emailNewUser,passNewUser)
   .then(()=>{
-    console.log("Usuario Registrado");
+  console.log("Usuario Registrado");
   seccionLogin.style.display="none";
   seccionCenter.style.display="block";
   seccionRegistro.style.display="none";
@@ -193,6 +201,12 @@ inputPassNewUser.value="";
     console.log("Error de Firebase > "+error.code);
     console.log("Error de Firebase > mensaje"+error.message);
   });
+}
 })
-
+const checkbox = document.getElementById('aceptTerm');
+checkbox.addEventListener('click',()=>{
+  checkbox.value="on"
+  const alertReg = document.getElementById('alertRegister');
+  alertReg.innerHTML=`<div id="alertPassword"></div>`;
+})
 
