@@ -1,14 +1,12 @@
 /****************************************Estilos Login**************************************************/
 .login{
 	font-size: 100%;
-	display: none;
 	background-repeat: no-repeat;
 	background-image: url(img/portada2.png);
 	background-size: 200vh;
+	
 }
-.registro {
-	display: none;
-}
+
 #logo{
 	text-align: center;
 	width: 80vw;
@@ -87,15 +85,6 @@
 	cursor: pointer;
 }
 
-.register{
-	margin-top:20%;
-	
-}
-
-.registro{
-	display: none;
-}
-
 #loginBack{
 	text-align: center;
 	cursor: pointer;
@@ -104,6 +93,18 @@
 
 /***********************************fin login*****************************************/
 /****************************************Registro**************************************************/
+.registro{
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: 200vh;
+	display: none;
+	
+}
+
+.register{
+	margin-top:20%;	
+}
+
 #logoRegister{
 	text-align: center;
 	width: 60vw;
@@ -112,11 +113,26 @@
 	margin-top: 20%;
 	margin-bottom: 2%;
 }
+
+.alertConteiner{
+	z-index: 20;
+	text-align: center;
+  border-radius: 0%;
+  border: 0px;
+  width: 75vw;
+	display: block;
+	margin-left: 8%;
+	margin-top: 2%;
+}
 /****************************************fin Registro**************************************************/
+/****************************************Seccion Muro**************************************************/
+.muro{
+	display: none;
+}
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
 .center{
-	
+	display: none;
 }
 .behind{
 	text-align: left;
