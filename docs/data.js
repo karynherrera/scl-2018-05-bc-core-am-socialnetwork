@@ -46,19 +46,24 @@ firebase.database().ref('posts')
   .limitToLast(3)
   .on('child_added', (newMessage) => {
     cont.innerHTML += `
-    <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}</div>
-                <div>${newMessage.val().text} <i class="far fa-heart"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+  <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
+                ${newMessage.val().text} <i class="far fa-heart"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `;
-    let trsh = document.getElementById('bas');
-    const newMessageKey = firebase.database().ref().child('posts').push().key;
-  });
-/* trsh.addEventListener('click', () =>{
-      cont.removeChild(cont.childNodes[0]);
+    
+    /* const newMessageKey = firebase.database().ref().child('posts').push().key;
+    let trsh = document.getAttribute('data-id');
+    trsh.addEventListener('click', () =>{
       
     });
-    */
+*/
+  });
   
-
+function deleteButtonClicked(event) {
+  const postsID = event.target.getAttribute('data-id');
+  const postsRef = firebase.database().ref('users/' + postsID);
+  postsRef.remove();
+  cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
+}
 // Funcion eliminar publicacion
 
 
@@ -67,9 +72,4 @@ firebase.database().ref('posts')
 }
 */
 
-function deleteButtonClicked(event) {
-    const postsID = event.target.getAttribute('data-id');
-    const postsRef = firebase.database().ref("users/"+postsID);
-    postsRef.remove();
-    
-}
+
