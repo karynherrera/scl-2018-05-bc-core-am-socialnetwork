@@ -40,5 +40,20 @@ function saveMessage() {
   });
 }
 
+// Buscar mensajes desde data
+firebase.database().ref('posts')
+  .limitToLast(3)
+  .on('child_added', (newMessage)=>{
+    cont.innerHTML += `
+                <div> ${newMessage.val().creatorName}</div>
+                <div>${newMessage.val().text}</div>
+            `;
+  });
+
 // Funcion eliminar publicacion
+
+
+function removeTxt() {
+  commentTxt.parentNode.removeChild(commentTxt);
+}
 

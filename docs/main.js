@@ -20,6 +20,7 @@ window.onload = (() => {
       seccionCenter.style.display = 'none';
     }
   });
+  /*
   // lo que ingresa un usuario
   const boton = document.getElementById('btn');
   boton.addEventListener('click', () => {
@@ -47,6 +48,7 @@ window.onload = (() => {
     // crear icono basura
     const trash = document.createElement('i');
     trash.classList.add('fas', 'fa-trash', 'trash');
+    trash.onclick(removeTxt());
     // nodos de texto del texarea
     let textNewComment = document.createTextNode(commentsTxt);
 
@@ -59,7 +61,7 @@ window.onload = (() => {
     newComments.appendChild(contenedorElemento);
 
     cont.appendChild(newComments);
-  });
+  });*/
 });// fin de window onload
 
 // ============================================================SECCIONES DEL DOM===================================================
