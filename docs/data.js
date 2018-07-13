@@ -29,6 +29,7 @@ window.logout = (()=>{
 });
 
 // Funcion para guardar publicaciones
+
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
   const commentText = comment.value;
@@ -45,15 +46,21 @@ firebase.database().ref('posts')
   .limitToLast(3)
   .on('child_added', (newMessage)=>{
     cont.innerHTML += `
-                <div> ${newMessage.val().creatorName}</div>
-                <div>${newMessage.val().text}</div>
+    <div><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}</div>
+                <div>${newMessage.val().text} <i class="far fa-heart"></i> <i id="bas"class="fas fa-trash"></i></div>
             `;
+    let trsh = document.getElementById('bas');
+    const newMessageKey = firebase.database().ref().child('posts').push().key;
+    
+    trsh.addEventListener('click', () =>{
+      cont.removeChild(cont.childNodes[0]);
+    });
   });
 
 // Funcion eliminar publicacion
 
 
-function removeTxt() {
+/* function removeTxt() {
   commentTxt.parentNode.removeChild(commentTxt);
 }
-
+*/

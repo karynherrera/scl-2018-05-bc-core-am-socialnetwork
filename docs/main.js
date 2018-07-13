@@ -72,24 +72,23 @@ const seccionMuro = document.getElementById('sectionMuro');
 // ==========================================================FUNCIONALIDAD LOGIN====================================================
 
 // LOGIN CON FACEBOOK
-const logFb = document.getElementById("loginFb");
-logFb.addEventListener('click',()=>{
-let provider = new firebase.auth.FacebookAuthProvider();
-firebase.auth().signInWithRedirect(provider).then(function(result) {
-  let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
-  let user = result.user; //info del usuario logado
-  console.log(user);
- ///document.getElementById("login").style.display = "none";
- //document.getElementById("center").style.display = "block";
- seccionLogin.style.display="none";
- seccionMuro.style.display="block";
- seccionCenter.style.display="block";
- 
-}).catch(function(error) {
-  seccionLogin.style.display="block";
- seccionMuro.style.display="none";
- seccionCenter.style.display="none";
-});
+const logFb = document.getElementById('loginFb');
+logFb.addEventListener('click', ()=>{
+  let provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithRedirect(provider).then(function(result) {
+    let token = result.credential.accessToken; // se obtiene el token de OAuth de Facebook
+    let user = result.user; // info del usuario logado
+    console.log(user);
+    // /document.getElementById("login").style.display = "none";
+    // document.getElementById("center").style.display = "block";
+    seccionLogin.style.display = 'none';
+    seccionMuro.style.display = 'block';
+    seccionCenter.style.display = 'block';
+  }).catch(function(error) {
+    seccionLogin.style.display = 'block';
+    seccionMuro.style.display = 'none';
+    seccionCenter.style.display = 'none';
+  });
 });// fin evento click del boton login Facebook
 
 // LOGIN CON GOOGLE
