@@ -20,9 +20,9 @@ function closeMenu() {
 /** **************************************FIN MENU**************************************************/
 
 // LOGOUT
-window.logout = (()=>{
+window.logout = (() => {
   firebase.auth().signOut()
-    .then(()=>{
+    .then(() => {
       console.log('chao');
     })
     .catch();
@@ -44,18 +44,20 @@ function saveMessage() {
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   .limitToLast(3)
-  .on('child_added', (newMessage)=>{
+  .on('child_added', (newMessage) => {
     cont.innerHTML += `
-    <div><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}</div>
-                <div>${newMessage.val().text} <i class="far fa-heart"></i> <i id="bas"class="fas fa-trash"></i></div>
+    <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}</div>
+                <div>${newMessage.val().text} <i class="far fa-heart"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `;
     let trsh = document.getElementById('bas');
     const newMessageKey = firebase.database().ref().child('posts').push().key;
-    
-    trsh.addEventListener('click', () =>{
-      cont.removeChild(cont.childNodes[0]);
-    });
   });
+/* trsh.addEventListener('click', () =>{
+      cont.removeChild(cont.childNodes[0]);
+      
+    });
+    */
+  
 
 // Funcion eliminar publicacion
 
@@ -64,3 +66,10 @@ firebase.database().ref('posts')
   commentTxt.parentNode.removeChild(commentTxt);
 }
 */
+
+function deleteButtonClicked(event) {
+    const postsID = event.target.getAttribute('data-id');
+    const postsRef = firebase.database().ref("users/"+postsID);
+    postsRef.remove();
+    
+}
