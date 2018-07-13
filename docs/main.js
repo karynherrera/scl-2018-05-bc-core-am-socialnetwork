@@ -71,7 +71,7 @@ const seccionMuro = document.getElementById("sectionMuro")
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById("loginFb");
 logFb.addEventListener('click',()=>{
-  let provider = new firebase.auth.FacebookAuthProvider();
+let provider = new firebase.auth.FacebookAuthProvider();
 firebase.auth().signInWithRedirect(provider).then(function(result) {
   let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
   let user = result.user; //info del usuario logado
