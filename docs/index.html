@@ -158,22 +158,23 @@
          <!-- Texarea de comentarios -->
          <button onclick="logout()">Logout</button>
   <!--<button onclick="logout()">Logout</button> -->
-  <div class="container">
+  <div class="container"> 
+     <!-- contenedor comentarios -->
+     <!-- aca dejare los comentarios -->
+    <div class="row">
+        <div class="col-12" id="cont"></div>        
+      </div>  
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" id="btn" onclick="saveMessage()"><i class="far fa-comments"></i> Publicar</button>
+      </div>
+    </div>
     <div class="row">
       <div class="col-12">
         <textarea class="txt" id="comment" placeholder="Añade un comentario..."></textarea>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <button type="submit" id="btn"><i class="far fa-comments"></i> Publicar</button>
-      </div>
     </div>        
-    <!-- contenedor comentarios -->
-    <div class="row">
-      <div class="col-12" id="cont"></div>
-      <!-- aca dejare los comentarios -->
-    </div>
+    
   </div> <!--fin de container-->
 </section> <!--fin de seccion center-->
 
