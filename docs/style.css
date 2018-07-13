@@ -317,10 +317,11 @@ p {
 
 .bg-blue{
 	z-index: 100;
-background-color: #22B4BD;
+	background-color: #22B4BD;
 }
-.navbar-toggler-icon{
- color: white;
+.lineMenu{
+	width: 8%;
+	position: left;
 }
 
 .logoWhite{
