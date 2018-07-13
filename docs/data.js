@@ -39,3 +39,15 @@ function saveMessage() {
     text: commentText
   });
 }
+
+// Funcion eliminar publicacion
+
+function remove() {   
+   trash.addEventListener('click',()=>{   
+  return alert ('¿Deseas eliminar este Comentario?');
+  if (remove == comfirm)   {
+    elimina.submit();
+  }
+}
+}
+commentText.removeChild()
