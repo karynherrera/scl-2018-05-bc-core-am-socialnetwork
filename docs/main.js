@@ -6,6 +6,8 @@ window.onload = (()=>{
       inputEmailUser.value="";
       const inputPasswordUser = document.getElementById("inputPass");
       inputPasswordUser.value="";
+
+  document.getElementsByTagName("input").value="";
   firebase.auth().onAuthStateChanged((user)=>{
     if(user){
       seccionLogin.style.display="none";
@@ -65,13 +67,15 @@ const seccionCenter = document.getElementById("sectionCenter");
 const seccionRegistro = document.getElementById("registroUser");
 const seccionMuro = document.getElementById("sectionMuro")
 //==========================================================FUNCIONALIDAD LOGIN====================================================
-  // LOGIN CON FACEBOOK
+  
+// LOGIN CON FACEBOOK
 const logFb = document.getElementById("loginFb");
 logFb.addEventListener('click',()=>{
   let provider = new firebase.auth.FacebookAuthProvider();
 firebase.auth().signInWithRedirect(provider).then(function(result) {
   let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
   let user = result.user; //info del usuario logado
+  console.log(user);
  ///document.getElementById("login").style.display = "none";
  //document.getElementById("center").style.display = "block";
  seccionLogin.style.display="none";
@@ -79,10 +83,9 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
  seccionCenter.style.display="block";
  
 }).catch(function(error) {
-  let errorCode = error.code;
-  let errorMessage = error.message;
-  let email = error.email;
-  let credential = error.credential;
+  seccionLogin.style.display="block";
+ seccionMuro.style.display="none";
+ seccionCenter.style.display="none";
 });
 });// fin evento click del boton login Facebook
 
@@ -96,26 +99,17 @@ firebase.auth().signInWithRedirect(provider).then(function(result) {
       
       
     }).catch(function(error) {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      let email = error.email;
-      let credential = error.credential;
+      seccionLogin.style.display="block";
+      seccionMuro.style.display="none";
+      seccionCenter.style.display="none";
     });
   });// fin evento click del boton login Google  
 
-  // LOGOUT
-window.logout=(()=>{
-  firebase.auth().signOut()
-  .then(()=>{
-    console.log("chao");
-  })
-  .catch();
-});
+
 
 //LOGARSE CON EMAIL NORMAL
 
 const btnLogin = document.getElementById("btnLogin");
-
 btnLogin.addEventListener('click',()=>{
   const emailUser = document.getElementById("inputCorreo").value;
   const passwordUser = document.getElementById("inputPass").value;
@@ -153,53 +147,52 @@ inputPasswordUser.addEventListener('click',()=>{
 // LINK A FORMULARIO PARA REGISTRAR NUEVO USUARIO
 const btnFormRegister = document.getElementById("registrate");
 btnFormRegister.addEventListener('click',()=>{
-  seccionRegistro.classList.remove('registro');
+  seccionRegistro.style.display="block";
   seccionLogin.style.display="none";
   seccionCenter.style.display="none";
 })
 // LINK PARA REGRESAR A LA SECCION DE LOGIN
 const btnReturnLogin = document.getElementById("loginBack");
 btnReturnLogin.addEventListener('click',()=>{
-  seccionRegistro.classList.remove('none');
   seccionLogin.style.display="block";
   seccionCenter.style.display="none";
+  seccionRegistro.style.display="none";
+  const alertReg = document.getElementById('alertRegister');
+alertReg.innerHTML=`<div id="alertPassword"></div>`;
 })
 
 // REGISTRO DE USUARIO NUEVO
 const btnRegister = document.getElementById("btnRegistrarse");
 btnRegister.addEventListener('click',()=>{
-  
+const alertReg = document.getElementById('alertRegister');
+alertReg.innerHTML=`<div id="alertPassword"></div>`;
+
 const nombreNewUser = document.getElementById("inputName").value;
 const emailNewUser = document.getElementById("inputEmailUser").value;
 const passNewUser = document.getElementById("inputPassUser").value;
 
+const inputNombreNewUser = document.getElementById("inputName");
+inputNombreNewUser.value="";
+const inputEmailNewUser = document.getElementById("inputEmailUser");
+inputEmailNewUser.value="";
+const inputPassNewUser = document.getElementById("inputPassUser");
+inputPassNewUser.value="";
+
   firebase.auth().createUserWithEmailAndPassword(emailNewUser,passNewUser)
   .then(()=>{
     console.log("Usuario Registrado");
+  seccionLogin.style.display="none";
+  seccionCenter.style.display="block";
+  seccionRegistro.style.display="none";
   })
   .catch((error)=>{
+    seccionLogin.style.display="none";
+    seccionCenter.style.display="none";
+    seccionRegistro.style.display="block";
+    alertRegister.innerHTML=`<div class="alert alert-danger alertConteiner" role="alert"> ${error} </div>`;
     console.log("Error de Firebase > "+error.code);
     console.log("Error de Firebase > mensaje"+error.message);
   });
 })
 
-/****************************************MENU**************************************************/
-//funcionalidad del side Menú
-function toggleMenu() { // añadir función onclick="toggleMenu()" al botón del nav bar y al botón cerrar.
-  if (sideMenu.className.indexOf("menu_closed") >= 0) { // primero revisamos si la clase d-none esta
-    openMenu();  // si esta la clase quiere decir que el menú esta cerrado, asi que llamamos la funcion para abrirlo
-  } else {
-    closeMenu(); //si no esta la clase, le indicamos que cierre el menu
-  }
-}
 
-function openMenu() {
-  sideMenu.classList.remove('menu_closed'); // quitando clase display-none
-  sideMenu.classList.add('menu_open');
-}
-
-function closeMenu() {
-  sideMenu.classList.add('menu_closed'); // añadimos la clase display-none
-  sideMenu.classList.remove('menu_open');
-}
-/****************************************FIN MENU**************************************************/
