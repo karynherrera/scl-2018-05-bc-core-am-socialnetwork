@@ -20,13 +20,13 @@ function closeMenu() {
 /** **************************************FIN MENU**************************************************/
 
 // LOGOUT
-window.logout = (()=>{
+window.logout = (() => {
   firebase.auth().signOut()
-    .then(()=>{
+    .then(() => {
       console.log('chao');
     })
     .catch();
-  });
+});
 
 
 // Funcion para guardar publicaciones
@@ -44,7 +44,7 @@ function saveMessage() {
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   .limitToLast(3)
-  .on('child_added', (newMessage)=>{
+  .on('child_added', (newMessage) => {
     cont.innerHTML += `
                 <div> ${newMessage.val().creatorName}</div>
                 <div>${newMessage.val().text}</div>
@@ -52,16 +52,25 @@ firebase.database().ref('posts')
   });
 
 // Funcion eliminar publicacion
-
-
 function removeTxt() {
   commentTxt.parentNode.removeChild(commentTxt);
 }
 
+// funcion para añadir amigo
+window.addFriend = (() => {
+  console.log("holi");
+  /*
+  const currentUser = firebase.auth().currentUser;
+  const newUserKey = firebase.database().ref().child('users').push().key;
+  firebase.database().ref(`users/${newUserKey}`).set({
+    User: currentUser.uid,
+    NameUser: currentUser.displayName,
+  });*/
+});
 /********************************Politica de Privacidad***************************************** */
-window.privacyPolicy=(()=>{
-  const modal= document.getElementById("modalTerms");
-  modal.innerHTML=`
+window.privacyPolicy = (() => {
+  const modal = document.getElementById("modalTerms");
+  modal.innerHTML = `
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
   aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
@@ -140,6 +149,6 @@ window.privacyPolicy=(()=>{
   </div>
   </div>
   </div>`;
-  
-  })
+
+})
   /********************************FIN Politica de Privacidad***************************************** */
