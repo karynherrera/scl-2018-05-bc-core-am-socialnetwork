@@ -57,14 +57,14 @@ firebase.database().ref('posts')
     });
 */
   });
-  
+// Funcion eliminar publicacion
 function deleteButtonClicked(event) {
+  event.stopPropagation();
   const postsID = event.target.getAttribute('data-id');
-  const postsRef = firebase.database().ref('users/' + postsID);
+  const postsRef = firebase.database().ref('posts').child(postsID);
   postsRef.remove();
   cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
 }
-// Funcion eliminar publicacion
 
 
 /* function removeTxt() {
