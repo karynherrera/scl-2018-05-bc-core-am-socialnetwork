@@ -207,6 +207,29 @@ color: white;
 }
 /**************************FIN MENU******************************************/
 
+/************************INICIO BARRA INFERIOR*****************************/
+.footer {
+	z-index: 100;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color:#DADADA;
+	
+}
+.iconFooter{
+	color:#8A8A8F;
+	text-align: center;
+}
+.iconFavourite{
+	text-align: center;
+}
+
+/************************FIN BARRA INFERIOR*****************************/
+
+
+
+
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
 .center{
@@ -217,7 +240,7 @@ color: white;
 	margin-right: 10px;
 }
 .comment{
-	font-size: 15px;
+	font-size: 13px;
   margin-left: 1px;
 	font-family:'Roboto', sans-serif;
 }

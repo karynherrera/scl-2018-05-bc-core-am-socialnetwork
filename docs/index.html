@@ -18,11 +18,14 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+
   <!--Vinculación Hojas de Estilo Propias-->
   <link rel="stylesheet" href="style.css">
   <title>EasyFood</title>
-   <!-- link de icono parte superior de pestaña -->
-   <link rel="icon" type="image/jpg" href="../docs/img/LogoGorro.png"/>
+  <!-- link de icono parte superior de pestaña -->
+  <link rel="icon" type="image/jpg" href="../docs/img/LogoGorro.png" />
 </head>
 
 <body>
@@ -67,9 +70,10 @@
   </section>
   <!-- fin de registro de usuario -->
 
+  <!-- SECCION MURO -->
   <section class="muro" id="sectionMuro">
 
-    <!-- menu Navbar-->
+    <!-- MENU SUPERIOR-->
     <div class="pos-f-t">
       <nav class="navbar navbar-dark bg-blue">
         <button onclick="toggleMenu()" class="navbar-toggler" type="button" aria-controls="navbarToggleExternalContent" aria-expanded="false"
@@ -87,7 +91,7 @@
         </div>
         <div class="menu_content">
           <!--menu_content para separar el menu del botón x-->
-          <a class="nav-link active" href="#"></a>
+          <a class="nav-link active textMenu" href="#">Categorías Principales</a>
           <a class="nav-link textMenu" href="#">
             <img class="photoMenu" src="icono/Carnes.svg"> Carnes</a>
           <a class="nav-link textMenu" href="#">
@@ -112,7 +116,45 @@
         </div>
       </nav>
     </div>
-    <!--Fin menu navbar-->
+    <!--Fin MENU SUPERIOR-->
+
+    <!-- BARRA INFERIOR -->
+    <!-- Footer -->
+    <footer>
+      <div class="row footer">
+
+        <div class="col-3">
+          <a href="" class="iconFooter">
+            <img class="iconHome" src="icono/Recetas.svg">
+            <span>Recetas</span>
+          </a>
+        </div>
+
+        <div class="col-3">
+        <a href="" class="iconFooter">
+          <i class="iconSearch" src="icono/buscar.svg"></i>
+          <span>Buscar</span>
+        </a>
+      </div>
+
+        <div class="col-3">
+        <a href="" class="iconFooter">
+          <a class="iconFavourite" src="icono/Favorito gris.svg"></i>
+          <span>Favoritos</span>
+        </a>
+      </div>
+
+        <div class="col-3">
+        <a href="" class="iconFooter">
+          <i class="iconProfile" src="icono/Perfil usuario.svg"></i>
+          <span>Perfil</span>
+        </a>
+      </div>
+      
+      </div>
+    </footer>
+    <!-- FIN BARRA INFERIOR -->
+
 
     <section class="center" id="sectionCenter">
       <div class="behind">
@@ -205,12 +247,16 @@
     </section>
     <!--fin de seccion center-->
 
-
-
-
     <section>
       <div id="firebaseui-auth-container"></div>
     </section>
+
+
+
+
+
+
+
     <!--Vinculación Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script>
