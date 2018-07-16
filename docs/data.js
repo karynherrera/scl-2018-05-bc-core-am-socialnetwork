@@ -58,7 +58,22 @@ function removeTxt() {
 
 // funcion para añadir amigo
 window.addFriend = (() => {
-  //
+  let allUsersRegister = firebase.database().ref('users/');
+  allUsersRegister.on('value', function(snapshot) {
+  console.log(snapshot.val());
+});
+/*
+  let db = firebase.database();
+  //const newMessageKey = firebase.database().ref().child('messages').push().key; 
+  let userRef = db.ref("users");
+  let query = userRef.database;
+  console.log(query); */
+
+  //const newFriendKey = firebase.database().ref().child('users').push().key;
+  //firebase.database().ref(`users/${newFriendKey}`).set({
+    //idFriend: userLogued.uid,
+  //});
+  /*
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       console.log("hi Friend");
@@ -70,7 +85,7 @@ window.addFriend = (() => {
         EmailUser: userLogued.email
       });
     } 
-  });
+  });*/
 });
 /********************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
