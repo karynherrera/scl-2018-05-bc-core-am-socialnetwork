@@ -13,6 +13,14 @@ window.onload = (() => {
       seccionLogin.style.display = 'none';
       seccionMuro.style.display = 'block';
       seccionCenter.style.display = 'block';
+      //guardamos el usuario que se ha logado en una coleccion de firebase
+      const currentUser = firebase.auth().currentUser;
+      const newUserKey = firebase.database().ref().child('users').push().key;
+      firebase.database().ref(`users/${newUserKey}`).set({
+        idUser: currentUser.uid,
+        NameUser: currentUser.displayName,
+        EmailUser: currentUser.email
+      });
      //console.log("user > "+JSON.stringify(user));
     } else {
       seccionLogin.style.display = 'block';
