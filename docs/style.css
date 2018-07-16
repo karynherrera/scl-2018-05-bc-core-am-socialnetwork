@@ -143,6 +143,7 @@
 	display: none;
 }
 /**********************MENU *********************************/
+
 .bg-blue{
 	z-index: 100;
 	background-color: #22B4BD;
@@ -216,6 +217,7 @@ color: white;
 	bottom: 0;
 	background-color:#DADADA;
 	text-align: center;
+	height: 50px;
 }
 
 .iconFooter{
@@ -228,13 +230,16 @@ color: white;
 .iconHome .iconSearch .iconFavourite .iconProfile{
 	margin-bottom: none;
 	padding-bottom: none;
+	width: 50%;
+	
 }
 .row {
 	margin-right: 0px;
 	margin-left: 0px;
-}
+}	
 .nameIconFooter{
-margin-top: 0px;
+margin-top: -10px;
+margin-bottom: 0px;
 }
 /************************FIN BARRA INFERIOR*****************************/
 
@@ -243,15 +248,17 @@ margin-top: 0px;
 
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
-.center{
-	display: none;
-}
+
+/*.center{
+/*	display: none;
+}*/
+
 .fa-arrow-left{
 	margin-left: 10px;
 	margin-right: 10px;
 }
 .comment{
-	font-size: 13px;
+	font-size: 12px;
   margin-left: 1px;
 	font-family:'Roboto', sans-serif;
 }
@@ -259,6 +266,7 @@ margin-top: 0px;
 .behind{
 	background-color: #efefef;
 	height: 25px;
+	color: #303030;
 }
 
 .title{
@@ -414,4 +422,22 @@ p {
 	margin-left: 0.5em;
 }
 
+/****************************PERFIL***********************************/
+.imgProfile{
+	margin-top:20px;
 
+	text-align: center;
+	width: 100px;
+	border: solid 1px rgb(145, 144, 144);
+	border-radius: 100px
+}
+.pagIconProfile{
+	width: 16px;
+}
+.nameUser{
+	font-size: 12px;
+	font-family:'Roboto', sans-serif;;
+	text-align: left;
+	font-weight: bold;
+	text-align: center;
+}
