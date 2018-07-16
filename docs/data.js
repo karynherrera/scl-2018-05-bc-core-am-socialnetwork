@@ -58,7 +58,19 @@ function removeTxt() {
 
 // funcion para añadir amigo
 window.addFriend = (() => {
-  
+  //
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log("hi Friend");
+      const userLogued = firebase.auth().currentUser;
+      const newUserKey = firebase.database().ref().child('friends').push().key;
+      firebase.database().ref(`friends/${newUserKey}`).set({
+        idUser: userLogued.uid,
+        NameUser: userLogued.displayName,
+        EmailUser: userLogued.email
+      });
+    } 
+  });
 });
 /********************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
