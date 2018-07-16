@@ -58,7 +58,7 @@ function removeTxt() {
 
 // funcion para añadir amigo
 window.addFriend = (() => {
-  //console.log("holi");
+  console.log("holi");
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const currentUser = firebase.auth().currentUser;
