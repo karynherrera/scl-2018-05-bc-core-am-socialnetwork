@@ -20,48 +20,6 @@ window.onload = (() => {
       seccionCenter.style.display = 'none';
     }
   });
-  /*
-  // lo que ingresa un usuario
-  const boton = document.getElementById('btn');
-  boton.addEventListener('click', () => {
-    // aca guardo el comentario ingresado
-    let commentsTxt = document.getElementById('comment').value;
-
-    // limpiar el textarea
-    document.getElementById('comment').value = ' ';
-
-    // contenedor donde dejaré mis comentarios en html
-    const cont = document.getElementById('cont');
-
-    // crear un div contenetor
-    const newComments = document.createElement('div');
-    // validar que el texarea tenga un comentario
-    if (commentsTxt.length === 0 || commentsTxt === null) {
-      return alert('Debes ingresar un mensaje');
-    }
-    // crear icono de comentarios
-    const comments = document.createElement('i');
-    comments.classList.add('fas', 'fa-comments', 'comments');
-    // crear icono corazon
-    const heart = document.createElement('i');
-    heart.classList.add('fas', 'fa-heart', 'heart');
-    // crear icono basura
-    const trash = document.createElement('i');
-    trash.classList.add('fas', 'fa-trash', 'trash');
-    trash.onclick(removeTxt());
-    // nodos de texto del texarea
-    let textNewComment = document.createTextNode(commentsTxt);
-
-    const contenedorElemento = document.createElement('p');
-    contenedorElemento.appendChild(textNewComment);
-
-    newComments.appendChild(trash);
-    newComments.appendChild(heart);
-    newComments.appendChild(comments);
-    newComments.appendChild(contenedorElemento);
-
-    cont.appendChild(newComments);
-  });*/
 });// fin de window onload
 
 // ============================================================SECCIONES DEL DOM===================================================

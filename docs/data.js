@@ -37,26 +37,31 @@ function saveMessage() {
   firebase.database().ref(`posts/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: commentText
+    text: commentText,    
   });
+  newFunction();
 }
-
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   .limitToLast(3)
   .on('child_added', (newMessage) => {
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-id="plusone" onclick="toggleStar()"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `;
-    
-    /* const newMessageKey = firebase.database().ref().child('posts').push().key;
-    let trsh = document.getAttribute('data-id');
-    trsh.addEventListener('click', () =>{
-      
-    });
-*/
   });
+
+function newFunction() {
+  // limpiar el textarea
+  document.getElementById('comment').value = '';
+  // mensaje de error
+  const commentText = comment.value; 
+  if (commentText === '') {
+    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';
+  }
+  ;
+}
+
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
   event.stopPropagation();
@@ -66,10 +71,22 @@ function deleteButtonClicked(event) {
   cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
 }
 
-
-/* function removeTxt() {
-  commentTxt.parentNode.removeChild(commentTxt);
+// Funcion me gusta
+function toggleStar(postRef, uid) {  
+  postRef.transaction(function(post) {
+    if (post) {
+      if (post.stars && post.stars[uid]) {
+        post.starCount--;
+        post.stars[uid] = null;
+      } else {
+        post.starCount++;
+        if (!post.stars) {
+          post.stars = {};
+        }
+        post.stars[uid] = true;
+      }
+    }
+    return post;
+  });
 }
-*/
-
 
