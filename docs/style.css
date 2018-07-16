@@ -425,19 +425,42 @@ p {
 /****************************PERFIL***********************************/
 .imgProfile{
 	margin-top:20px;
-
+	margin-left: 0%;
 	text-align: center;
-	width: 100px;
+	width: 95px;
 	border: solid 1px rgb(145, 144, 144);
-	border-radius: 100px
+	border-radius: 95px
 }
 .pagIconProfile{
 	width: 16px;
+}	
+.logout{
+	color: #303030;
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	margin-left: 37%;
+	border-left: solid #dadada 1px; 
 }
 .nameUser{
-	font-size: 12px;
-	font-family:'Roboto', sans-serif;;
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
 	text-align: left;
 	font-weight: bold;
-	text-align: center;
+	margin-left: 3.5px;
+}
+.infoUser{
+	display: inline-block;
+}
+
+.btnPublicationUser{
+	font-size: 9px;
+	font-family:'Roboto', sans-serif;
+	color: black;
+	padding:1%;
+	display: inline-block;
+	margin-left:5px;
+	margin-top: 30%;
+}
+.dataUser{
+	border-bottom: solid 1px #dadada;
 }
