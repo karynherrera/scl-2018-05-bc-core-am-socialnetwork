@@ -50,8 +50,8 @@ function saveMessage() {
 firebase.database().ref('posts')
   //.limitToLast(2)
   .on('child_added', (newMessage) => {
-    let userTarget = newMessage.val().email;
-    console.log(typeof (userTarget));
+    let userTarget = newMessage.val().creator;
+    //console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
                 ${newMessage.val().text}${newMessage.val().starCount} <i class="far fa-heart" data-id="plusone" onclick="toggleStar(event, countRef, uid)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
@@ -114,23 +114,14 @@ window.prueba = ((variable) => {
 });
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
+  console.log(userTarget);
   const allUsersRegister = firebase.database().ref('users/');
   console.log("entró");
   allUsersRegister.on('value', function (snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       idFirebase.forEach(element => {
-        //console.log(userTarget);
-        /*
-        if (element.EmailUser === userTarget) {
-         
-          //console.log("nombre usuario: " + element.NameUser + " id " + element.EmailUser);
-
-  allUsersRegister.on('value', function(snapshot) {
-    let arrayUsers = Object.entries(snapshot.val());
-    arrayUsers.forEach(idFirebase => {
-      idFirebase.forEach(element => {
-        if (element.EmailUser === 'kaito@gmail.com') {
+        if (element.idUser === userTarget) {
           console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
@@ -138,24 +129,11 @@ window.addFriend = ((userTarget) => {
             nameFriend: element.NameUser || element.EmailUser,
             emailFriend: element.EmailUser
           });
-        } else {
-          console.log("nop "+element.EmailUser);
-
-        } */
+          
+        } 
       })
     });
   });
-  /*
-    let db = firebase.database();
-    //const newMessageKey = firebase.database().ref().child('messages').push().key; 
-    let userRef = db.ref("users");
-    let query = userRef.database;
-    console.log(query); */
-
-  // const newFriendKey = firebase.database().ref().child('users').push().key;
-  // firebase.database().ref(`users/${newFriendKey}`).set({
-  // idFriend: userLogued.uid,
-  // });
 });
 /** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
