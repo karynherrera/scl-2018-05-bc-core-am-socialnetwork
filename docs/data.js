@@ -59,14 +59,19 @@ function removeTxt() {
 // funcion para añadir amigo
 window.addFriend = (() => {
   const allUsersRegister = firebase.database().ref('users/');
-  const user = firebase.auth().currentUser;
+  
   allUsersRegister.on('value', function(snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       idFirebase.forEach(element=>{
-        if(element.NameUser === 'kaito'){
+        if(element.EmailUser === 'kaito@gmail.com'){
           console.log("nombre usuario: "+element.NameUser + " id " +element.EmailUser);
-          
+          const newFriendKey = firebase.database().ref().child('friends').push().key;
+          firebase.database().ref(`friends/${newFriendKey}`).set({
+            idFriend: element.idUser,
+            nameFriend: element.NameUser || element.EmailUser,
+            emailFriend: element.EmailUser
+          });
         }else{
           console.log("nop");
         }
