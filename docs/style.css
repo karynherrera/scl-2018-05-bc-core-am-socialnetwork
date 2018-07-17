@@ -143,7 +143,10 @@
 	display: none;
 }
 /**********************MENU *********************************/
-
+/*.pos-f-t{
+	position: fixed;
+	z-index: 100;
+}*/
 .bg-blue{
 	z-index: 100;
 	background-color: #22B4BD;
@@ -217,7 +220,7 @@ color: white;
 	bottom: 0;
 	background-color:#DADADA;
 	text-align: center;
-	height: 50px;
+	height: 40px;
 }
 
 .iconFooter{
@@ -242,16 +245,12 @@ margin-top: -10px;
 margin-bottom: 0px;
 }
 /************************FIN BARRA INFERIOR*****************************/
-
-
-
-
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
 
-/*.center{
-/*	display: none;
-}*/
+.center{
+display: none;
+}
 
 .fa-arrow-left{
 	margin-left: 10px;
@@ -422,7 +421,10 @@ p {
 	margin-left: 0.5em;
 }
 
-/****************************PERFIL***********************************/
+/****************************PERFIL***********************************/*
+#sectionProfile{
+	display: none;
+}
 .imgProfile{
 	margin-top:20px;
 	margin-left: 0%;
@@ -440,6 +442,7 @@ p {
 	font-family:'Roboto', sans-serif;
 	margin-left: 37%;
 	border-left: solid #dadada 1px; 
+  padding-bottom: 2px;
 }
 .nameUser{
 	font-size: 11px;
@@ -459,8 +462,35 @@ p {
 	padding:1%;
 	display: inline-block;
 	margin-left:5px;
-	margin-top: 30%;
+	margin-top: 20%;
 }
 .dataUser{
 	border-bottom: solid 1px #dadada;
 }
+.btn-outline-dark{
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	margin-top: 8px;
+	margin-left:6px;
+	width: 170px;
+	height: 25px;
+	text-align: center;
+	padding: 5px;
+}
+.rowRecipes{
+	height: 30px;
+}
+.myRecipes{
+	text-align: center;
+	font-size: 15px;
+	font-family:'Roboto', sans-serif;;
+	font-weight: bold;
+	margin-top: 5px;
+	border-bottom: solid 1px #dadada;
+}
+/*imagenes de perfil*/
+
+.img-thumbnail {
+	height: 100px;
+		margin-top: 10px;
+	}

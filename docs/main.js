@@ -3,6 +3,8 @@ window.onload = (() => {
   const seccionCenter = document.getElementById('sectionCenter');
   const seccionMuro = document.getElementById('sectionMuro');
   const inputEmailUser = document.getElementById('inputCorreo');
+  const sectionProfile = document.getElementById('sectionProfile');
+  const sectionfixedMenu = document.getElementById('fixedMenu');
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
@@ -18,7 +20,8 @@ window.onload = (() => {
       seccionLogin.style.display = 'block';
       seccionMuro.style.display = 'none';
       seccionCenter.style.display = 'none';
-    }
+      sectionProfile.style.display = 'none';
+       }
   });
   // lo que ingresa un usuario
   const boton = document.getElementById('btn');
@@ -71,33 +74,33 @@ const seccionMuro = document.getElementById('sectionMuro');
 
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById("loginFb");
-logFb.addEventListener('click',()=>{
-let provider = new firebase.auth.FacebookAuthProvider();
-firebase.auth().signInWithRedirect(provider).then(function(result) {
-  let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
-  let user = result.user; //info del usuario logado
-  console.log(user);
- ///document.getElementById("login").style.display = "none";
- //document.getElementById("center").style.display = "block";
- seccionLogin.style.display="none";
- seccionMuro.style.display="block";
- seccionCenter.style.display="block";
- 
-}).catch(function(error) {
-  seccionLogin.style.display="block";
- seccionMuro.style.display="none";
- seccionCenter.style.display="none";
-});
+logFb.addEventListener('click', () => {
+  let provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithRedirect(provider).then(function (result) {
+    let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
+    let user = result.user; //info del usuario logado
+    console.log(user);
+    ///document.getElementById("login").style.display = "none";
+    //document.getElementById("center").style.display = "block";
+    seccionLogin.style.display = "none";
+    seccionMuro.style.display = "block";
+    seccionCenter.style.display = "block";
+
+  }).catch(function (error) {
+    seccionLogin.style.display = "block";
+    seccionMuro.style.display = "none";
+    seccionCenter.style.display = "none";
+  });
 });// fin evento click del boton login Facebook
 
 // LOGIN CON GOOGLE
 const logGoogle = document.getElementById('loginGm');
 logGoogle.addEventListener('click', () => {
   let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithRedirect(provider).then(function(result) {
+  firebase.auth().signInWithRedirect(provider).then(function (result) {
     let token = result.credential.accessToken; // se obtiene el token de OAuth de google
     let user = result.user; // info del usuario logado
-  }).catch(function(error) {
+  }).catch(function (error) {
     seccionLogin.style.display = 'block';
     seccionMuro.style.display = 'none';
     seccionCenter.style.display = 'none';
@@ -194,3 +197,16 @@ btnRegister.addEventListener('click', () => {
 });
 
 
+/********************SECCION PERFIL *********************************************/
+
+const sectionProfile = document.getElementById('sectionProfile');
+const sectionfixedMenu = document.getElementById('fixedMenu');
+
+const btnProfile = document.getElementById('nameIconFooterProfile');
+btnProfile.addEventListener('click', () => {
+  sectionProfile.style.display = 'block';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'none';
+  sectionfixedMenu.style.display = 'block';
+});
+/********************FIN SECCION PERFIL *********************************************/
