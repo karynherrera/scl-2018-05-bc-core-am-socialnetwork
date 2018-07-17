@@ -86,23 +86,20 @@ function deleteButtonClicked(event) {
 }
 
 // Funcion me gusta
-function toggleStar(event, countRef, uid) {
+function toggleStar(event) {
   const likeID = event.target.getAttribute('plusone');
-  var countRef = firebase.database().ref('posts/' + likeId + '/starCount');
-  countRef.on('value', function (snapshot) {
-    updateStarCount(plusone, snapshot.val());
-  });
-  countRef.transaction(function (post) {
+  var countRef = firebase.database().ref('posts/' + likeID + '/starCount');    
+  countRef.transaction(function(post) {
     if (post) {
-      if (post.stars && post.stars[uid]) {
+      if (post.stars && post.stars[idUser]) {
         post.starCount--;
-        post.stars[uid] = null;
+        post.stars[idUser] = null;
       } else {
         post.starCount++;
         if (!post.stars) {
           post.stars = {};
         }
-        post.stars[uid] = true;
+        post.stars[idUser] = true;
       }
     }
     return post;
