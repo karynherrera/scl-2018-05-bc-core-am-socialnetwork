@@ -59,20 +59,20 @@ function removeTxt() {
 // funcion para añadir amigo
 window.addFriend = (() => {
   const allUsersRegister = firebase.database().ref('users/');
-  
-  allUsersRegister.on('value', function(snapshot) {
+
+  allUsersRegister.on('value', function (snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
-      idFirebase.forEach(element=>{
-        if(element.EmailUser === 'kaito@gmail.com'){
-          console.log("nombre usuario: "+element.NameUser + " id " +element.EmailUser);
+      idFirebase.forEach(element => {
+        if (element.EmailUser === 'kaito@gmail.com') {
+          console.log("nombre usuario: " + element.NameUser + " id " + element.EmailUser);
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
             idFriend: element.idUser,
             nameFriend: element.NameUser || element.EmailUser,
             emailFriend: element.EmailUser
           });
-        }else{
+        } else {
           console.log("nop");
         }
       })
@@ -84,19 +84,19 @@ window.addFriend = (() => {
       console.log("nop");
     }
     console.log(snapshot.val());*/
-});
-/*
-  let db = firebase.database();
-  //const newMessageKey = firebase.database().ref().child('messages').push().key; 
-  let userRef = db.ref("users");
-  let query = userRef.database;
-  console.log(query); */
+  });
+  /*
+    let db = firebase.database();
+    //const newMessageKey = firebase.database().ref().child('messages').push().key; 
+    let userRef = db.ref("users");
+    let query = userRef.database;
+    console.log(query); */
 
   //const newFriendKey = firebase.database().ref().child('users').push().key;
   //firebase.database().ref(`users/${newFriendKey}`).set({
-    //idFriend: userLogued.uid,
+  //idFriend: userLogued.uid,
   //});
-  
+
 });
 /********************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {

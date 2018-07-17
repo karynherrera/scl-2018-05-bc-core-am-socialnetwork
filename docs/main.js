@@ -22,7 +22,7 @@ window.onload = (() => {
         EmailUser: userLogued.email
       });
       console.log(user.uid);
-     //console.log("user > "+JSON.stringify(user));
+      //console.log("user > "+JSON.stringify(user));
     } else {
       seccionLogin.style.display = 'block';
       seccionMuro.style.display = 'none';
@@ -200,7 +200,7 @@ btnRegister.addEventListener('click', () => {
           NameUser: nombreNewUser,
           EmailUser: emailNewUser
         });
-      } 
+      }
     });
     firebase.auth().createUserWithEmailAndPassword(emailNewUser, passNewUser)
       .then(() => {
