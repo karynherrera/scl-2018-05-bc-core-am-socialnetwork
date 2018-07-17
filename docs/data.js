@@ -58,9 +58,27 @@ function removeTxt() {
 
 // funcion para añadir amigo
 window.addFriend = (() => {
-  let allUsersRegister = firebase.database().ref('users/');
+  const allUsersRegister = firebase.database().ref('users/');
+  const user = firebase.auth().currentUser;
   allUsersRegister.on('value', function(snapshot) {
-  console.log(snapshot.val());
+    let arrayUsers = Object.entries(snapshot.val());
+    arrayUsers.forEach(idFirebase => {
+      idFirebase.forEach(element=>{
+        if(element.NameUser === 'kaito'){
+          console.log("nombre usuario: "+element.NameUser + " id " +element.EmailUser);
+          
+        }else{
+          console.log("nop");
+        }
+      })
+    });
+    /*
+    if(snapshot.val().NameUser === 'kaito'){
+      console.log("sip");
+    }else{
+      console.log("nop");
+    }
+    console.log(snapshot.val());*/
 });
 /*
   let db = firebase.database();
@@ -73,19 +91,7 @@ window.addFriend = (() => {
   //firebase.database().ref(`users/${newFriendKey}`).set({
     //idFriend: userLogued.uid,
   //});
-  /*
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log("hi Friend");
-      const userLogued = firebase.auth().currentUser;
-      const newUserKey = firebase.database().ref().child('friends').push().key;
-      firebase.database().ref(`friends/${newUserKey}`).set({
-        idUser: userLogued.uid,
-        NameUser: userLogued.displayName,
-        EmailUser: userLogued.email
-      });
-    } 
-  });*/
+  
 });
 /********************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
