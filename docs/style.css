@@ -345,7 +345,7 @@ header div img {
 
 .txt {
 	width: 100%;
-	height: 5em;	
+	height: 2em;	
 	font-size: 100%;
   border-color: white;
 }
@@ -361,6 +361,7 @@ header div img {
 	display: block;
 	color: #FFF; 
 	margin: 1%;	
+	/*position: relative;*/
 }
 
 
@@ -382,17 +383,16 @@ header div img {
 	margin-top: 0em;
 	padding: 0 0%;
 	width: 100%;
-	height: 10em;
+	height: 2em;
 	border-color: white;  
 }
 
 
 #cont div {
-	padding: 0.5em 0.5em;
-	
+	padding: 0.5em 0.5em;	
 	background-color: #FFF;
 	width: 100%;
-	height: 10em;
+	height: 2em;
 }
 
 .heart, .trash {

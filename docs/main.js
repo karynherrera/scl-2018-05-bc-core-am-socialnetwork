@@ -23,46 +23,6 @@ window.onload = (() => {
       sectionProfile.style.display = 'none';
        }
   });
-  // lo que ingresa un usuario
-  const boton = document.getElementById('btn');
-  boton.addEventListener('click', () => {
-    // aca guardo el comentario ingresado
-    let commentsTxt = document.getElementById('comment').value;
-
-    // limpiar el textarea
-    document.getElementById('comment').value = ' ';
-
-    // contenedor donde dejaré mis comentarios en html
-    const cont = document.getElementById('cont');
-
-    // crear un div contenetor
-    const newComments = document.createElement('div');
-    // validar que el texarea tenga un comentario
-    if (commentsTxt.length === 0 || commentsTxt === null) {
-      return alert('Debes ingresar un mensaje');
-    }
-    // crear icono de comentarios
-    const comments = document.createElement('i');
-    comments.classList.add('fas', 'fa-comments', 'comments');
-    // crear icono corazon
-    const heart = document.createElement('i');
-    heart.classList.add('fas', 'fa-heart', 'heart');
-    // crear icono basura
-    const trash = document.createElement('i');
-    trash.classList.add('fas', 'fa-trash', 'trash');
-    // nodos de texto del texarea
-    let textNewComment = document.createTextNode(commentsTxt);
-
-    const contenedorElemento = document.createElement('p');
-    contenedorElemento.appendChild(textNewComment);
-
-    newComments.appendChild(trash);
-    newComments.appendChild(heart);
-    newComments.appendChild(comments);
-    newComments.appendChild(contenedorElemento);
-
-    cont.appendChild(newComments);
-  });
 });// fin de window onload
 
 // ============================================================SECCIONES DEL DOM===================================================
@@ -73,23 +33,22 @@ const seccionMuro = document.getElementById('sectionMuro');
 // ==========================================================FUNCIONALIDAD LOGIN====================================================
 
 // LOGIN CON FACEBOOK
-const logFb = document.getElementById("loginFb");
-logFb.addEventListener('click', () => {
+const logFb = document.getElementById('loginFb');
+logFb.addEventListener('click', ()=>{
   let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithRedirect(provider).then(function (result) {
-    let token = result.credential.accessToken; //se obtiene el token de OAuth de Facebook
-    let user = result.user; //info del usuario logado
+  firebase.auth().signInWithRedirect(provider).then(function(result) {
+    let token = result.credential.accessToken; // se obtiene el token de OAuth de Facebook
+    let user = result.user; // info del usuario logado
     console.log(user);
-    ///document.getElementById("login").style.display = "none";
-    //document.getElementById("center").style.display = "block";
-    seccionLogin.style.display = "none";
-    seccionMuro.style.display = "block";
-    seccionCenter.style.display = "block";
-
-  }).catch(function (error) {
-    seccionLogin.style.display = "block";
-    seccionMuro.style.display = "none";
-    seccionCenter.style.display = "none";
+    // /document.getElementById("login").style.display = "none";
+    // document.getElementById("center").style.display = "block";
+    seccionLogin.style.display = 'none';
+    seccionMuro.style.display = 'block';
+    seccionCenter.style.display = 'block';
+  }).catch(function(error) {
+    seccionLogin.style.display = 'block';
+    seccionMuro.style.display = 'none';
+    seccionCenter.style.display = 'none';
   });
 });// fin evento click del boton login Facebook
 
