@@ -1,9 +1,11 @@
-/****************************************Estilos Login**************************************************/
+/***************************Estilos Login***********************************/
 .login{
-	font-size: 100%;
+	background-position: center center;
+	background-attachment: fixed;
 	background-repeat: no-repeat;
-	background-image: url(img/portada2.png);
-	background-size: 200vh;
+  background-image: url(img/portada2.png);
+	background-size: cover;
+	height: 100vh;
 	display: none;
 }
 
@@ -16,8 +18,7 @@
 	margin-bottom: 2%;
 }
 .inputLogin{
-	text-align: center;
-  border-radius: 0%;
+	border-radius: 0%;
   border: 0px;
   width: 60vw;
 	height: 6vh;
@@ -34,12 +35,16 @@
 	height: 6vh;
 	display: block;
 	color: #FFF;  
-	text-align: center;
 	margin-bottom: 2%;
 	margin-top:2%;
 }
+.logosIcon{
+	width: 20px;
+	margin-top: 2px;
+	margin-left: 2px;
+}
 .btnFb{
-	background-color: #4267B2;
+	background-color:#4267B2;
 	border: 0px;
 	cursor: pointer;
 	margin: 4em auto;
@@ -47,7 +52,7 @@
 	height: 6vh;
 	display: block;
 	color: #FFF;  
-	text-align: center;
+	font-size: 15px;
 	margin-top:2%;
 	margin-bottom: 2%;
 }
@@ -58,7 +63,7 @@
 	padding:  1vw;
 }
 .btnGoogle{
-	background-color: red;
+	background-color: #4285F4;
 	border: 0px;
 	cursor: pointer;
 	margin: 4em auto;
@@ -66,9 +71,9 @@
 	height: 6vh;
 	display: block;
 	color: #FFF;  
-	text-align: center;
-	margin-bottom: 2%;
+	font-size: 15px;
 	margin-top:2%;
+	margin-bottom: 2%;
 }
 
 .textLogin{
@@ -93,8 +98,10 @@
 	color:green;
 }
 
-/***********************************fin login*****************************************/
-/****************************************Registro**************************************************/
+/***********************************fin login********************************/
+
+
+/*****************Registro****************************************/
 .registro{
 	background-repeat: no-repeat;
 	background-image: url(img/portada2.png);
@@ -146,31 +153,175 @@
 .muro{
 	display: none;
 }
+/**********************MENU *********************************/
+/*.pos-f-t{
+	position: fixed;
+	z-index: 100;
+}*/
+.bg-blue{
+	z-index: 100;
+	background-color: #22B4BD;
+}
+.lineMenu{
+	width: 8%;
+	position: left;
+}
+.logoWhite{
+	width: 26%;
+}
+
+.menu{
+	position: absolute;
+	top:0;
+	height: 100vh; 
+	width: 90vw;
+	transition: 0.5s ease-out;
+	background-color: #22B4BD;
+}
+
+.menu_closed{
+	left: -90vw;
+}
+
+.menu_open{
+	left: 0;
+}
+
+.close_button{ 
+	font-size: xx-large;
+	color: white;
+	position: absolute;
+	right: 10px;           
+}
+.navbar-toggler{
+	border: none;
+}
+.menu_content{
+	padding: 10px;
+	margin-top: 20px;
+	color: white;
+	background-color: #22B4BD;
+}
+
+.textMenu{
+color: white;
+}
+
+.photoMenu{
+	width: 25px;
+}
+
+@media(min-width: 768px){
+	.menu{
+			width: 20vw; 
+	}
+
+	.menu_closed{
+			left:-20vw;
+	}
+}
+/**************************FIN MENU******************************************/
+
+/************************INICIO BARRA INFERIOR*****************************/
+.footer {
+	z-index: 100;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	background-color:#DADADA;
+	text-align: center;
+	height: 40px;
+}
+
+.iconFooter{
+	color:#8A8A8F;
+	text-align: center;
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	
+}
+.iconHome .iconSearch .iconFavourite .iconProfile{
+	margin-bottom: none;
+	padding-bottom: none;
+	width: 50%;
+	
+}
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}	
+.nameIconFooter{
+margin-top: -10px;
+margin-bottom: 0px;
+}
+/************************FIN BARRA INFERIOR*****************************/
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
+
 .center{
-	display: none;
+display: none;
 }
+
+.fa-arrow-left{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.comment{
+	font-size: 12px;
+  margin-left: 1px;
+	font-family:'Roboto', sans-serif;
+}
+
 .behind{
-	text-align: left;
 	background-color: #efefef;
+	height: 25px;
+	color: #303030;
 }
-.icon {
-	padding: 2em;
-}
+
 .title{
 font-size: 5%;
 }
-h6{
+.titleChicken{
+	font-size: 15px;
+	font-family:'Roboto', sans-serif;;
 	text-align: left;
-	margin-left: 4em;
-	font-size: 20%;
+	font-weight: bold;
+	margin-left: 8px;
+	margin-top: 10px;	
+	margin-bottom: 0%;
 }
-.icona {
-	background-color: #efefef;
+.titlePortion{
+	font-size: 12px;
+	font-family:'Roboto', sans-serif;;
+	text-align: left;
+	font-weight: bold;
+	margin-left: 8px;
+	margin-bottom: 0%;
+}
+.iconFood {
+	background-color: #dadada;
+	height: 29px;
+	margin-top: 4px;
+	text-align: center;
+}
+.iconMeet{
+width: 25px;
+margin-top: 2px;
+margin-left: 25px;
+}
+.iconNoMilk{
+	width: 25px;
+	margin-top: 2px;
+	margin-left: 25px;
+}
+.iconNoGluten{
+	width: 25px;
+	margin-top: 2px;
+	margin-left: 25px;
 }
 	 
- .carousel-indicators-numbers li {  
+.carousel-indicators-numbers li {  
    margin: 0 3px;
    width: 10px;
    height: 10px;
@@ -187,10 +338,6 @@ body {
 }
 
 /* Estilos generales */
-.center {
-	text-align: center;
-}
-
 /* Estilos Header */
 header {
 	background-color: #FFF;
@@ -209,7 +356,7 @@ header div img {
 
 .txt {
 	width: 100%;
-	height: 5em;	
+	height: 2em;	
 	font-size: 100%;
   border-color: white;
 }
@@ -285,109 +432,81 @@ p {
 	margin-left: 0.5em;
 }
 
-/*Hacemos que el menu adopte la posición más arriba posible*/
-.menu{
-    position: absolute;
-    top:0;
-    height: 100vh; /* viewport height, usa el 100% de la altura de la pantalla*/
-    width: 90vw;  /* viewport width 90% del an*/
-    transition: 0.5s ease-out
-}
-
-.menu_closed{
-    left: -90vw;
-}
-
-.menu_open{
-    left: 0;
-}
-
-.close_button{ /* configurando boton de cierre del navbar*/
-    font-size: xx-large;
-    color: white;
-    position: absolute;
-    right: 10px;                   
-}
-
-.menu_content{
-    padding: 10px;
-    margin-top: 20px;
-}
-
-@media(min-width: 768px){ /* esta medida se encuentra en bootstrap-> overview-> responsive breakpoints */
-    .menu{
-        width: 20vw; /*El menú va a tomar este ancho con pantallas de 768px hacia arriba*/
-    }
-
-    .menu_closed{
-        left:-20vw;
-    }
+/****************************PERFIL***********************************/*
+#sectionProfile{
+	display: none;
 }
 /*************************************Amigos******************************************************/
 
 #iconFriend{
 	cursor: pointer;
 }
-/****************************************MENU**************************************************/
-
-.bg-blue{
-	z-index: 100;
-background-color: #22B4BD;
+.imgProfile{
+	margin-top:20px;
+	margin-left: 0%;
+	text-align: center;
+	width: 95px;
+	border: solid 1px rgb(145, 144, 144);
+	border-radius: 95px
 }
-.navbar-toggler-icon{
- color: white;
+.pagIconProfile{
+	width: 16px;
+}	
+.logout{
+	color: #303030;
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	margin-left: 37%;
+	border-left: solid #dadada 1px; 
+  padding-bottom: 2px;
 }
-
-.logoWhite{
-	width: 25%;
+.nameUser{
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	text-align: left;
+	font-weight: bold;
+	margin-left: 3.5px;
 }
-
-.menu{
-	position: absolute;
-	top:0;
-	height: 100vh; 
-	width: 90vw;
-	transition: 0.5s ease-out;
-	background-color: #22B4BD;
-}
-
-.menu_closed{
-	left: -90vw;
-}
-
-.menu_open{
-	left: 0;
-}
-
-.close_button{ 
-	font-size: xx-large;
-	color: white;
-	position: absolute;
-	right: 10px;           
+.infoUser{
+	display: inline-block;
 }
 
-.menu_content{
-	padding: 10px;
-	margin-top: 20px;
-	color: white;
-	background-color: #22B4BD;
+.btnPublicationUser{
+	font-size: 9px;
+	font-family:'Roboto', sans-serif;
+	color: black;
+	padding:1%;
+	display: inline-block;
+	margin-left:5px;
+	margin-top: 20%;
 }
-
-.textMenu{
-color: white;
+.dataUser{
+	border-bottom: solid 1px #dadada;
 }
-
-.photoMenu{
-	width: 25px;
+.btn-outline-dark{
+	font-size: 11px;
+	font-family:'Roboto', sans-serif;
+	margin-top: 8px;
+	margin-left:6px;
+	width: 170px;
+	height: 25px;
+	text-align: center;
+	padding: 5px;
 }
+.rowRecipes{
+	height: 30px;
+}
+.myRecipes{
+	text-align: center;
+	font-size: 15px;
+	font-family:'Roboto', sans-serif;;
+	font-weight: bold;
+	margin-top: 5px;
+	border-bottom: solid 1px #dadada;
+}
+/*imagenes de perfil*/
 
-@media(min-width: 768px){
-	.menu{
-			width: 20vw; 
+.img-thumbnail {
+	height: 100px;
+		margin-top: 10px;
 	}
-
-	.menu_closed{
-			left:-20vw;
-	}
-}
-/****************************************FIN MENU**************************************************/
