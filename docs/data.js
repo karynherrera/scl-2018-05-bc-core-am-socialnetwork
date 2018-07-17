@@ -31,9 +31,7 @@ window.logout = (() => {
 
 /********************SECCION PERFIL *********************************************/
 
-
 // Funcion para guardar publicaciones
-
 
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
@@ -42,40 +40,38 @@ function saveMessage() {
   firebase.database().ref(`posts/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: commentText,    
+    text: commentText,
   });
   newFunction();
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
-  .limitToLast(2)
+  //.limitToLast(2)
   .on('child_added', (newMessage) => {
-    if (comment.value !== '') {
+    
       cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-id="plusone" onclick="toggleStar()"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-id="plusone" onclick="toggleStar()"></i> <i class="fas fa-user-plus iconFriend"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
-      ;
-    } else {
-      
-    }
+        ;
+    
   });
 
 function newFunction() {
   // Limpiar el textarea
-  document.getElementById('comment').value = '';  
+  document.getElementById('comment').value = '';
   // mensaje de error
-  const commentText = comment.value; 
+  const commentText = comment.value;
   if (commentText === '') {
-    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
+    //errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
   };
 }
 function otherFunction() {
-  comment.addEventListener('click', ()=>{
+  comment.addEventListener('click', () => {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })
-  ;
+    ;
 };
 
 // Funcion eliminar publicacion
@@ -88,8 +84,8 @@ function deleteButtonClicked(event) {
 }
 
 // Funcion me gusta
-function toggleStar(postRef, uid) {  
-  postRef.transaction(function(post) {
+function toggleStar(postRef, uid) {
+  postRef.transaction(function (post) {
     if (post) {
       if (post.stars && post.stars[uid]) {
         post.starCount--;
@@ -150,7 +146,9 @@ window.addFriend = (() => {
 });
 /********************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
+
   const modal = document.getElementById("modalTerms");
+  modal.style.display = 'block';
   modal.innerHTML = `
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
   aria-labelledby="myLargeModalLabel" aria-hidden="true">
