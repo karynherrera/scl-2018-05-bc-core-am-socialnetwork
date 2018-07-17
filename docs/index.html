@@ -52,6 +52,7 @@
   </section>
   <!-- fin de login -->
   <!-- Seccion Registro de Usuario -->
+  <div id="modalTerms"></div>
   <section class="registro" id="registroUser">
     <section class="row justify-content-center">
       <div class="col-12 justify-content-center register">
@@ -60,11 +61,14 @@
         <input class="form-control inputLogin" type="email" placeholder="Email address" id="inputEmailUser">
         <input class="form-control inputLogin" type="password" placeholder="Password" id="inputPassUser">
         <div class="alertConteiner" id="alertRegister"></div>
-        <a class="textLogin" id="aceptTerm" href="https://github.com/karynherrera/scl-2018-05-bc-core-am-socialnetwork/blob/master/anexos/politica%20privacidad.pdf">
-          <input type="checkbox">
-          <span class="a"></span>Aceptar Términos y Condiciones</a>
+        <a class="textLogin">
+          <input id="aceptTerm" type="checkbox" value="off">
+          <span class="space"></span>
+          <p id="terminos" data-toggle="modal" data-target=".bd-example-modal-lg" href="#" onclick="privacyPolicy()">Aceptar Terminos y Condiciones</p>
+        </a>
         <button type="button" id="btnRegistrarse" class="btn-md btnLogIn">REGISTRATE</button>
-        <a class="textLogin" type="button" id="loginBack">Regresar a Login</a>
+        <p class="textLogin" id="loginBack">Regresar a Login</p>
+
       </div>
     </section>
   </section>

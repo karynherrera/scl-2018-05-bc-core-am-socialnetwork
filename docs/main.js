@@ -15,7 +15,16 @@ window.onload = (() => {
       seccionLogin.style.display = 'none';
       seccionMuro.style.display = 'block';
       seccionCenter.style.display = 'block';
-      // console.log("user > "+JSON.stringify(user));
+      //guardamos el usuario que se ha logado en una coleccion de firebase
+      const userLogued = firebase.auth().currentUser;
+      const newUserKey = firebase.database().ref().child('users').push().key;
+      firebase.database().ref(`users/${newUserKey}`).set({
+        idUser: userLogued.uid,
+        NameUser: userLogued.displayName,
+        EmailUser: userLogued.email
+      });
+      console.log(user.uid);
+      //console.log("user > "+JSON.stringify(user));
     } else {
       seccionLogin.style.display = 'block';
       seccionMuro.style.display = 'none';
@@ -25,12 +34,12 @@ window.onload = (() => {
   });
 });// fin de window onload
 
-// ============================================================SECCIONES DEL DOM===================================================
+// ===========================================SECCIONES DEL DOM===================================================
 const seccionLogin = document.getElementById('sectionLogin');
 const seccionCenter = document.getElementById('sectionCenter');
 const seccionRegistro = document.getElementById('registroUser');
 const seccionMuro = document.getElementById('sectionMuro');
-// ==========================================================FUNCIONALIDAD LOGIN====================================================
+// =======================================FUNCIONALIDAD LOGIN====================================================
 
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById('loginFb');
@@ -68,7 +77,6 @@ logGoogle.addEventListener('click', () => {
 
 
 // LOGARSE CON EMAIL NORMAL
-
 const btnLogin = document.getElementById('btnLogin');
 btnLogin.addEventListener('click', () => {
   const emailUser = document.getElementById('inputCorreo').value;
@@ -90,7 +98,7 @@ btnLogin.addEventListener('click', () => {
       console.log('Error de Firebase > ' + error.code);
       console.log('Error de Firebase > mensaje' + error.message);
     });
-});
+}); // fin evento click del boton login normal  
 
 const inputEmailUser = document.getElementById('inputCorreo');
 inputEmailUser.addEventListener('click', () => {
@@ -122,39 +130,61 @@ btnReturnLogin.addEventListener('click', () => {
 });
 
 // REGISTRO DE USUARIO NUEVO
-const btnRegister = document.getElementById('btnRegistrarse');
+const btnRegister = document.getElementById("btnRegistrarse");
+
 btnRegister.addEventListener('click', () => {
+  const checkbox = document.getElementById('aceptTerm');
+  console.log(checkbox.value);
   const alertReg = document.getElementById('alertRegister');
-  alertReg.innerHTML = '<div id="alertPassword"></div>';
+  alertReg.innerHTML = `<div id="alertPassword"></div>`;
 
-  const nombreNewUser = document.getElementById('inputName').value;
-  const emailNewUser = document.getElementById('inputEmailUser').value;
-  const passNewUser = document.getElementById('inputPassUser').value;
+  const nombreNewUser = document.getElementById("inputName").value;
+  const emailNewUser = document.getElementById("inputEmailUser").value;
+  const passNewUser = document.getElementById("inputPassUser").value;
 
-  const inputNombreNewUser = document.getElementById('inputName');
-  inputNombreNewUser.value = '';
-  const inputEmailNewUser = document.getElementById('inputEmailUser');
-  inputEmailNewUser.value = '';
-  const inputPassNewUser = document.getElementById('inputPassUser');
-  inputPassNewUser.value = '';
+  const inputNombreNewUser = document.getElementById("inputName");
+  inputNombreNewUser.value = "";
+  const inputEmailNewUser = document.getElementById("inputEmailUser");
+  inputEmailNewUser.value = "";
+  const inputPassNewUser = document.getElementById("inputPassUser");
+  inputPassNewUser.value = "";
 
-  firebase.auth().createUserWithEmailAndPassword(emailNewUser, passNewUser)
-    .then(() => {
-      console.log('Usuario Registrado');
-      seccionLogin.style.display = 'none';
-      seccionCenter.style.display = 'block';
-      seccionRegistro.style.display = 'none';
-    })
-    .catch((error) => {
-      seccionLogin.style.display = 'none';
-      seccionCenter.style.display = 'none';
-      seccionRegistro.style.display = 'block';
-      alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert"> ${error} </div>`;
-      console.log('Error de Firebase > ' + error.code);
-      console.log('Error de Firebase > mensaje' + error.message);
+  if (checkbox.value === 'off') {
+    alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert">Tiene que aceptar los Terminos y Condiciones de Uso </div>`;
+  } else {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        const currentUser = firebase.auth().currentUser;
+        const newUserKey = firebase.database().ref().child('users').push().key;
+        firebase.database().ref(`users/${newUserKey}`).set({
+          NameUser: nombreNewUser,
+          EmailUser: emailNewUser
+        });
+      }
     });
-});
-
+    firebase.auth().createUserWithEmailAndPassword(emailNewUser, passNewUser)
+      .then(() => {
+        console.log("Usuario Registrado");
+        seccionLogin.style.display = "none";
+        seccionCenter.style.display = "block";
+        seccionRegistro.style.display = "none";
+      })
+      .catch((error) => {
+        seccionLogin.style.display = "none";
+        seccionCenter.style.display = "none";
+        seccionRegistro.style.display = "block";
+        alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert"> ${error} </div>`;
+        console.log("Error de Firebase > " + error.code);
+        console.log("Error de Firebase > mensaje" + error.message);
+      });
+  }
+})
+const checkbox = document.getElementById('aceptTerm');
+checkbox.addEventListener('click', () => {
+  checkbox.value = "on"
+  const alertReg = document.getElementById('alertRegister');
+  alertReg.innerHTML = `<div id="alertPassword"></div>`;
+})
 
 /********************SECCION PERFIL *********************************************/
 

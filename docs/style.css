@@ -59,7 +59,7 @@
 .fab{
 	font-size: 100%;
 }
-.a{
+.space{
 	padding:  1vw;
 }
 .btnGoogle{
@@ -86,6 +86,7 @@
 	border: 0px;
 }
 #registrate{
+	font-size: 100%;
 	color:green;
 	cursor: pointer;
 }
@@ -94,6 +95,7 @@
 	text-align: center;
 	cursor: pointer;
 	font-size: 100%;
+	color:green;
 }
 
 /***********************************fin login********************************/
@@ -132,13 +134,22 @@
 	margin-top: 2%;
 }
 
-#privacyPolicy{
-	font-size: 70%;
+#modalTerms{
+	font-size: 60%;
+	text-align: justify;
+	padding: 2%;
 
 }
-/*********************fin Registro******************************************/
+.close{
+	text-align: right;
+}
 
-/*****************************Seccion Muro***************************************/
+#terminos{
+	cursor: pointer;
+	color:blue;
+}
+/****************************************fin Registro**************************************************/
+/****************************************Seccion Muro**************************************************/
 .muro{
 	display: none;
 }
@@ -424,6 +435,11 @@ p {
 /****************************PERFIL***********************************/*
 #sectionProfile{
 	display: none;
+}
+/*************************************Amigos******************************************************/
+
+#iconFriend{
+	cursor: pointer;
 }
 .imgProfile{
 	margin-top:20px;
