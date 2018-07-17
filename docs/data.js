@@ -17,7 +17,7 @@ function closeMenu() {
   sideMenu.classList.add('menu_closed'); // añadimos la clase display-none
   sideMenu.classList.remove('menu_open');
 }
-/***********************FIN MENU**************************************************/
+/** *********************FIN MENU**************************************************/
 
 
 // LOGOUT
@@ -29,12 +29,10 @@ window.logout = (() => {
     .catch();
 });
 
-/********************SECCION PERFIL *********************************************/
+/** ******************SECCION PERFIL *********************************************/
 
 
 // Funcion para guardar publicaciones
-
-
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
   const commentText = comment.value;
@@ -42,23 +40,21 @@ function saveMessage() {
   firebase.database().ref(`posts/${newMessageKey}`).set({
     creator: currentUser.uid,
     creatorName: currentUser.displayName,
-    text: commentText,    
+    text: commentText,
+    starCount: 0 
   });
   newFunction();
+  otherFunction();
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   .limitToLast(2)
   .on('child_added', (newMessage) => {
-    if (comment.value !== '') {
-      cont.innerHTML += `
+    cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-id="plusone" onclick="toggleStar()"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} ${newMessage.val().starCount}<i class="far fa-heart" id="plusone" onclick="toggleStar(event, countRef, uid)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
-      ;
-    } else {
-      
-    }
+    ;
   });
 
 function newFunction() {
@@ -88,8 +84,13 @@ function deleteButtonClicked(event) {
 }
 
 // Funcion me gusta
-function toggleStar(postRef, uid) {  
-  postRef.transaction(function(post) {
+function toggleStar(event, countRef, uid) {
+  const likeID = event.target.getAttribute('plusone');
+  var countRef = firebase.database().ref('posts/' + likeId + '/starCount');
+  countRef.on('value', function(snapshot) {
+    updateStarCount(plusone, snapshot.val());
+  });  
+  countRef.transaction(function(post) {
     if (post) {
       if (post.stars && post.stars[uid]) {
         post.starCount--;
@@ -110,12 +111,12 @@ function toggleStar(postRef, uid) {
 window.addFriend = (() => {
   const allUsersRegister = firebase.database().ref('users/');
 
-  allUsersRegister.on('value', function (snapshot) {
+  allUsersRegister.on('value', function(snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       idFirebase.forEach(element => {
         if (element.EmailUser === 'kaito@gmail.com') {
-          console.log("nombre usuario: " + element.NameUser + " id " + element.EmailUser);
+          console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
             idFriend: element.idUser,
@@ -123,9 +124,9 @@ window.addFriend = (() => {
             emailFriend: element.EmailUser
           });
         } else {
-          console.log("nop");
+          console.log('nop');
         }
-      })
+      });
     });
     /*
     if(snapshot.val().NameUser === 'kaito'){
@@ -142,15 +143,14 @@ window.addFriend = (() => {
     let query = userRef.database;
     console.log(query); */
 
-  //const newFriendKey = firebase.database().ref().child('users').push().key;
-  //firebase.database().ref(`users/${newFriendKey}`).set({
-  //idFriend: userLogued.uid,
-  //});
-
+  // const newFriendKey = firebase.database().ref().child('users').push().key;
+  // firebase.database().ref(`users/${newFriendKey}`).set({
+  // idFriend: userLogued.uid,
+  // });
 });
-/********************************Politica de Privacidad***************************************** */
+/** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
-  const modal = document.getElementById("modalTerms");
+  const modal = document.getElementById('modalTerms');
   modal.innerHTML = `
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
   aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -230,6 +230,5 @@ window.privacyPolicy = (() => {
   </div>
   </div>
   </div>`;
-
-})
-  /********************************FIN Politica de Privacidad***************************************** */
+});
+/** ******************************FIN Politica de Privacidad***************************************** */
