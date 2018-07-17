@@ -31,7 +31,6 @@ window.logout = (() => {
 
 /** ******************SECCION PERFIL *********************************************/
 
-
 // Funcion para guardar publicaciones
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
@@ -39,39 +38,42 @@ function saveMessage() {
   const newMessageKey = firebase.database().ref().child('posts').push().key;
   firebase.database().ref(`posts/${newMessageKey}`).set({
     creator: currentUser.uid,
-    creatorName: currentUser.displayName,
+    creatorName: currentUser.displayName || currentUser.email,
     text: commentText,
-    starCount: 0 
+    email: currentUser.email,
+    starCount: 0
   });
   newFunction();
   otherFunction();
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
-  .limitToLast(2)
+  //.limitToLast(2)
   .on('child_added', (newMessage) => {
+    let userTarget = newMessage.val().email;
+    console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} ${newMessage.val().starCount}<i class="far fa-heart" id="plusone" onclick="toggleStar(event)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text}${newMessage.val().starCount} <i class="far fa-heart" data-id="plusone" onclick="toggleStar(event, countRef, uid)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
-    ;
+      ;
   });
 
 function newFunction() {
   // Limpiar el textarea
-  document.getElementById('comment').value = '';  
+  document.getElementById('comment').value = '';
   // mensaje de error
-  const commentText = comment.value; 
+  const commentText = comment.value;
   if (commentText === '') {
-    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
+    //errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
   };
 }
 function otherFunction() {
-  comment.addEventListener('click', ()=>{
+  comment.addEventListener('click', () => {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })
-  ;
+    ;
 };
 
 // Funcion eliminar publicacion
@@ -104,9 +106,22 @@ function toggleStar(event) {
   });
 }
 
+window.prueba = ((variable) => {
+  console.log("Imprime" + variable);
+});
 // funcion para añadir amigo
-window.addFriend = (() => {
+window.addFriend = ((userTarget) => {
   const allUsersRegister = firebase.database().ref('users/');
+  console.log("entró");
+  allUsersRegister.on('value', function (snapshot) {
+    let arrayUsers = Object.entries(snapshot.val());
+    arrayUsers.forEach(idFirebase => {
+      idFirebase.forEach(element => {
+        //console.log(userTarget);
+        /*
+        if (element.EmailUser === userTarget) {
+         
+          //console.log("nombre usuario: " + element.NameUser + " id " + element.EmailUser);
 
   allUsersRegister.on('value', function(snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
@@ -121,17 +136,11 @@ window.addFriend = (() => {
             emailFriend: element.EmailUser
           });
         } else {
-          console.log('nop');
-        }
-      });
+          console.log("nop "+element.EmailUser);
+
+        } */
+      })
     });
-    /*
-    if(snapshot.val().NameUser === 'kaito'){
-      console.log("sip");
-    }else{
-      console.log("nop");
-    }
-    console.log(snapshot.val());*/
   });
   /*
     let db = firebase.database();
@@ -147,7 +156,10 @@ window.addFriend = (() => {
 });
 /** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
-  const modal = document.getElementById('modalTerms');
+
+  const modal = document.getElementById("modalTerms");
+  modal.style.display = 'block';
+
   modal.innerHTML = `
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
   aria-labelledby="myLargeModalLabel" aria-hidden="true">
