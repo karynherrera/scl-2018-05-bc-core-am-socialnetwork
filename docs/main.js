@@ -205,7 +205,7 @@ btnProfile.addEventListener('click', () => {
 
 const btnArrow = document.getElementById('btnArrowProfile');
 btnArrow.addEventListener('click', () => {
-  sectionProfile.style.display = 'block';
+  sectionProfile.style.display = 'none';
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'block';
   sectionfixedMenu.style.display = 'block';
