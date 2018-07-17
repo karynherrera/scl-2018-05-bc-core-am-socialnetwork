@@ -224,37 +224,40 @@
         </section>
         <!-- Fin carrusel -->
         <!-- Texarea de comentarios -->
-<!--<button onclick="logout()">Logout</button> -->
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <button type="submit" id="btn" onclick="saveMessage()"><i class="far fa-comments"></i> Publicar</button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <textarea class="txt" id="comment" onclick="otherFunction()" placeholder="Añade un comentario..."></textarea>
-    </div>
-  </div> 
-  </div> 
-  <div class="container"> 
-    <!-- contenedor comentarios -->
-    <!-- aca dejare los comentarios -->
-   <div class="row">
-       <div class="col-12">
-       <div id="cont">
-       </div>
-       </div>
-       </div>
-       <div class="row">
-        <div class="col-12"> 
-       <div id="errorTxt">
-       </div>        
-   </div>  
-   </div>      
-  
-</div> <!--fin de container-->
-</section> <!--fin de seccion center-->
+        <!--<button onclick="logout()">Logout</button> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <button type="submit" id="btn" onclick="saveMessage()">
+                <i class="far fa-comments"></i> Publicar</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <textarea class="txt" id="comment" onclick="otherFunction()" placeholder="Añade un comentario..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <!-- contenedor comentarios -->
+          <!-- aca dejare los comentarios -->
+          <div class="row">
+            <div class="col-12">
+              <div id="cont">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div id="errorTxt">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--fin de container-->
+      </section>
+      <!--fin de seccion center-->
 
       <section>
         <div id="firebaseui-auth-container"></div>
@@ -266,10 +269,10 @@
     <section class="profile" id="sectionProfile">
       <div class="centerProfile">
         <div class="behind">
-          <i class="fas fa-arrow-left"></i>
+          <button type="button" class="fas fa-arrow-left" id="btnArrowProfile"></button>
           <img class="pagIconProfile" src="icono/Perfil-usuario.svg">
           <p class="comment">PERFIL</p>
-          <button type="button" onclick= "window.logout()" class="btn btn-link logout">Cerrar Sesión</button>
+          <button type="button" onclick="window.logout()" class="btn btn-link logout">Cerrar Sesión</button>
         </div>
       </div>
 

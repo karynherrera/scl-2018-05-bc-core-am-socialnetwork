@@ -199,3 +199,17 @@ btnProfile.addEventListener('click', () => {
   sectionfixedMenu.style.display = 'block';
 });
 /********************FIN SECCION PERFIL *********************************************/
+
+
+/********************SECCION VOLVER ATRAS PERFIL ****************************/
+
+const btnArrow = document.getElementById('btnArrowProfile');
+btnArrow.addEventListener('click', () => {
+  sectionProfile.style.display = 'block';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'block';
+  sectionfixedMenu.style.display = 'block';
+  sectionProfile.style.display = 'none';
+});
+
+/********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
