@@ -48,7 +48,7 @@ function saveMessage() {
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
-  //.limitToLast(2)
+  // .limitToLast(2)
   .on('child_added', (newMessage) => {
     let userTarget = newMessage.val().email;
     console.log(typeof (userTarget));
@@ -56,7 +56,7 @@ firebase.database().ref('posts')
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
                 ${newMessage.val().text}${newMessage.val().starCount} <i class="far fa-heart" data-id="plusone" onclick="toggleStar(event, countRef, uid)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
-      ;
+    ;
   });
 
 function newFunction() {
@@ -65,7 +65,7 @@ function newFunction() {
   // mensaje de error
   const commentText = comment.value;
   if (commentText === '') {
-    //errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
+    // errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
   };
 }
 function otherFunction() {
@@ -73,7 +73,7 @@ function otherFunction() {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })
-    ;
+  ;
 };
 
 // Funcion eliminar publicacion
@@ -87,9 +87,11 @@ function deleteButtonClicked(event) {
 
 // Funcion me gusta
 function toggleStar(event) {
+  event.stopPropagation();
   const likeID = event.target.getAttribute('plusone');
-  var countRef = firebase.database().ref('posts/' + likeID + '/starCount');    
-  countRef.transaction(function(post) {
+  var countRef = firebase.database().ref('posts/' + likeID + '/starCounter');
+  let countId = firebase.database().ref('posts').child(countRef).update('starCount');
+  countId.transaction(function(post) {
     if (post) {
       if (post.stars && post.stars[idUser]) {
         post.starCount--;
@@ -105,19 +107,32 @@ function toggleStar(event) {
     return post;
   });
 }
-
+/*
+function counterLike(event) {
+  event.stopPropagation();
+  const counterId = event.target.getAttribute("data-like");
+    firebase.database().ref(`post/`+ counterId).once("value", function(post) {
+      let total = post.child("counter").val();
+      postPrint.innerHTML += total;
+      let countId = firebase.database().ref(`post`).child(counterId).update({
+        counter: total,
+      });
+    });
+ 
+  }
+  */
 window.prueba = ((variable) => {
-  console.log("Imprime" + variable);
+  console.log('Imprime' + variable);
 });
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
   const allUsersRegister = firebase.database().ref('users/');
-  console.log("entró");
-  allUsersRegister.on('value', function (snapshot) {
+  console.log('entró');
+  allUsersRegister.on('value', function(snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       idFirebase.forEach(element => {
-        //console.log(userTarget);
+        // console.log(userTarget);
         /*
         if (element.EmailUser === userTarget) {
          
@@ -139,7 +154,7 @@ window.addFriend = ((userTarget) => {
           console.log("nop "+element.EmailUser);
 
         } */
-      })
+      });
     });
   });
   /*
@@ -156,8 +171,7 @@ window.addFriend = ((userTarget) => {
 });
 /** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
-
-  const modal = document.getElementById("modalTerms");
+  const modal = document.getElementById('modalTerms');
   modal.style.display = 'block';
 
   modal.innerHTML = `
