@@ -159,7 +159,7 @@
 	z-index: 100;
 }*/
 .bg-blue{
-	z-index: 100;
+	z-index: 1000;
 	background-color: #22B4BD;
 }
 .lineMenu{
@@ -252,8 +252,14 @@ color: white;
 	margin-left: 0px;
 }	
 .nameIconFooter{
-margin-top: -10px;
-margin-bottom: 0px;
+	margin-top: -10px;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+
+.nameIconFooter:hover{
+	color: blue;
+
 }
 /************************FIN BARRA INFERIOR*****************************/
 /* Reseteo márgenes browser y color body */
@@ -431,15 +437,21 @@ p {
 	display: inline-block;
 	margin-left: 0.5em;
 }
-
-/****************************PERFIL***********************************/*
-#sectionProfile{
-	display: none;
-}
 /*************************************Amigos******************************************************/
 
-#iconFriend{
+
+
+/****************************PERFIL***********************************/
+#btnArrowProfile{
+	margin: none;
+	border:none;
+	background-color: transparent;
+}
+.profileFooter{
 	cursor: pointer;
+}
+#sectionProfile{
+	display: none;
 }
 .imgProfile{
 	margin-top:20px;
@@ -456,7 +468,7 @@ p {
 	color: #303030;
 	font-size: 11px;
 	font-family:'Roboto', sans-serif;
-	margin-left: 37%;
+	margin-left: 32%;
 	border-left: solid #dadada 1px; 
   padding-bottom: 2px;
 }
@@ -510,3 +522,4 @@ p {
 	height: 100px;
 		margin-top: 10px;
 	}
+	/****************************fin PERFIL***********************************/
