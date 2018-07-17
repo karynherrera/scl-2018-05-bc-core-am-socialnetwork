@@ -30,6 +30,7 @@ window.logout = (() => {
 
 // Funcion para guardar publicaciones
 
+
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
   const commentText = comment.value;
@@ -43,24 +44,35 @@ function saveMessage() {
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
-  .limitToLast(3)
+  .limitToLast(2)
   .on('child_added', (newMessage) => {
-    cont.innerHTML += `
+    if (comment.value !== '') {
+      cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
                 ${newMessage.val().text} <i class="far fa-heart" data-id="plusone" onclick="toggleStar()"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
-            `;
+            `
+      ;
+    } else {
+      
+    }
   });
 
 function newFunction() {
-  // limpiar el textarea
-  document.getElementById('comment').value = '';
+  // Limpiar el textarea
+  document.getElementById('comment').value = '';  
   // mensaje de error
   const commentText = comment.value; 
   if (commentText === '') {
-    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';
-  }
-  ;
+    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
+  };
 }
+function otherFunction() {
+  comment.addEventListener('click', ()=>{
+    // Hara que desaparesca mensaje de error
+    errorTxt.innerHTML = '<div id=" errorTxt"></div>';
+  })
+  ;
+};
 
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
