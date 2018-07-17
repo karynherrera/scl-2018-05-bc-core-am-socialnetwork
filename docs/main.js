@@ -34,12 +34,12 @@ window.onload = (() => {
   });
 });// fin de window onload
 
-// ===========================================SECCIONES DEL DOM===================================================
+// ==================================SECCIONES DEL DOM===================================================
 const seccionLogin = document.getElementById('sectionLogin');
 const seccionCenter = document.getElementById('sectionCenter');
 const seccionRegistro = document.getElementById('registroUser');
 const seccionMuro = document.getElementById('sectionMuro');
-// =======================================FUNCIONALIDAD LOGIN====================================================
+// ============================FUNCIONALIDAD LOGIN====================================================
 
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById('loginFb');
