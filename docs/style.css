@@ -527,6 +527,7 @@ p {
 	/****************************fin PERFIL***********************************/
 
 	/****************************SECCION RECETAS***********************************/
+
 	#sectionRecipes{
 		display: none;
 	}
@@ -539,4 +540,49 @@ p {
 	.pagIconRecipes{
 		width: 16px;
 	}	
+	/*INGREDIENTES*/
+	.textIngredients{
+		margin-bottom: 2%;
+	}
+
+	.titleRecipes{
+		text-align: center;
+		margin-top:10px;
+		font-size: 12px;
+		font-family:'Roboto', sans-serif;
+		font-weight: bold;
+	}
+
+	.ingredientsList{
+		font-size: 13px;
+		font-family:'Roboto', sans-serif;
+		border-bottom: solid 1px #dadada;
+	}
+ 
+	/*PREPARACION*/
+ .textPreparation{	
+	 margin-bottom: 2%;
+ }
+
+ .titlePreparation{
+	 text-align: center;
+	 margin-top:10px;
+	 font-size: 12px;
+	 font-family:'Roboto', sans-serif;
+	 font-weight: bold;
+ }
+
+ .completeRecipes{
+	 margin-right: 30px;
+	 font-size: 13px;
+	 font-family:'Roboto', sans-serif;
+	 margin-bottom: 40px;
+	 text-align: justify
+ }
+
+
+ 
+
 		/****************************FIN SECCION RECETAS********************************/
+
+	

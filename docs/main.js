@@ -4,6 +4,7 @@ window.onload = (() => {
   const seccionMuro = document.getElementById('sectionMuro');
   const inputEmailUser = document.getElementById('inputCorreo');
   const sectionProfile = document.getElementById('sectionProfile');
+  const sectionRecipes= document.getElementById('sectionRecipes');
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
@@ -105,7 +106,7 @@ btnLogin.addEventListener('click', () => {
       const alertLogin = document.getElementById('alertPassword');
       const msjErrorFirebase = error.message;
       if (msjErrorFirebase === 'The email address is badly formatted.') {
-        alertLogin.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: El formato del Email ingresado es incorrecta, ingrese correo como: myEmail@easyfood.com </div>';
+        alertLogin.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Por favor ingresa un correo eléctronico válido</div>';
       } else if (msjErrorFirebase === 'The password is invalid or the user does not have a password.') {
         alertLogin.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Password Invalido, Ingrese un password de 6 o más caracteres </div>';
       }
@@ -206,9 +207,10 @@ const sectionProfile = document.getElementById('sectionProfile');
 
 const btnProfile = document.getElementById('nameIconFooterProfile');
 btnProfile.addEventListener('click', () => {
-  sectionProfile.style.display = 'block';
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'none';
+  sectionRecipes.style.display = 'none';
+  sectionProfile.style.display = 'block';
  });
 /********************FIN SECCION PERFIL *********************************************/
 
@@ -219,13 +221,15 @@ const btnArrowProfile = document.getElementById('btnArrowProfile');
 btnArrowProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
   seccionLogin.style.display = 'none';
+  sectionRecipes.style.display = 'none';
   seccionCenter.style.display = 'block'; 
- });
+  });
 
 /********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
 
-/********************SECCION RECETAS **************************************/
 
+
+/********************SECCION RECETAS **************************************/
 const sectionRecipes= document.getElementById('sectionRecipes');
 
 const btnRecipes = document.getElementById('nameIconFooterRecipes');
