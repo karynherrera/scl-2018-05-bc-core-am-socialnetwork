@@ -1,4 +1,5 @@
 /***************************Estilos Login***********************************/
+
 .login{
 	background-position: center center;
 	background-attachment: fixed;
@@ -23,7 +24,7 @@
   width: 60vw;
 	height: 6vh;
 	display: block;
-	margin-left: 20%;
+	margin-left: 17%;
 	margin-top: 2%;
 }
 .btnLogIn{
@@ -40,8 +41,6 @@
 }
 .logosIcon{
 	width: 20px;
-	margin-top: 2px;
-	margin-left: 2px;
 }
 .btnFb{
 	background-color:#4267B2;
@@ -79,23 +78,24 @@
 .textLogin{
 	text-align: center;
 	display:block;
-	color:black;
-	margin-top:1%;
+	color:rgb(31, 30, 30);
+  margin-top:1%;
 	margin-bottom:2%;
 	font-size: 80%;
 	border: 0px;
 }
 #registrate{
 	font-size: 100%;
-	color:green;
+	color:rgb(31, 30, 30);
 	cursor: pointer;
+	font-weight: bold;
 }
 
 #loginBack{
 	text-align: center;
 	cursor: pointer;
 	font-size: 100%;
-	color:green;
+	color:rgb(31, 30, 30);
 }
 
 /***********************************fin login********************************/
@@ -128,9 +128,9 @@
 	text-align: center;
   border-radius: 0%;
   border: 0px;
-  width: 75vw;
+  width: 250px;
 	display: block;
-	margin-left: 8%;
+	margin-left: 3.5%;
 	margin-top: 2%;
 }
 
@@ -154,10 +154,12 @@
 	display: none;
 }
 /**********************MENU *********************************/
-/*.pos-f-t{
+.pos-f-t{
 	position: fixed;
-	z-index: 100;
-}*/
+	z-index: 1000;
+	top: 0;
+	border-width: 0 0 1px;
+}
 .bg-blue{
 	z-index: 1000;
 	background-color: #22B4BD;
@@ -267,6 +269,7 @@ color: white;
 
 .center{
 display: none;
+margin-top: 50px;
 }
 
 .fa-arrow-left{
@@ -457,6 +460,7 @@ p {
 }
 #sectionProfile{
 	display: none;
+	margin-top: 50px;
 }
 .imgProfile{
 	margin-top:20px;
@@ -533,6 +537,7 @@ p {
 
 	#sectionRecipes{
 		display: none;
+		/*margin-top: 50px;*/
 	}
 
 	#btnArrowRecipes{
@@ -583,9 +588,10 @@ p {
 	 text-align: justify
  }
 
-
+ .recipes{
+	 margin-top: 50px;
+ }
  
-
-		/****************************FIN SECCION RECETAS********************************/
+/****************************FIN SECCION RECETAS********************************/
 
 	
