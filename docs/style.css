@@ -269,7 +269,7 @@ color: white;
 
 .center{
 display: none;
-margin-top: 50px;
+margin-top: 53px;
 }
 
 .fa-arrow-left{
@@ -364,35 +364,32 @@ header div img {
 }
 
 .txt {
-	width: 100%;
+	width: 80%;
 	height: 2em;	
-	font-size: 100%;
-  border-color: white;
+	border-color: white;
 }
 
 /* Estilos botón publicar */
-#btn {
-	background-color: #22B4BD;
+#btnMessage {
+	background-color: transparent;
+	border: none;
+	margin:none;
 	border: 0px;
 	cursor: pointer;
 	text-align: center;	
-	width: 100%;
-	height: 30px;
-	display: block;
-	color: #FFF; 
-	margin: 1%;	
+	color: #22B4BD; 
+	font-size: 13px;
+	font-family:'Roboto', sans-serif;
 	/*position: relative;*/
 }
 
-.iconos {
-	padding: 10em;
+#btnMessage:hover {
+	background-color: none;
+	border: none;
+	margin:none;
 }
 
-#btn:hover {
-	background-color: #16D3A2;
-}
-
-#btn:focus, textarea:focus{
+#btnMessage:focus, textarea:focus{
 	outline: none;
 }
 
@@ -460,7 +457,7 @@ p {
 }
 #sectionProfile{
 	display: none;
-	margin-top: 50px;
+	margin-top: 53px;
 }
 .imgProfile{
 	margin-top:20px;
@@ -501,9 +498,6 @@ p {
 	margin-left:5px;
 	margin-top: 20%;
 }
-.dataUser{
-	border-bottom: solid 1px #dadada;
-}
 .btn-outline-dark{
 	font-size: 11px;
 	font-family:'Roboto', sans-serif;
@@ -523,7 +517,7 @@ p {
 	font-family:'Roboto', sans-serif;;
 	font-weight: bold;
 	margin-top: 5px;
-	border-bottom: solid 1px #dadada;
+	
 }
 /*imagenes de perfil*/
 
@@ -537,9 +531,11 @@ p {
 
 	#sectionRecipes{
 		display: none;
-		/*margin-top: 50px;*/
 	}
-
+	.rowRecipes{
+		border-bottom: solid 1px #dadada;
+		border-top: solid 1px #dadada;
+	}
 	#btnArrowRecipes{
 		margin: none;
 		border:none;
@@ -547,35 +543,49 @@ p {
 	}
 	.pagIconRecipes{
 		width: 16px;
-	}	
-	/*INGREDIENTES*/
-	.textIngredients{
-		margin-bottom: 2%;
-	}
+	}		
 
 	.titleRecipes{
 		text-align: center;
-		margin-top:10px;
-		font-size: 12px;
+		font-size: 14px;
 		font-family:'Roboto', sans-serif;
 		font-weight: bold;
 	}
 
+	/*INGREDIENTES*/
+	.rowTextIngredients{
+		margin-bottom: 10px;
+		border-bottom: solid 1px #dadada;
+		border-top: solid 1px #dadada;
+		background-color: #DADADA;
+	}
+	.textIngredients{
+		margin-bottom: 0%;
+		margin-top: 0%;
+	}
 	.ingredientsList{
 		font-size: 13px;
 		font-family:'Roboto', sans-serif;
-		border-bottom: solid 1px #dadada;
+		margin-bottom: 0px;
 	}
  
 	/*PREPARACION*/
+	.rowTextPreparation{
+		margin-top: 0px;
+		margin-bottom: 10px;
+		background-color: #DADADA;
+		border-bottom: solid 1px #dadada;
+		border-top: solid 1px #dadada;
+	}
  .textPreparation{	
-	 margin-bottom: 2%;
+	margin-bottom: 0%;
+	margin-top: 0%;
  }
 
  .titlePreparation{
 	 text-align: center;
-	 margin-top:10px;
-	 font-size: 12px;
+	 margin-top:0px;
+	 font-size: 14px;
 	 font-family:'Roboto', sans-serif;
 	 font-weight: bold;
  }
@@ -585,11 +595,11 @@ p {
 	 font-size: 13px;
 	 font-family:'Roboto', sans-serif;
 	 margin-bottom: 40px;
-	 text-align: justify
+	 text-align: justify;
  }
 
  .recipes{
-	 margin-top: 50px;
+	 margin-top: 53px;
  }
  
 /****************************FIN SECCION RECETAS********************************/

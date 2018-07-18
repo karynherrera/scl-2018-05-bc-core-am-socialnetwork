@@ -235,15 +235,16 @@
         <!-- Texarea de comentarios -->
         <!--<button onclick="logout()">Logout</button> -->
         <div class="container">
+        
           <div class="row">
             <div class="col-12">
-              <button type="submit" id="btn" onclick="saveMessage()">
-                <i class="far fa-comments"></i> Publicar</button>
+              <textarea class="txt" id="comment" onclick="otherFunction()" placeholder="Agrega un comentario..."></textarea>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
-              <textarea class="txt" id="comment" onclick="otherFunction()" placeholder="Añade un comentario..."></textarea>
+              <button type="submit" id="btnMessage" onclick="saveMessage()">
+                Publicar</button>
             </div>
           </div>
         </div>
@@ -399,7 +400,7 @@
       
       <section class="textRecipes">
 
-        <div class="row">
+        <div class="row rowTextIngredients">
           <div class="col-12 titleRecipes">
             <p class="textIngredients">INGREDIENTES</p>
           </div>
@@ -414,11 +415,11 @@
             <li>1 pimentón amarillo </li>
             <li>2 cebollas moradas </li>
             <li>½ cda de Tomillo </li>
-            </li>Sal</li>
+            <li>Sal</li>
           </ul>
         </div>
 
-        <div class="row">
+        <div class="row rowTextPreparation">
             <div class="col-12 titlePreparation">
               <p class="textPreparation">PREPARACIÓN</p>
             </div>
