@@ -39,7 +39,7 @@ function saveMessage() {
     creator: currentUser.uid,
     creatorName: currentUser.displayName || currentUser.email,
     text: commentText,
-    email: currentUser.email,    
+    email: currentUser.email,
   });
   newFunction();
   otherFunction();
@@ -54,7 +54,7 @@ firebase.database().ref('posts')
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
                 ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
-    ;
+      ;
   });
 
 function newFunction() {
@@ -71,7 +71,7 @@ function otherFunction() {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })
-  ;
+    ;
 };
 
 // Funcion eliminar publicacion
@@ -110,7 +110,7 @@ function toggleStar(event) {
 function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
-  firebase.database().ref('posts/' + likeID).once('value', function(posts) {
+  firebase.database().ref('posts/' + likeID).once('value', function (posts) {
     let total = (posts.child('starCounter').val() || 1);
     cont.innerHTML += total;
     firebase.database().ref('posts').child(likeID).update({
@@ -118,7 +118,7 @@ function counterLike(event) {
     });
   });
 }
-  
+
 // let total =(post.val().starCounter || 0) + 1;
 /*
 function counterLike(event) {
@@ -144,23 +144,51 @@ window.addFriend = ((userTarget) => {
   allUsersRegister.on('value', function (snapshot) {
     console.log("entró");
     let arrayUsers = Object.entries(snapshot.val());
-    arrayUsers.forEach(idFirebase => {
-      //console.log(idFirebase)
-      idFirebase.forEach(element => {
-        if (element.EmailUser === userTarget) {
-
-          console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
+    let result, id, name, email;
+    let found = arrayUsers.find(item => {
+      item.EmailUser === userTarget;
+      id = item.idUser;
+      name = item.NameUser || item.EmailUser;
+      email = item.EmailUser;
+      return result = true;
+    })
+    /*
+    firebase.auth().onAuthStateChanged((user) => {
+    const userLogued = firebase.auth().currentUser;
+      const newUserKey = firebase.database().ref().child('friends').push().key;
+              firebase.database().ref(`friends/${newUserKey}`).set({
+                idFriend: userLogued.uid,
+                nameFriend: userLogued.displayName || userLogued.email,
+                emailFriend: userLogued.email
+              }); 
+            }) */
+    if (result) {
+      console.log("verificaremos si ya esta o no en tu lista de amigos");
+      const listFriends = firebase.database().ref('friends/');
+      listFriends.on('value', function (snapshot) {
+        let arrayFriends = Object.entries(snapshot.val());
+        let resultFriend;
+        let foundFriend = arrayFriends.find(item => {
+          item.emailFriend === userTarget;
+          console.log("email friend: "+ item.emailFriend);
+          console.log("email user: "+ userTarget);
+          return resultFriend = false;
+        })
+        if (resultFriend) {
+          console.log("añadiendo amigo");
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
-            idFriend: element.idUser,
-            nameFriend: element.NameUser || element.EmailUser,
-            emailFriend: element.EmailUser
-            
+            idFriend: id,
+            nameFriend: name || email,
+            emailFriend: email
           });
-          //return false;
-        } 
+        } else{
+          console.log("ya esta en tu lista de amigos");
+        }
+    
       })
-    });
+    }
+
   });
 });
 

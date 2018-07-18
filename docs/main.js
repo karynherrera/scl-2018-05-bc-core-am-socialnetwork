@@ -34,7 +34,7 @@ window.onload = (() => {
       // revisamos la coleccion en ese momento
       allUsersRegister.once('value', function (snapshot) {
         // paso a arreglo el json que trae de firebase
-        
+
         // recorro ese arreglo hasta llegar a los keys de c/ usuario
         //console.log(arrayUsers)
         /*
@@ -45,31 +45,31 @@ window.onload = (() => {
 
         let arrayUsers = Object.entries(snapshot.val());
         //for (id in arrayUsers) {
-          //let arrayIds = arrayUsers[id];
-          //let users = arrayIds[1];
-          //console.log( "el id del usuario de la coleccion es:  "+users.idUser);
-          //console.log( "el id del usuario logado es:  "+userId);
-          // comparamos si el email del usuario de la coleccion es el mismo que se esta logando ahora
-          let result;
-          let found = arrayUsers.find(item =>{
-            item.idUser === userId;
-            return result = true;
+        //let arrayIds = arrayUsers[id];
+        //let users = arrayIds[1];
+        //console.log( "el id del usuario de la coleccion es:  "+users.idUser);
+        //console.log( "el id del usuario logado es:  "+userId);
+        // comparamos si el email del usuario de la coleccion es el mismo que se esta logando ahora
+        let result;
+        let found = arrayUsers.find(item => {
+          item.idUser === userId;
+          return result = true;
+        });
+
+        if (result) {
+          console.log("usuario ya añadido anteriormente " + userId);
+
+        } else {
+          console.log("añadiendo usuario  " + userId);
+          const newUserKey = firebase.database().ref().child('users').push().key;
+          firebase.database().ref(`users/${newUserKey}`).set({
+            idUser: userLogued.uid,
+            NameUser: userLogued.displayName,
+            EmailUser: userLogued.email
           });
-          
-          if (result) {
-            console.log( "usuario ya añadido anteriormente "+userId);
-            
-          }else{
-            console.log("añadiendo usuario  " +userId);
-            const newUserKey = firebase.database().ref().child('users').push().key;
-            firebase.database().ref(`users/${newUserKey}`).set({
-              idUser: userLogued.uid,
-              NameUser: userLogued.displayName,
-              EmailUser: userLogued.email
-            });
-            
-          } 
-          
+
+        }
+
         //}
         /*
         arrayUsers.forEach(idFirebase => {
