@@ -43,16 +43,17 @@ function saveMessage() {
   });
   newFunction();
   otherFunction();
+  
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   // .limitToLast(2)
   .on('child_added', (newMessage) => {
     let userTarget = newMessage.val().email;
-    //console.log(typeof (userTarget));
+    // console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" > <i class="fas fa-user-check" id="userFriend"></i></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
     ;
   });
@@ -110,14 +111,15 @@ function toggleStar(event) {
 function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
-  firebase.database().ref('posts/' + likeID).once('value', function(posts) {
-    let total = (posts.child('starCounter').val() || 1);
+  firebase.database().ref('posts/' + likeID).once('value', function(post) {
+    let total = (post.child('starCounter').val() || 1);
     cont.innerHTML += total;
     firebase.database().ref('posts').child(likeID).update({
       starCounter: total,
     });
   });
 }
+
   
 // let total =(post.val().starCounter || 0) + 1;
 /*
@@ -140,10 +142,10 @@ window.prueba = ((variable) => {
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
   const allUsersRegister = firebase.database().ref('users/');
-  allUsersRegister.on('value', function (snapshot) {
+  allUsersRegister.on('value', function(snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
-      //console.log(idFirebase)
+      // console.log(idFirebase)
       idFirebase.forEach(element => {
         if (element.EmailUser === userTarget) {
           console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
@@ -156,7 +158,7 @@ window.addFriend = ((userTarget) => {
           });
           return false;
         } 
-      })
+      });
     });
   });
 });
