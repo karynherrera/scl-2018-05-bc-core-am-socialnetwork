@@ -50,7 +50,7 @@ function saveMessage() {
 firebase.database().ref('posts')
   //.limitToLast(2)
   .on('child_added', (newMessage) => {
-    let userTarget = newMessage.val().creator;
+    let userTarget = newMessage.val().email;
     //console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
@@ -111,22 +111,22 @@ window.prueba = ((variable) => {
 });
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
-  console.log(userTarget);
   const allUsersRegister = firebase.database().ref('users/');
-  console.log("entró");
   allUsersRegister.on('value', function (snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
+      //console.log(idFirebase)
       idFirebase.forEach(element => {
-        if (element.idUser === userTarget) {
+        if (element.EmailUser === userTarget) {
           console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
             idFriend: element.idUser,
             nameFriend: element.NameUser || element.EmailUser,
             emailFriend: element.EmailUser
+            
           });
-          
+          return false;
         } 
       })
     });
