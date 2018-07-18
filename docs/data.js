@@ -53,7 +53,7 @@ firebase.database().ref('posts')
     console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
     ;
   });
@@ -111,8 +111,8 @@ function toggleStar(event) {
 function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
-  firebase.database().ref('posts/' + likeID).once('value', function(posts) {
-    let total = (posts.child('starCounter').val() || 1);
+  firebase.database().ref('posts/' + likeID).once('value', function(post) {
+    let total = (post.child('starCounter').val() || 1);
     cont.innerHTML += total;
     firebase.database().ref('posts').child(likeID).update({
       starCounter: total,
