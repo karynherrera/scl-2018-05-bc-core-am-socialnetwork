@@ -29,7 +29,6 @@ window.logout = (() => {
     .catch();
 });
 
-/** ******************SECCION PERFIL *********************************************/
 
 // Funcion para guardar publicaciones
 function saveMessage() {

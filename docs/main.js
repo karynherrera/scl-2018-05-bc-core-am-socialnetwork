@@ -48,12 +48,12 @@ window.onload = (() => {
   });
 });// fin de window onload
 
-// ==================================SECCIONES DEL DOM===================================================
+// ================SECCIONES DEL DOM=============================================
 const seccionLogin = document.getElementById('sectionLogin');
 const seccionCenter = document.getElementById('sectionCenter');
 const seccionRegistro = document.getElementById('registroUser');
 const seccionMuro = document.getElementById('sectionMuro');
-// ============================FUNCIONALIDAD LOGIN====================================================
+// ==========================FUNCIONALIDAD LOGIN=====================================
 
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById('loginFb');
@@ -203,27 +203,48 @@ checkbox.addEventListener('click', () => {
 /********************SECCION PERFIL *********************************************/
 
 const sectionProfile = document.getElementById('sectionProfile');
-const sectionfixedMenu = document.getElementById('fixedMenu');
 
 const btnProfile = document.getElementById('nameIconFooterProfile');
 btnProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'block';
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'none';
-  sectionfixedMenu.style.display = 'block';
-});
+ });
 /********************FIN SECCION PERFIL *********************************************/
 
 
 /********************SECCION VOLVER ATRAS PERFIL ****************************/
 
-const btnArrow = document.getElementById('btnArrowProfile');
-btnArrow.addEventListener('click', () => {
+const btnArrowProfile = document.getElementById('btnArrowProfile');
+btnArrowProfile.addEventListener('click', () => {
+  sectionProfile.style.display = 'none';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'block'; 
+ });
+
+/********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
+
+/********************SECCION RECETAS **************************************/
+
+const sectionRecipes= document.getElementById('sectionRecipes');
+
+const btnRecipes = document.getElementById('nameIconFooterRecipes');
+btnRecipes.addEventListener('click', () => {
+  sectionProfile.style.display = 'none';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'none';
+  sectionRecipes.style.display = 'block';
+});
+/********************FIN SECCION RECETAS*******************************************/
+
+
+/********************SECCION VOLVER ATRAS RECETAS *************************/
+
+const btnArrowRecipes = document.getElementById('btnArrowRecipes');
+btnArrowRecipes.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'block';
-  sectionfixedMenu.style.display = 'block';
-  sectionProfile.style.display = 'none';
+  sectionRecipes.style.display = 'none';
 });
-
-/********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
+/********************FIN SECCION VOLVER ATRAS RECETAS ****************************/

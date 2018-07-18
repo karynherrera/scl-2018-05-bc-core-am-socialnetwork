@@ -525,3 +525,18 @@ p {
 		margin-top: 10px;
 	}
 	/****************************fin PERFIL***********************************/
+
+	/****************************SECCION RECETAS***********************************/
+	#sectionRecipes{
+		display: none;
+	}
+
+	#btnArrowRecipes{
+		margin: none;
+		border:none;
+		background-color: transparent;
+	}
+	.pagIconRecipes{
+		width: 16px;
+	}	
+		/****************************FIN SECCION RECETAS********************************/
