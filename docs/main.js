@@ -4,7 +4,6 @@ window.onload = (() => {
   const seccionMuro = document.getElementById('sectionMuro');
   const inputEmailUser = document.getElementById('inputCorreo');
   const sectionProfile = document.getElementById('sectionProfile');
-  const sectionfixedMenu = document.getElementById('fixedMenu');
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
@@ -17,20 +16,35 @@ window.onload = (() => {
       seccionCenter.style.display = 'block';
       //guardamos el usuario que se ha logado en una coleccion de firebase
       const userLogued = firebase.auth().currentUser;
-      const newUserKey = firebase.database().ref().child('users').push().key;
-      firebase.database().ref(`users/${newUserKey}`).set({
-        idUser: userLogued.uid,
-        NameUser: userLogued.displayName,
-        EmailUser: userLogued.email
+      const userData = userLogued.email;
+      const allUsersRegister = firebase.database().ref('users/');
+      allUsersRegister.on('value', function (snapshot) {
+        let arrayUsers = Object.entries(snapshot.val());
+        arrayUsers.forEach(idFirebase => {
+          idFirebase.forEach(element => {
+            if (element.idUser === userData) {
+              console.log("añadiendo usuario");
+              const newUserKey = firebase.database().ref().child('users').push().key;
+              firebase.database().ref(`users/${newUserKey}`).set({
+                idUser: userLogued.uid,
+                NameUser: userLogued.displayName,
+                EmailUser: userLogued.email
+              });
+            }else{
+              console.log("usuario ya añadido anteriormente");
+            }
+          })
+        })
       });
-      console.log(user.uid);
+
+      //console.log(user.uid);
       //console.log("user > "+JSON.stringify(user));
     } else {
       seccionLogin.style.display = 'block';
       seccionMuro.style.display = 'none';
       seccionCenter.style.display = 'none';
       sectionProfile.style.display = 'none';
-       }
+    }
   });
 });// fin de window onload
 
@@ -43,9 +57,9 @@ const seccionMuro = document.getElementById('sectionMuro');
 
 // LOGIN CON FACEBOOK
 const logFb = document.getElementById('loginFb');
-logFb.addEventListener('click', ()=>{
+logFb.addEventListener('click', () => {
   let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithRedirect(provider).then(function(result) {
+  firebase.auth().signInWithRedirect(provider).then(function (result) {
     let token = result.credential.accessToken; // se obtiene el token de OAuth de Facebook
     let user = result.user; // info del usuario logado
     console.log(user);
@@ -54,7 +68,7 @@ logFb.addEventListener('click', ()=>{
     seccionLogin.style.display = 'none';
     seccionMuro.style.display = 'block';
     seccionCenter.style.display = 'block';
-  }).catch(function(error) {
+  }).catch(function (error) {
     seccionLogin.style.display = 'block';
     seccionMuro.style.display = 'none';
     seccionCenter.style.display = 'none';
