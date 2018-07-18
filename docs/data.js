@@ -43,7 +43,6 @@ function saveMessage() {
   });
   newFunction();
   otherFunction();
-  
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
@@ -53,7 +52,7 @@ firebase.database().ref('posts')
     // console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div>
             `
     ;
   });
@@ -74,6 +73,18 @@ function otherFunction() {
   })
   ;
 };
+
+// Funcion preguntar eliminar
+function preguntar() { 
+  confirmar = confirm('¿Deseas eliminar el comentario?'); 
+  if (confirmar) {
+    deleteButtonClicked(event);
+    alert('Diste a Aceptar'); 
+  } else {
+  // Aquí pones lo que quieras Cancelar 
+    alert('Diste a Cancelar');
+  } 
+} 
 
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
@@ -119,7 +130,19 @@ function counterLike(event) {
     });
   });
 }
-
+/*
+function counterLike(event) {
+  event.stopPropagation();
+  const likeID = event.target.getAttribute('data-like');
+  firebase.database().ref('posts/' + likeID).once('value', function(post) {
+    let total = (post.child('starCounter').val() || 1);
+    cont.innerHTML -= total;
+    firebase.database().ref('posts').child(likeID).update({
+      starCounter: total,
+    });
+  });
+}
+*/
   
 // let total =(post.val().starCounter || 0) + 1;
 /*
