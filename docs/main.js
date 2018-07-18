@@ -14,15 +14,67 @@ window.onload = (() => {
       seccionLogin.style.display = 'none';
       seccionMuro.style.display = 'block';
       seccionCenter.style.display = 'block';
-      //guardamos el usuario que se ha logado en una coleccion de firebase
+
+      /*
       const userLogued = firebase.auth().currentUser;
-      const userData = userLogued.email;
+      const newUserKey = firebase.database().ref().child('users').push().key;
+              firebase.database().ref(`users/${newUserKey}`).set({
+                idUser: userLogued.uid,
+                NameUser: userLogued.displayName,
+                EmailUser: userLogued.email
+              }); 
+              */
+      //guardamos el usuario que se ha logado en una coleccion de firebase
+      // declaramos el usuario actual, el que se logó
+      const userLogued = firebase.auth().currentUser;
+      const userData = userLogued.email; // acá sacamos el email del usuario logado
+      let userId = userLogued.uid;
+      // llamamos a la coleccion que tiene los usuarios
       const allUsersRegister = firebase.database().ref('users/');
-      allUsersRegister.on('value', function (snapshot) {
+      // revisamos la coleccion en ese momento
+      allUsersRegister.once('value', function (snapshot) {
+        // paso a arreglo el json que trae de firebase
+        
+        // recorro ese arreglo hasta llegar a los keys de c/ usuario
+        //console.log(arrayUsers)
+        /*
+        let compare = allUsersRegister.orderByChild("idUser").equalTo(userId).once('value',(snapshot)=>{
+          let arrayUsers = Object.entries(snapshot.val());
+          console.log(arrayUsers.val());
+        })*/
+
         let arrayUsers = Object.entries(snapshot.val());
+        //for (id in arrayUsers) {
+          //let arrayIds = arrayUsers[id];
+          //let users = arrayIds[1];
+          //console.log( "el id del usuario de la coleccion es:  "+users.idUser);
+          //console.log( "el id del usuario logado es:  "+userId);
+          // comparamos si el email del usuario de la coleccion es el mismo que se esta logando ahora
+          let result;
+          let found = arrayUsers.find(item =>{
+            item.idUser === userId;
+            return result = true;
+          });
+          
+          if (result) {
+            console.log( "usuario ya añadido anteriormente "+userId);
+            
+          }else{
+            console.log("añadiendo usuario  " +userId);
+            const newUserKey = firebase.database().ref().child('users').push().key;
+            firebase.database().ref(`users/${newUserKey}`).set({
+              idUser: userLogued.uid,
+              NameUser: userLogued.displayName,
+              EmailUser: userLogued.email
+            });
+            
+          } 
+          
+        //}
+        /*
         arrayUsers.forEach(idFirebase => {
           idFirebase.forEach(element => {
-            if (element.idUser === userData) {
+            if (element.EmailUser !== userData) {
               console.log("añadiendo usuario");
               const newUserKey = firebase.database().ref().child('users').push().key;
               firebase.database().ref(`users/${newUserKey}`).set({
@@ -32,9 +84,10 @@ window.onload = (() => {
               });
             }else{
               console.log("usuario ya añadido anteriormente");
-            }
+            }  
           })
-        })
+        }) 
+        */
       });
 
       //console.log(user.uid);
@@ -209,7 +262,7 @@ btnProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'block';
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'none';
- });
+});
 /********************FIN SECCION PERFIL *********************************************/
 
 
@@ -219,14 +272,14 @@ const btnArrowProfile = document.getElementById('btnArrowProfile');
 btnArrowProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
   seccionLogin.style.display = 'none';
-  seccionCenter.style.display = 'block'; 
- });
+  seccionCenter.style.display = 'block';
+});
 
 /********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
 
 /********************SECCION RECETAS **************************************/
 
-const sectionRecipes= document.getElementById('sectionRecipes');
+const sectionRecipes = document.getElementById('sectionRecipes');
 
 const btnRecipes = document.getElementById('nameIconFooterRecipes');
 btnRecipes.addEventListener('click', () => {

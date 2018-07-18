@@ -52,7 +52,7 @@ firebase.database().ref('posts')
     //console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" > <i class="fas fa-user-check" id="userFriend"></i></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
     ;
   });
@@ -137,15 +137,18 @@ function counterLike(event) {
 window.prueba = ((variable) => {
   console.log('Imprime' + variable);
 });
+
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
   const allUsersRegister = firebase.database().ref('users/');
   allUsersRegister.on('value', function (snapshot) {
+    console.log("entró");
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       //console.log(idFirebase)
       idFirebase.forEach(element => {
         if (element.EmailUser === userTarget) {
+
           console.log('nombre usuario: ' + element.NameUser + ' id ' + element.EmailUser);
           const newFriendKey = firebase.database().ref().child('friends').push().key;
           firebase.database().ref(`friends/${newFriendKey}`).set({
@@ -154,12 +157,13 @@ window.addFriend = ((userTarget) => {
             emailFriend: element.EmailUser
             
           });
-          return false;
+          //return false;
         } 
       })
     });
   });
 });
+
 /** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
   const modal = document.getElementById('modalTerms');
