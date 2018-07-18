@@ -40,8 +40,7 @@ function saveMessage() {
     creator: currentUser.uid,
     creatorName: currentUser.displayName || currentUser.email,
     text: commentText,
-    email: currentUser.email,
-    starCount: 0
+    email: currentUser.email,    
   });
   newFunction();
   otherFunction();
@@ -54,7 +53,7 @@ firebase.database().ref('posts')
     console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text}${newMessage.val().starCount} <i class="far fa-heart" data-id="plusone" onclick="toggleStar(event, countRef, uid)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
     ;
   });
@@ -84,7 +83,7 @@ function deleteButtonClicked(event) {
   postsRef.remove();
   cont.removeChild(cont.childNodes[0] && cont.childNodes[1]);
 }
-
+/*
 // Funcion me gusta
 function toggleStar(event) {
   event.stopPropagation();
@@ -107,6 +106,21 @@ function toggleStar(event) {
     return post;
   });
 }
+*/
+
+function counterLike(event) {
+  event.stopPropagation();
+  const likeID = event.target.getAttribute('data-like');
+  firebase.database().ref('posts/' + likeID).once('value', function(posts) {
+    let total = (posts.child('starCounter').val() || 1);
+    cont.innerHTML += total;
+    firebase.database().ref('posts').child(likeID).update({
+      starCounter: total,
+    });
+  });
+}
+  
+// let total =(post.val().starCounter || 0) + 1;
 /*
 function counterLike(event) {
   event.stopPropagation();
