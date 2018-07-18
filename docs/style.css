@@ -367,7 +367,7 @@ header div img {
   border-color: white;
 }
 
-/* Estilos botón agregar */
+/* Estilos botón publicar */
 #btn {
 	background-color: #22B4BD;
 	border: 0px;
@@ -381,6 +381,9 @@ header div img {
 	/*position: relative;*/
 }
 
+.iconos {
+	padding: 10em;
+}
 
 #btn:hover {
 	background-color: #16D3A2;
@@ -439,7 +442,9 @@ p {
 }
 /*************************************Amigos******************************************************/
 
-
+#userFriend{
+	display: none;
+}
 
 /****************************PERFIL***********************************/
 #btnArrowProfile{
@@ -523,3 +528,19 @@ p {
 		margin-top: 10px;
 	}
 	/****************************fin PERFIL***********************************/
+
+	/****************************SECCION RECETAS***********************************/
+	#sectionRecipes{
+		display: none;
+	}
+
+	#btnArrowRecipes{
+		margin: none;
+		border:none;
+		background-color: transparent;
+	}
+	.pagIconRecipes{
+		width: 16px;
+	}	
+		/****************************FIN SECCION RECETAS********************************/
+
