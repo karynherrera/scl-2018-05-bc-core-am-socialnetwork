@@ -53,7 +53,7 @@ firebase.database().ref('posts')
     //console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage[0]}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" > <i class="fas fa-user-check" id="userFriend"></i></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
     ;
   });
