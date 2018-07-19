@@ -29,6 +29,7 @@ window.logout = (() => {
     .catch();
 });
 
+/**********************PUBLICACIONES**********************************/
 
 // Funcion para guardar publicaciones
 function saveMessage() {
@@ -54,6 +55,8 @@ function saveMessage() {
   //otherFunction();
 }
 }
+
+
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   // .limitToLast(2)
@@ -61,14 +64,26 @@ firebase.database().ref('posts')
     let userTarget = newMessage.val().email;
     // console.log(typeof (userTarget));
     cont.innerHTML += `
-  <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
+  
+  <section class="enterComments" id='${newMessage.key}'>
+  
+  
+  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
 
-                
-                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt" onclick="postEdit()" data-toggle="modal" data-target="#exampleModal"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div>
 
-            `
-      ;
+  <div class = "row textComment"> ${newMessage.val().text}
+               
+  <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div> 
+              
+
+  <row class="iconComment"> "${newMessage.val().starCounter}"<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><div>
+                             
+  </section>
+               
+  `;
   });
+
+
 
 function newFunction() {
   // Limpiar el textarea
@@ -79,13 +94,7 @@ function newFunction() {
     errorTxt.innerHTML = '<div class="alertConteiner" id="errorTxt"></div>';    
   };
 }
-function otherFunction() {
-  comment.addEventListener('click', () => {
-    // Hara que desaparesca mensaje de error
-    errorTxt.innerHTML = '<div class="alertConteiner" id="errorTxt"></div>';
-  })
-    ;
-};
+
 
 // Funcion preguntar eliminar
 function preguntar() {
@@ -135,7 +144,7 @@ function toggleStar(event) {
 function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
-  firebase.database().ref('posts/' + likeID).once('value', function(post) {
+  firebase.database().ref('posts/' + likeID).once('value', function (post) {
     let total = (post.child('starCounter').val() || 1);
     if (post) {
       firebase.database().ref('posts').child(likeID).update({
@@ -267,7 +276,7 @@ window.addFriend = ((userTarget) => {
   })
 
   const allUsersRegister = firebase.database().ref('users/');
-  allUsersRegister.on('value', function(snapshot) {
+  allUsersRegister.on('value', function (snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       // console.log(idFirebase)

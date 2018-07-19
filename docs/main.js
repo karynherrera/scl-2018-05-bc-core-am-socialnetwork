@@ -9,7 +9,7 @@ window.onload = (() => {
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
   // Limpiar el textarea
-  document.getElementById('comment').value = '';
+ 
   document.getElementsByTagName('input').value = '';
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -256,7 +256,6 @@ checkbox.addEventListener('click', () => {
 })
 
 /********************SECCION PERFIL *********************************************/
-
 const sectionProfile = document.getElementById('sectionProfile');
 
 const btnProfile = document.getElementById('nameIconFooterProfile');
@@ -271,7 +270,6 @@ btnProfile.addEventListener('click', () => {
 
 
 /********************SECCION VOLVER ATRAS PERFIL ****************************/
-
 const btnArrowProfile = document.getElementById('btnArrowProfile');
 btnArrowProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
