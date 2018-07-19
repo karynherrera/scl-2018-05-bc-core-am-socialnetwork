@@ -61,6 +61,7 @@ firebase.database().ref('posts')
   // .limitToLast(2)
   .on('child_added', (newMessage) => {
     let userTarget = newMessage.val().email;
+    let modiText = newMessage.val().text;
     // console.log(typeof (userTarget));
     cont.innerHTML += `
   
@@ -69,10 +70,10 @@ firebase.database().ref('posts')
   
   <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
 
-
+  <input type="text" class="contEdit inputEdit" name="contEdit" data-editcon="${newMessage.val().text}" value="${modiText}">
   <div class = "row textComment"> ${newMessage.val().text}
                
-  <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div> 
+  <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt" data-edit="${newMessage.val().text}" onclick ="editPost(event)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div> 
               
 
   <row class="iconComment"><i class="fas fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"> ${newMessage.val().starCounter}<p class= "textLike">Me Gusta</p></i></div>
@@ -106,7 +107,7 @@ function preguntar() {
   confirmar = confirm('¿Esta seguro que desea eliminar el comentario?');
   if (confirmar) {
     deleteButtonClicked(event);
-   } else {
+  } else {
     // Aquí pones lo que quieras Cancelar 
     alert('Diste a Cancelar');
   }
@@ -114,7 +115,7 @@ function preguntar() {
 
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
-  console.log("entra");
+  console.log('entra');
   event.stopPropagation();
   const postsID = event.target.getAttribute('data-id');
   const postsRef = firebase.database().ref('posts').child(postsID);
@@ -180,11 +181,37 @@ function counterLike(event) {
 
 // Funcion Editar publicacion
 
-
-function postEdit() {
-  this.editarItem = item;
+function editPost(event) {
+  event.stopPropagation();  
+  let contenidoEdit = document.getElementsByClassName('inputEdit')[0].classList.add('contEditar');
+  contenidoEdit = document.getElementsByClassName('inputEdit')[0].classList.remove('contEdit');
+  // contenidoEdit.style.display = 'block';
+  let contenido = document.getElementsByClassName('inputEdit')[0];  
+  let menEdit = contenido.value;
+  console.log("mensaje original"+menEdit);
+  let editar = event.target.getAttribute('data-edit'); 
+  firebase.database().ref('posts/').once('value', function(edicion) {
+    contenido.addEventListener('keypress', ()=>{   
+      editar = event.target.getAttribute('data-edit'); 
+      menEdit = contenido.value;      
+      console.log("mensaje editado"+menEdit);
+      firebase.database().ref('posts').child(editar).update({             
+        text: menEdit,
+      });      
+    });
+    console.log(editar);  
+  
+    
+  });
 }
 
+/*
+function addChange() {
+  let menEdit = document.getElementById('contEdit').value;
+  const postsRef = firebase.database().ref('posts').child(editar).update({
+    text: menEdit, 
+  });
+}*/
 
 window.prueba = ((variable) => {
   console.log('Imprime' + variable);

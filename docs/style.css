@@ -724,5 +724,12 @@ p {
  }
  
 /****************************FIN SECCION RECETAS********************************/
+.contEdit {
+	display:none;
+	border-color: #303030;
+}
 
+.contEditado {	
+	border-color: #303030;
+}
 	
