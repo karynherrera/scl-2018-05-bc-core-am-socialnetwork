@@ -65,7 +65,7 @@ firebase.database().ref('posts')
     // console.log(typeof (userTarget));
     cont.innerHTML += `
   
-  <section class="enterComments" id='${newMessage.key}'>
+  <section class="enterComments" id="seccionPrincipal" data-idEdit='${newMessage.key}'>
   
   
   <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
@@ -188,20 +188,21 @@ function editPost(event) {
   // contenidoEdit.style.display = 'block';
   let contenido = document.getElementsByClassName('inputEdit')[0];  
   let menEdit = contenido.value;
-  console.log("mensaje original"+menEdit);
+  console.log('mensaje original' + menEdit);
   let editar = event.target.getAttribute('data-edit'); 
-  firebase.database().ref('posts/').once('value', function(edicion) {
-    contenido.addEventListener('keypress', ()=>{   
+  firebase.database().ref('posts/' + editar).once('value', function(edicion) {
+    contenido.addEventListener('keypress', ()=>{  
+      let cambio = document.getElementsByClassName('inputEdit')[0];  
       editar = event.target.getAttribute('data-edit'); 
-      menEdit = contenido.value;      
-      console.log("mensaje editado"+menEdit);
+      menEdit = cambio.value;      
+      console.log('mensaje editado' + menEdit);
       firebase.database().ref('posts').child(editar).update({             
         text: menEdit,
-      });      
+      });    
+      //cont.style.display='none';
+      seccionPrincipal.innerHTML = `<section></section>`;  
     });
-    console.log(editar);  
-  
-    
+    console.log(editar);
   });
 }
 
