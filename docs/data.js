@@ -115,6 +115,7 @@ function preguntar() {
 
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
+  console.log("entra");
   event.stopPropagation();
   const postsID = event.target.getAttribute('data-id');
   const postsRef = firebase.database().ref('posts').child(postsID);
