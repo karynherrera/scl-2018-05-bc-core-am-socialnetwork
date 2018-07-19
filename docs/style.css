@@ -539,7 +539,7 @@ p {
 	margin-right: 5px;
 }
 
-.iconFriend, .fa-pencil-alt , .fa-trash{
+.iconFriend, .fa-pencil-alt , .fa-trash .iconuserFriend{
 	margin-left: 10px;
 	color:rgb(145, 144, 144);
 }
@@ -565,6 +565,10 @@ p {
 
 #userFriend{
 	display: none;
+}
+
+#userNotFriend{
+	display: block;
 }
 
 /****************************PERFIL***********************************/
