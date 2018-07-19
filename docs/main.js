@@ -4,7 +4,7 @@ window.onload = (() => {
   const seccionMuro = document.getElementById('sectionMuro');
   const inputEmailUser = document.getElementById('inputCorreo');
   const sectionProfile = document.getElementById('sectionProfile');
-  const sectionRecipes= document.getElementById('sectionRecipes');
+  const sectionRecipes = document.getElementById('sectionRecipes');
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
@@ -26,7 +26,7 @@ window.onload = (() => {
                 EmailUser: userLogued.email
               }); 
               */
-      //guardamos el usuario que se ha logado en una coleccion de firebase
+      // guardamos el usuario que se ha logado en una coleccion de firebase
       // declaramos el usuario actual, el que se logó
       const userLogued = firebase.auth().currentUser;
       const userData = userLogued.email; // acá sacamos el email del usuario logado
@@ -34,11 +34,11 @@ window.onload = (() => {
       // llamamos a la coleccion que tiene los usuarios
       const allUsersRegister = firebase.database().ref('users/');
       // revisamos la coleccion en ese momento
-      allUsersRegister.once('value', function (snapshot) {
+      allUsersRegister.once('value', function(snapshot) {
         // paso a arreglo el json que trae de firebase
 
         // recorro ese arreglo hasta llegar a los keys de c/ usuario
-        //console.log(arrayUsers)
+        // console.log(arrayUsers)
         /*
         let compare = allUsersRegister.orderByChild("idUser").equalTo(userId).once('value',(snapshot)=>{
           let arrayUsers = Object.entries(snapshot.val());
@@ -46,11 +46,11 @@ window.onload = (() => {
         })*/
 
         let arrayUsers = Object.entries(snapshot.val());
-        //for (id in arrayUsers) {
-        //let arrayIds = arrayUsers[id];
-        //let users = arrayIds[1];
-        //console.log( "el id del usuario de la coleccion es:  "+users.idUser);
-        //console.log( "el id del usuario logado es:  "+userId);
+        // for (id in arrayUsers) {
+        // let arrayIds = arrayUsers[id];
+        // let users = arrayIds[1];
+        // console.log( "el id del usuario de la coleccion es:  "+users.idUser);
+        // console.log( "el id del usuario logado es:  "+userId);
         // comparamos si el email del usuario de la coleccion es el mismo que se esta logando ahora
         let result;
         let found = arrayUsers.find(item => {
@@ -59,20 +59,18 @@ window.onload = (() => {
         });
 
         if (result) {
-          console.log("usuario ya añadido anteriormente " + userId);
-
+          console.log('usuario ya añadido anteriormente ' + userId);
         } else {
-          console.log("añadiendo usuario  " + userId);
+          console.log('añadiendo usuario  ' + userId);
           const newUserKey = firebase.database().ref().child('users').push().key;
           firebase.database().ref(`users/${newUserKey}`).set({
             idUser: userLogued.uid,
             NameUser: userLogued.displayName,
             EmailUser: userLogued.email
           });
-
         }
 
-        //}
+        // }
         /*
         arrayUsers.forEach(idFirebase => {
           idFirebase.forEach(element => {
@@ -92,8 +90,8 @@ window.onload = (() => {
         */
       });
 
-      //console.log(user.uid);
-      //console.log("user > "+JSON.stringify(user));
+      // console.log(user.uid);
+      // console.log("user > "+JSON.stringify(user));
     } else {
       seccionLogin.style.display = 'block';
       seccionMuro.style.display = 'none';
@@ -114,7 +112,7 @@ const seccionMuro = document.getElementById('sectionMuro');
 const logFb = document.getElementById('loginFb');
 logFb.addEventListener('click', () => {
   let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithRedirect(provider).then(function (result) {
+  firebase.auth().signInWithRedirect(provider).then(function(result) {
     let token = result.credential.accessToken; // se obtiene el token de OAuth de Facebook
     let user = result.user; // info del usuario logado
     console.log(user);
@@ -123,7 +121,7 @@ logFb.addEventListener('click', () => {
     seccionLogin.style.display = 'none';
     seccionMuro.style.display = 'block';
     seccionCenter.style.display = 'block';
-  }).catch(function (error) {
+  }).catch(function(error) {
     seccionLogin.style.display = 'block';
     seccionMuro.style.display = 'none';
     seccionCenter.style.display = 'none';
@@ -134,10 +132,10 @@ logFb.addEventListener('click', () => {
 const logGoogle = document.getElementById('loginGm');
 logGoogle.addEventListener('click', () => {
   let provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithRedirect(provider).then(function (result) {
+  firebase.auth().signInWithRedirect(provider).then(function(result) {
     let token = result.credential.accessToken; // se obtiene el token de OAuth de google
     let user = result.user; // info del usuario logado
-  }).catch(function (error) {
+  }).catch(function(error) {
     seccionLogin.style.display = 'block';
     seccionMuro.style.display = 'none';
     seccionCenter.style.display = 'none';
@@ -199,27 +197,27 @@ btnReturnLogin.addEventListener('click', () => {
 });
 
 // REGISTRO DE USUARIO NUEVO
-const btnRegister = document.getElementById("btnRegistrarse");
+const btnRegister = document.getElementById('btnRegistrarse');
 
 btnRegister.addEventListener('click', () => {
   const checkbox = document.getElementById('aceptTerm');
   console.log(checkbox.value);
   const alertReg = document.getElementById('alertRegister');
-  alertReg.innerHTML = `<div id="alertPassword"></div>`;
+  alertReg.innerHTML = '<div id="alertPassword"></div>';
 
-  const nombreNewUser = document.getElementById("inputName").value;
-  const emailNewUser = document.getElementById("inputEmailUser").value;
-  const passNewUser = document.getElementById("inputPassUser").value;
+  const nombreNewUser = document.getElementById('inputName').value;
+  const emailNewUser = document.getElementById('inputEmailUser').value;
+  const passNewUser = document.getElementById('inputPassUser').value;
 
-  const inputNombreNewUser = document.getElementById("inputName");
-  inputNombreNewUser.value = "";
-  const inputEmailNewUser = document.getElementById("inputEmailUser");
-  inputEmailNewUser.value = "";
-  const inputPassNewUser = document.getElementById("inputPassUser");
-  inputPassNewUser.value = "";
+  const inputNombreNewUser = document.getElementById('inputName');
+  inputNombreNewUser.value = '';
+  const inputEmailNewUser = document.getElementById('inputEmailUser');
+  inputEmailNewUser.value = '';
+  const inputPassNewUser = document.getElementById('inputPassUser');
+  inputPassNewUser.value = '';
 
   if (checkbox.value === 'off') {
-    alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert">Tiene que aceptar los Terminos y Condiciones de Uso </div>`;
+    alertRegister.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert">Tiene que aceptar los Terminos y Condiciones de Uso </div>';
   } else {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -233,28 +231,28 @@ btnRegister.addEventListener('click', () => {
     });
     firebase.auth().createUserWithEmailAndPassword(emailNewUser, passNewUser)
       .then(() => {
-        console.log("Usuario Registrado");
-        seccionLogin.style.display = "none";
-        seccionCenter.style.display = "block";
-        seccionRegistro.style.display = "none";
+        console.log('Usuario Registrado');
+        seccionLogin.style.display = 'none';
+        seccionCenter.style.display = 'block';
+        seccionRegistro.style.display = 'none';
       })
       .catch((error) => {
-        seccionLogin.style.display = "none";
-        seccionCenter.style.display = "none";
-        seccionRegistro.style.display = "block";
+        seccionLogin.style.display = 'none';
+        seccionCenter.style.display = 'none';
+        seccionRegistro.style.display = 'block';
         alertRegister.innerHTML = `<div class="alert alert-danger alertConteiner" role="alert"> ${error} </div>`;
-        console.log("Error de Firebase > " + error.code);
-        console.log("Error de Firebase > mensaje" + error.message);
+        console.log('Error de Firebase > ' + error.code);
+        console.log('Error de Firebase > mensaje' + error.message);
       });
   }
-})
+});
 const checkbox = document.getElementById('aceptTerm');
 checkbox.addEventListener('click', () => {
-  checkbox.value = "on"
+  checkbox.value = 'on';
   const alertReg = document.getElementById('alertRegister');
-  alertReg.innerHTML = `<div id="alertPassword"></div>`;
-})
-/********************BOTON ELIMINAR MENSAJE *********************************************/
+  alertReg.innerHTML = '<div id="alertPassword"></div>';
+});
+/** ******************BOTON ELIMINAR MENSAJE *********************************************/
 
 Window.confirmar = (()=>{
   const confirm = document.getElementById('confirm');
@@ -263,14 +261,14 @@ Window.confirmar = (()=>{
   const aceptar = document.getElementById('confirmConfirmar');
   cancelar.addEventListener('click', () => {
     confirm.style.display = 'none';
-   });                          
-   aceptar.addEventListener('click',function (){
+  });                          
+  aceptar.addEventListener('click', function(event) {
     deleteButtonClicked(event);
-    confirm.style.display ='none';
-   });
-})
+    confirm.style.display = 'none';
+  });
+});
 
-/********************SECCION PERFIL *********************************************/
+/** ******************SECCION PERFIL *********************************************/
 const sectionProfile = document.getElementById('sectionProfile');
 
 const btnProfile = document.getElementById('nameIconFooterProfile');
@@ -279,25 +277,25 @@ btnProfile.addEventListener('click', () => {
   seccionCenter.style.display = 'none';
   sectionRecipes.style.display = 'none';
   sectionProfile.style.display = 'block';
- });
+});
 
-/********************FIN SECCION PERFIL *********************************************/
+/** ******************FIN SECCION PERFIL *********************************************/
 
 
-/********************SECCION VOLVER ATRAS PERFIL ****************************/
+/** ******************SECCION VOLVER ATRAS PERFIL ****************************/
 const btnArrowProfile = document.getElementById('btnArrowProfile');
 btnArrowProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
   seccionLogin.style.display = 'none';
   sectionRecipes.style.display = 'none';
   seccionCenter.style.display = 'block'; 
-  });
+});
 
 
-/********************FIN SECCION VOLVER ATRAS PERFIL ****************************/
+/** ******************FIN SECCION VOLVER ATRAS PERFIL ****************************/
 
-/********************SECCION RECETAS **************************************/
-const sectionRecipes= document.getElementById('sectionRecipes');
+/** ******************SECCION RECETAS **************************************/
+const sectionRecipes = document.getElementById('sectionRecipes');
 
 
 const btnRecipes = document.getElementById('nameIconFooterRecipes');
@@ -307,10 +305,10 @@ btnRecipes.addEventListener('click', () => {
   seccionCenter.style.display = 'none';
   sectionRecipes.style.display = 'block';
 });
-/********************FIN SECCION RECETAS*******************************************/
+/** ******************FIN SECCION RECETAS*******************************************/
 
 
-/********************SECCION VOLVER ATRAS RECETAS *************************/
+/** ******************SECCION VOLVER ATRAS RECETAS *************************/
 
 const btnArrowRecipes = document.getElementById('btnArrowRecipes');
 btnArrowRecipes.addEventListener('click', () => {
@@ -319,4 +317,4 @@ btnArrowRecipes.addEventListener('click', () => {
   seccionCenter.style.display = 'block';
   sectionRecipes.style.display = 'none';
 });
-/********************FIN SECCION VOLVER ATRAS RECETAS ****************************/
+/** ******************FIN SECCION VOLVER ATRAS RECETAS ****************************/

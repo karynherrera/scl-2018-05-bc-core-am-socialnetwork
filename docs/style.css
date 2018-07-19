@@ -103,12 +103,16 @@
 
 /*****************Registro****************************************/
 .registro{
-	background-repeat: no-repeat;
-	background-image: url(img/portada2.png);
-	background-size: 200vh;
-	display: none;
-	
+		background-position: center center;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-image: url(img/portada2.png);
+		background-size: cover;
+		height: 100vh;
+		display: none;
+		
 }
+
 
 .register{
 	margin-top:20%;	
@@ -428,7 +432,8 @@ header div img {
 /*****************  PUBLICAR COMENTARIOS *****************************/
 .rowEnterComments{
 	border-bottom: solid 1px rgb(145, 144, 144);
-	margin-bottom: 5px;
+	margin-bottom: 0px;
+	height: 62px;
 	width: 100%;
 }
 .publicationComment{
@@ -438,16 +443,16 @@ header div img {
 	padding-right: 0px;
 }
 .IconProfileComment{
-width: 20px;
-margin-top: 0px;
-vertical-align: initial;
+	vertical-align: middle;
+	width: 25px;
+	margin-top: 0px;
 }
 
 .commentPublication{
 	font-size: 15px;
 	font-family:'Roboto', sans-serif;
 	border: none;
-	width: 70%;
+	width: 65%;
 	height: 40%;
 	padding: none;
 }
@@ -533,16 +538,25 @@ p {
 	padding: 0%;
 	margin-right: 5px;
 }
-.iconFriend{
+
+.iconFriend, .fa-pencil-alt , .fa-trash{
 	margin-left: 10px;
 	color:rgb(145, 144, 144);
 }
-.porte{
-height: 5px;
-}
-.fa-heart , .fa-pencil-alt , .fa-trash{
+
+.fa-heart{ 
 	margin-left: 10px;
-	color:rgb(145, 144, 144);
+	color:#303030;
+}
+.iconComment{
+	color:#303030;
+	font-size: 12px;
+	font-family:'Roboto', sans-serif;
+}
+.textLike{
+	color:#303030;
+	font-size: 12px;
+	font-family:'Roboto', sans-serif;
 }
 /**************************COMENTARIOS PUBLICADOS**************************/
 
