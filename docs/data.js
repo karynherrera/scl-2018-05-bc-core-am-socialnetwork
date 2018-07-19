@@ -40,12 +40,14 @@ function saveMessage() {
     creator: currentUser.uid,
     creatorName: currentUser.displayName || currentUser.email,
     text: commentText,
-    email: currentUser.email,    
+    email: currentUser.email,
   });
   newFunction();
   otherFunction();
-  
+
 }
+
+
 // Buscar mensajes desde data
 firebase.database().ref('posts')
   // .limitToLast(2)
@@ -53,12 +55,26 @@ firebase.database().ref('posts')
     let userTarget = newMessage.val().email;
     // console.log(typeof (userTarget));
     cont.innerHTML += `
-  <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
-            `
-    ;
-  });
   
+  <section class="enterComments" id='${newMessage.key}'>
+  
+  
+  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
+
+
+  <div class = "row textComment"> ${newMessage.val().text}
+               
+  <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div> 
+              
+
+  <row class="iconComment"> "${newMessage.val().starCounter}"<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><div>
+                             
+  </section>
+               
+  `;
+  });
+
+
 
 function newFunction() {
   // Limpiar el textarea
@@ -74,7 +90,7 @@ function otherFunction() {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })
-  ;
+    ;
 };
 
 // Funcion eliminar publicacion
@@ -113,7 +129,7 @@ function toggleStar(event) {
 function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
-  firebase.database().ref('posts/' + likeID).once('value', function(post) {
+  firebase.database().ref('posts/' + likeID).once('value', function (post) {
     let total = (post.child('starCounter').val() || 1);
     cont.innerHTML += total;
     firebase.database().ref('posts').child(likeID).update({
@@ -122,7 +138,7 @@ function counterLike(event) {
   });
 }
 
-  
+
 // let total =(post.val().starCounter || 0) + 1;
 /*
 function counterLike(event) {
@@ -144,7 +160,7 @@ window.prueba = ((variable) => {
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
   const allUsersRegister = firebase.database().ref('users/');
-  allUsersRegister.on('value', function(snapshot) {
+  allUsersRegister.on('value', function (snapshot) {
     let arrayUsers = Object.entries(snapshot.val());
     arrayUsers.forEach(idFirebase => {
       // console.log(idFirebase)
@@ -156,10 +172,10 @@ window.addFriend = ((userTarget) => {
             idFriend: element.idUser,
             nameFriend: element.NameUser || element.EmailUser,
             emailFriend: element.EmailUser
-            
+
           });
           return false;
-        } 
+        }
       });
     });
   });

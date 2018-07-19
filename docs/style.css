@@ -243,12 +243,12 @@ color: white;
 	font-family:'Roboto', sans-serif;
 	
 }
-.iconHome .iconSearch .iconFavourite .iconProfile{
+.iconRecipes .iconSearch .iconFavourite .iconProfile{
 	margin-bottom: none;
 	padding-bottom: none;
-	width: 50%;
-	
+	width: 10px;
 }
+
 .row {
 	margin-right: 0px;
 	margin-left: 0px;
@@ -367,6 +367,11 @@ header div img {
 
 
 /*****************  PUBLICAR COMENTARIOS *****************************/
+.rowEnterComments{
+	border-bottom: solid 1px rgb(145, 144, 144);
+	margin-bottom: 5px;
+	width: 100%;
+}
 .publicationComment{
 	margin-top: 15px;
 	display: inline-block;
@@ -458,6 +463,31 @@ p {
 	display: inline-block;
 	margin-left: 0.5em;
 }
+
+/**************************COMENTARIOS PUBLICADOS**************************/
+.enterComments{
+	margin-bottom: 18px;
+}
+.photouser{
+	width:20px;
+	height: 20px;
+	padding: 0%;
+	margin-right: 5px;
+}
+.iconFriend{
+	margin-left: 10px;
+	color:rgb(145, 144, 144);
+}
+.porte{
+height: 5px;
+}
+.fa-heart , .fa-pencil-alt , .fa-trash{
+	margin-left: 10px;
+	color:rgb(145, 144, 144);
+}
+/**************************COMENTARIOS PUBLICADOS**************************/
+
+
 /*************************************Amigos******************************************************/
 
 #userFriend{

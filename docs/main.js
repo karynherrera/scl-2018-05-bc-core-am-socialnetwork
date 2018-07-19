@@ -202,7 +202,6 @@ checkbox.addEventListener('click', () => {
 })
 
 /********************SECCION PERFIL *********************************************/
-
 const sectionProfile = document.getElementById('sectionProfile');
 
 const btnProfile = document.getElementById('nameIconFooterProfile');
@@ -216,7 +215,6 @@ btnProfile.addEventListener('click', () => {
 
 
 /********************SECCION VOLVER ATRAS PERFIL ****************************/
-
 const btnArrowProfile = document.getElementById('btnArrowProfile');
 btnArrowProfile.addEventListener('click', () => {
   sectionProfile.style.display = 'none';

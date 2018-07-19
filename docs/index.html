@@ -232,50 +232,58 @@
 
       <!-- SECCION PUBLICACION COMENTARIOS -->
       <section class="sectionPublication" id="sectionPublication">
-        <!-- contenedor comentarios -->
-        <div class="container">
-
-          <!-- DEJAR ACA EL CORAZON DE ME GUSTA Y EL CONTEO ( 13 Me gusta) -->
-          <!-- Corazon-->
-          <div class="row">
-            <div class="col-12">
-              <div id="cont">
-              </div>
-            </div>
-          </div>
-          <!-- Contador me gusta -->
-          <div class="row">
-            <div class="col-12">
-              <div id="errorTxt">
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- SECCION ESCRIBIR COMENTARIOS -->
         <!--<button onclick="logout()">Logout</button> -->
-        <div class="row">
+        <div class="row rowEnterComments">
           <div class="col-12 publicationComment">
             <img class="IconProfileComment" src="icono/Perfil-usuario.svg">
             <textarea class="txt" id="commentPublication" onclick="otherFunction()" placeholder="Agrega un comentario..."></textarea>
             <button type="submit" id="btnMessage" onclick="saveMessage()">
               Publicar</button>
           </div>
+
         </div>
+   <!-- SECCION DONDE SE VERAN LOS COMENTARIOS QUE SE HAN HECHO (al lado aparecera agregar, editar, borrar) -->
 
-        <!-- SECCION DONDE SE VERAN LOS COMENTARIOS QUE SE HAN HECHO (al lado aparecera agregar, editar, borrar) -->
+     
 
-        <!-- AREA VER COMENTARIOS -->
+           <!-- AREA VER USUARIO QUE COMENTO-->
+        <div class="row">
+            <div class="col-12">
+              <span class="textComment">
+                </span>
+            </div>
+          </div>
+
+   <!-- AREA DE VER ICONOS DE COMENTARIOS-->
+   <div class="row">
+      <div class="col-12">
+        <div class="iconComment">
+        </div>
+      </div>
+    </div>
+          
+        <!-- DEJAR ACA EL CORAZON DE ME GUSTA Y EL CONTEO ( 13 Me gusta) -->
+        <!-- Corazon-->
         <div class="row">
           <div class="col-12">
-            <div id="seeComments">
+            <div id="cont">
             </div>
           </div>
         </div>
+        <!-- MENSAJE DE ERROR-->
+        <div class="row">
+          <div class="col-12">
+            <div id="errorTxt">
+            </div>
+          </div>
+        </div>
+        </div>
 
-      </section>
-      <!-- FIN SECCION PUBLICACION -->
-    </section>
+     
+
+       </section>
     <!--FIN DE SECCION CENTER-->
   </section>
   <!-- FIN SECCION MURO -->
