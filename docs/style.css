@@ -264,6 +264,8 @@ color: white;
 
 }
 /************************FIN BARRA INFERIOR*****************************/
+
+
 /* Reseteo márgenes browser y color body */
 /*Estilos de sección publicaciones*/
 
@@ -363,24 +365,40 @@ header div img {
 	text-align: center;
 }
 
-.txt {
-	width: 80%;
-	height: 2em;	
-	border-color: white;
+
+/*****************  PUBLICAR COMENTARIOS *****************************/
+.publicationComment{
+	margin-top: 15px;
+	display: inline-block;
+	margin-left: 0%;
+	padding-right: 0px;
+}
+.IconProfileComment{
+width: 20px;
+margin-top: 0px;
+vertical-align: initial;
 }
 
-/* Estilos botón publicar */
+#commentPublication{
+	font-size: 15px;
+	font-family:'Roboto', sans-serif;
+	border: none;
+	width: 70%;
+	height: 40%;
+	padding: none;
+}
 #btnMessage {
 	background-color: transparent;
 	border: none;
-	margin:none;
+	margin: none;
 	border: 0px;
 	cursor: pointer;
 	text-align: center;	
 	color: #22B4BD; 
 	font-size: 13px;
 	font-family:'Roboto', sans-serif;
-	/*position: relative;*/
+	padding: 0%;
+	position: relative;
 }
 
 #btnMessage:hover {

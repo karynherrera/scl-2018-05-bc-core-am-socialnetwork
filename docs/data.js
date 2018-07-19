@@ -29,11 +29,12 @@ window.logout = (() => {
     .catch();
 });
 
+/**********************PUBLICACIONES**********************************/
 
 // Funcion para guardar publicaciones
 function saveMessage() {
   const currentUser = firebase.auth().currentUser;
-  const commentText = comment.value;
+  const commentText = commentPublication.value;
   const newMessageKey = firebase.database().ref().child('posts').push().key;
   firebase.database().ref(`posts/${newMessageKey}`).set({
     creator: currentUser.uid,
@@ -57,18 +58,19 @@ firebase.database().ref('posts')
             `
     ;
   });
+  
 
 function newFunction() {
   // Limpiar el textarea
-  document.getElementById('comment').value = '';
+  document.getElementById('commentPublication').value = '';
   // mensaje de error
-  const commentText = comment.value;
+  const commentText = commentPublication.value;
   if (commentText === '') {
     // errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
   };
 }
 function otherFunction() {
-  comment.addEventListener('click', () => {
+  commentPublication.addEventListener('click', () => {
     // Hara que desaparesca mensaje de error
     errorTxt.innerHTML = '<div id=" errorTxt"></div>';
   })

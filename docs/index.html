@@ -162,12 +162,12 @@
     <section class="center" id="sectionCenter">
 
 
-      <div class="behind" id="behindComment">
+      <!--<div class="behind" id="behindComment">
         <i class="fas fa-arrow-left"></i>
         <i class="far fa-comment-dots">
           <p class="comment">COMENTARIOS</p>
         </i>
-      </div>
+      </div>-->
 
       <!-- Seccion nombre receta+carrusel -->
       <section class="sectionCarousel" id="sectionCarousel">
@@ -230,47 +230,53 @@
       </section>
       <!-- Fin seccion nombre receta+carrusel -->
 
-
+      <!-- SECCION PUBLICACION COMENTARIOS -->
       <section class="sectionPublication" id="sectionPublication">
-        <!-- Texarea de comentarios -->
-        <!--<button onclick="logout()">Logout</button> -->
+        <!-- contenedor comentarios -->
         <div class="container">
-        
-          <div class="row">
-            <div class="col-12">
-              <textarea class="txt" id="comment" onclick="otherFunction()" placeholder="Agrega un comentario..."></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <button type="submit" id="btnMessage" onclick="saveMessage()">
-                Publicar</button>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <!-- contenedor comentarios -->
-          <!-- aca dejare los comentarios -->
+
+          <!-- DEJAR ACA EL CORAZON DE ME GUSTA Y EL CONTEO ( 13 Me gusta) -->
+          <!-- Corazon-->
           <div class="row">
             <div class="col-12">
               <div id="cont">
               </div>
             </div>
           </div>
+          <!-- Contador me gusta -->
           <div class="row">
             <div class="col-12">
               <div id="errorTxt">
               </div>
             </div>
           </div>
-
         </div>
-        <!--fin de container-->
+
+        <!-- SECCION ESCRIBIR COMENTARIOS -->
+        <!--<button onclick="logout()">Logout</button> -->
+        <div class="row">
+          <div class="col-12 publicationComment">
+            <img class="IconProfileComment" src="icono/Perfil-usuario.svg">
+            <textarea class="txt" id="commentPublication" onclick="otherFunction()" placeholder="Agrega un comentario..."></textarea>
+            <button type="submit" id="btnMessage" onclick="saveMessage()">
+              Publicar</button>
+          </div>
+        </div>
+
+        <!-- SECCION DONDE SE VERAN LOS COMENTARIOS QUE SE HAN HECHO (al lado aparecera agregar, editar, borrar) -->
+
+        <!-- AREA VER COMENTARIOS -->
+        <div class="row">
+          <div class="col-12">
+            <div id="seeComments">
+            </div>
+          </div>
+        </div>
+
       </section>
       <!-- FIN SECCION PUBLICACION -->
     </section>
     <!--FIN DE SECCION CENTER-->
-
   </section>
   <!-- FIN SECCION MURO -->
 
@@ -397,7 +403,7 @@
       </section>
       <!-- Fin carrusel -->
 
-      
+
       <section class="textRecipes">
 
         <div class="row rowTextIngredients">
@@ -420,21 +426,28 @@
         </div>
 
         <div class="row rowTextPreparation">
-            <div class="col-12 titlePreparation">
-              <p class="textPreparation">PREPARACIÓN</p>
-            </div>
+          <div class="col-12 titlePreparation">
+            <p class="textPreparation">PREPARACIÓN</p>
           </div>
+        </div>
 
         <div class="row completeRecipes">
           <ol>
             <li>Condimentar las supremas de pollo por ambos lados.</li>
-            <li>Poner las supremas en una fuente y agregar 2 cucharadas de aceite de oliva, y 1 diente de ajo picado. Mezclar bien con el pollo. Reservar.
-              </li>
-            <li>Cortar la berenjena y el zapallo italiano en rodajas de aprox. 1cm de grosor. Cortar los pimentones a lo largo en cuatro y eliminar las semillas y la parte blanca del interior. Cortar las cebollas moradas en 8 trozos cada una.</li>
+            <li>Poner las supremas en una fuente y agregar 2 cucharadas de aceite de oliva, y 1 diente de ajo picado. Mezclar
+              bien con el pollo. Reservar.
+            </li>
+            <li>Cortar la berenjena y el zapallo italiano en rodajas de aprox. 1cm de grosor. Cortar los pimentones a lo largo
+              en cuatro y eliminar las semillas y la parte blanca del interior. Cortar las cebollas moradas en 8 trozos cada
+              una.
+            </li>
             <li>Juntar todas las verduras picadas en una fuente.</li>
-            <li>Agregar a las verduras el resto del aceite de oliva, el tomillo y el otro diente de ajo. Mezclar bien, cubrir con film plástico y dejar reposar 30 minutos.</li>
-            <li>Poner las verduras marinadas sobre una bandeja o lata del horno. Salpimentar las verduras y hornear durante 15 minutos a 180ºC o hasta que las verduras estén blandas.</li>
-            <li>Mientras, calentar un sartén con un poco aceite de oliva y dorar las supremas de pollo por todos lados. Terminar la cocción en el horno a 180ºC durante 10 minutos.</li>
+            <li>Agregar a las verduras el resto del aceite de oliva, el tomillo y el otro diente de ajo. Mezclar bien, cubrir
+              con film plástico y dejar reposar 30 minutos.</li>
+            <li>Poner las verduras marinadas sobre una bandeja o lata del horno. Salpimentar las verduras y hornear durante 15
+              minutos a 180ºC o hasta que las verduras estén blandas.</li>
+            <li>Mientras, calentar un sartén con un poco aceite de oliva y dorar las supremas de pollo por todos lados. Terminar
+              la cocción en el horno a 180ºC durante 10 minutos.</li>
             <li>Al momento de servir las verduras, rociar sobre éstas el aceto balsámico. Acompañar con el pollo grillado.</li>
             <div></div>
           </ol>
