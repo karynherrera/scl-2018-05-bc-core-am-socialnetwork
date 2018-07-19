@@ -39,7 +39,7 @@ function saveMessage() {
     creator: currentUser.uid,
     creatorName: currentUser.displayName || currentUser.email,
     text: commentText,
-    email: currentUser.email,    
+    email: currentUser.email,
   });
   newFunction();
   otherFunction();
@@ -75,16 +75,16 @@ function otherFunction() {
 };
 
 // Funcion preguntar eliminar
-function preguntar() { 
-  confirmar = confirm('¿Deseas eliminar el comentario?'); 
+function preguntar() {
+  confirmar = confirm('¿Deseas eliminar el comentario?');
   if (confirmar) {
     deleteButtonClicked(event);
-    alert('¿Esta seguro que desea eliminar el comentario?'); 
+    alert('¿Esta seguro que desea eliminar el comentario?');
   } else {
-  // Aquí pones lo que quieras Cancelar 
+    // Aquí pones lo que quieras Cancelar 
     alert('Diste a Cancelar');
-  } 
-} 
+  }
+}
 
 // Funcion eliminar publicacion
 function deleteButtonClicked(event) {
@@ -123,14 +123,14 @@ function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
   firebase.database().ref('posts/' + likeID).once('value', function(post) {
-    let total = (post.child('starCounter').val() || 1); 
+    let total = (post.child('starCounter').val() || 1);
     if (post) {
       firebase.database().ref('posts').child(likeID).update({
         starCounter: total,
       });
     } else if (starCounter === 1) {
       starCounter - 1;
-    }    
+    }
   });
 }
 /*
@@ -146,14 +146,23 @@ function counterLike(event) {
   });
 }
 */
-  
+
 // let total =(post.val().starCounter || 0) + 1;
 
 // Funcion Editar publicacion
- function postEdit() {
 
- }
-  
+editarItem:any = {
+  name: ''
+};
+
+function postEdit() {
+  this.editarItem = item;
+}
+
+function agregarItemEditado() {
+
+}
+
 window.prueba = ((variable) => {
   console.log('Imprime' + variable);
 });
@@ -172,10 +181,10 @@ window.addFriend = ((userTarget) => {
             idFriend: element.idUser,
             nameFriend: element.NameUser || element.EmailUser,
             emailFriend: element.EmailUser
-            
+
           });
           return false;
-        } 
+        }
       });
     });
   });
