@@ -79,7 +79,7 @@ function preguntar() {
   confirmar = confirm('¿Deseas eliminar el comentario?'); 
   if (confirmar) {
     deleteButtonClicked(event);
-    alert('Diste a Aceptar'); 
+    alert('¿Esta seguro que desea eliminar el comentario?'); 
   } else {
   // Aquí pones lo que quieras Cancelar 
     alert('Diste a Cancelar');
@@ -123,11 +123,14 @@ function counterLike(event) {
   event.stopPropagation();
   const likeID = event.target.getAttribute('data-like');
   firebase.database().ref('posts/' + likeID).once('value', function(post) {
-    let total = (post.child('starCounter').val() || 1);
-    cont.innerHTML += total;
-    firebase.database().ref('posts').child(likeID).update({
-      starCounter: total,
-    });
+    let total = (post.child('starCounter').val() || 1); 
+    if (post) {
+      firebase.database().ref('posts').child(likeID).update({
+        starCounter: total,
+      });
+    } else if (starCounter === 1) {
+      starCounter - 1;
+    }    
   });
 }
 /*
@@ -145,20 +148,8 @@ function counterLike(event) {
 */
   
 // let total =(post.val().starCounter || 0) + 1;
-/*
-function counterLike(event) {
-  event.stopPropagation();
-  const counterId = event.target.getAttribute("data-like");
-    firebase.database().ref(`post/`+ counterId).once("value", function(post) {
-      let total = post.child("counter").val();
-      postPrint.innerHTML += total;
-      let countId = firebase.database().ref(`post`).child(counterId).update({
-        counter: total,
-      });
-    });
- 
-  }
-  */
+
+  
 window.prueba = ((variable) => {
   console.log('Imprime' + variable);
 });
