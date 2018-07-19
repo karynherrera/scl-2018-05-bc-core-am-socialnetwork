@@ -68,12 +68,15 @@ firebase.database().ref('posts')
   <section class="enterComments" id="seccionPrincipal" data-idEdit='${newMessage.key}'>
   
   
-  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
+  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" id="userNotFriend" onclick="window.addFriend('${userTarget}')"></i>
+  <i class="fas fa-user-check iconuserFriend" id="userFriend"></i> </div>
 
   <input type="text" class="contEdit inputEdit" name="contEdit" data-editcon="${newMessage.val().text}" value="${modiText}">
   <div class = "row textComment"> ${newMessage.val().text}
                
+
   <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt" data-edit="${newMessage.val().text}" onclick ="editPost(event)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div> 
+
               
 
   <row class="iconComment"><i class="fas fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"> ${newMessage.val().starCounter}<p class= "textLike">Me Gusta</p></i></div>
@@ -247,7 +250,8 @@ window.addFriend = ((userTarget) => {
       });
       if (resultFriend) {
         console.log('añadiendo amigo');
-
+        userFriend.style.display = "block";
+        userNotFriend.style.display = "none";
         const allUsersRegister = firebase.database().ref('users/');
         allUsersRegister.once('value', function(snapshot) {
           console.log('entró');
