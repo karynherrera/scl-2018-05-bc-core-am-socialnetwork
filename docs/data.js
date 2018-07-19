@@ -52,7 +52,7 @@ firebase.database().ref('posts')
     // console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div>
+                ${newMessage.val().text}<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span><i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt" onclick="postEdit()" data-toggle="modal" data-target="#exampleModal"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div>
             `
     ;
   });
@@ -149,6 +149,10 @@ function counterLike(event) {
   
 // let total =(post.val().starCounter || 0) + 1;
 
+// Funcion Editar publicacion
+ function postEdit() {
+
+ }
   
 window.prueba = ((variable) => {
   console.log('Imprime' + variable);
