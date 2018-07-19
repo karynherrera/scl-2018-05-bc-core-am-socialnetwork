@@ -254,6 +254,21 @@ checkbox.addEventListener('click', () => {
   const alertReg = document.getElementById('alertRegister');
   alertReg.innerHTML = `<div id="alertPassword"></div>`;
 })
+/********************BOTON ELIMINAR MENSAJE *********************************************/
+
+Window.confirmar = (()=>{
+  const confirm = document.getElementById('confirm');
+  confirm.style.display = 'block';
+  const cancelar = document.getElementById('confirmCancelar');
+  const aceptar = document.getElementById('confirmConfirmar');
+  cancelar.addEventListener('click', () => {
+    confirm.style.display = 'none';
+   });                          
+   aceptar.addEventListener("click",function (event) {
+    deleteButtonClicked(event);
+    confirm.style.display ='none';
+   });
+})
 
 /********************SECCION PERFIL *********************************************/
 const sectionProfile = document.getElementById('sectionProfile');
