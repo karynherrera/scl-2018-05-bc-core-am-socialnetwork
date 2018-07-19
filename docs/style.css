@@ -8,15 +8,17 @@
 	background-size: cover;
 	height: 100vh;
 	display: none;
+	width: 100%;
+	text-align: center;
 }
 
 #logo{
 	text-align: center;
-	width: 80vw;
+	width: 70vw;
 	margin:10%;
 	margin-left: 10%;
 	margin-top: 20%;
-	margin-bottom: 2%;
+	margin-bottom: 10%;
 }
 .inputLogin{
 	border-radius: 0%;
@@ -86,7 +88,7 @@
 }
 #registrate{
 	font-size: 100%;
-	color:rgb(31, 30, 30);
+	color: #303030;
 	cursor: pointer;
 	font-weight: bold;
 }
@@ -97,22 +99,61 @@
 	font-size: 100%;
 	color:rgb(31, 30, 30);
 }
+@media (min-width: 768px){
+#logo{
+	margin-top:30px;
+	text-align: center;
+	width: 50vw;
+	margin-left:10%
+}
+.login{
+	background-size: cover;
+	height: 110vh;
+	display: none;
+	width: 100%;
+}
+.inputLogin{
+  width: 50vw;
+	height: 6vh;
+	display: block;
+	margin-left: 24%;
+	margin-top: 2%;
+	font-size: 20px;
+}
+#registrate{
+font-size: 20px;
+}
+.btnLogIn{
+	width: 50vw;
+	font-size: 22px;
+}
+.btnFb, .btnGoogle{
+	width: 50vw;
+	font-size: 22px;
+}
+.logosIcon{
+	width: 30px;
+}
+.textLogin{
+	font-size: 20px;
+
+}
+}
 
 /***********************************fin login********************************/
 
 
 /*****************Registro****************************************/
 .registro{
-		background-position: center center;
-		background-attachment: fixed;
-		background-repeat: no-repeat;
-		background-image: url(img/portada2.png);
-		background-size: cover;
-		height: 100vh;
-		display: none;
+	background-position: center center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-image: url(img/portada2.png);
+	background-size: cover;
+	height: 100vh;
+	display: none;
 		
 }
-
 
 .register{
 	margin-top:20%;	
@@ -152,6 +193,32 @@
 	cursor: pointer;
 	color:blue;
 }
+#loginBack{
+font-weight: bold;
+color: #303030;
+}
+
+@media (min-width: 768px){
+#logoRegister{
+	margin-top: -10%;	
+	text-align: center;
+	width: 50vw;
+	margin-left:24%
+	}
+
+#aceptTerm{
+	width: 20px;
+	height:20px;
+}
+.textLogin{
+	font-size: 20px;
+}
+#loginBack{
+	font-size: 20px;
+}
+}
+
+
 /****************************************fin Registro**************************************************/
 #confirm{
 	display: none;
@@ -276,6 +343,16 @@ color: white;
 	width: 25px;
 }
 
+@media(min-width: 425px){
+	.menu{
+			width: 60vw; 
+	}
+
+	.menu_closed{
+			left:-60vw;
+	}
+}
+
 @media(min-width: 768px){
 	.menu{
 			width: 20vw; 
@@ -304,7 +381,10 @@ color: white;
 	text-align: center;
 	font-size: 11px;
 	font-family:'Roboto', sans-serif;
-	
+}
+.mediaProfile{
+	width: 50px;
+	height: 30px;
 }
 .iconRecipes .iconSearch .iconFavourite .iconProfile{
 	margin-bottom: none;
@@ -372,6 +452,7 @@ font-size: 5%;
 	font-weight: bold;
 	margin-left: 8px;
 	margin-bottom: 0%;
+	display:block;
 }
 .iconFood {
 	background-color: #dadada;
@@ -478,6 +559,12 @@ header div img {
 
 #btnMessage:focus, textarea:focus{
 	outline: none;
+}
+@media (min-width: 425px){
+	.commentPublication {
+        width: 75%;
+	}
+
 }
 
 /* Estilos contenedor comentarios */
@@ -599,6 +686,7 @@ p {
 	border-left: solid #dadada 1px; 
   padding-bottom: 2px;
 }
+
 .nameUser{
 	font-size: 11px;
 	font-family:'Roboto', sans-serif;
@@ -606,8 +694,13 @@ p {
 	font-weight: bold;
 	margin-left: 3.5px;
 }
+.photoUser{
+	display: inline-block;
+  text-align: center;
+}
 .infoUser{
 	display: inline-block;
+  text-align: center;
 }
 
 .btnPublicationUser{
@@ -645,6 +738,15 @@ p {
 .img-thumbnail {
 	height: 100px;
 		margin-top: 10px;
+	}
+
+	@media (min-width: 375px){
+	.logout{
+		margin-left: 45%;
+		}
+	.btnPublicationUser {
+		font-size: 11px;
+	}
 	}
 	/****************************fin PERFIL***********************************/
 
@@ -733,3 +835,4 @@ p {
 	border-color: #303030;
 }
 	
+
