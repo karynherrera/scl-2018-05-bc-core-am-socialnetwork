@@ -7,7 +7,8 @@ window.onload = (() => {
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
-
+  // Limpiar el textarea
+  document.getElementById('comment').value = '';
   document.getElementsByTagName('input').value = '';
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {

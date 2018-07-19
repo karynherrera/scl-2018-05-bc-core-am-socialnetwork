@@ -32,6 +32,13 @@ window.logout = (() => {
 
 // Funcion para guardar publicaciones
 function saveMessage() {
+  const commentText = comment.value;
+  if (commentText === '') {
+    errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert" id="errorTxt"> Error: Debes ingresar un comentarios </div>';
+    // Limpiar el textarea
+  document.getElementById('comment').value = '';
+  }else{
+  
   const currentUser = firebase.auth().currentUser;
   const commentText = comment.value;
   const newMessageKey = firebase.database().ref().child('posts').push().key;
@@ -41,8 +48,11 @@ function saveMessage() {
     text: commentText,
     email: currentUser.email,
   });
-  newFunction();
-  otherFunction();
+  // Limpiar el textarea
+  document.getElementById('comment').value = '';
+  //newFunction();
+  //otherFunction();
+}
 }
 // Buscar mensajes desde data
 firebase.database().ref('posts')
@@ -52,7 +62,7 @@ firebase.database().ref('posts')
     //console.log(typeof (userTarget));
     cont.innerHTML += `
   <div id='${newMessage.key}'><img src ="icono/Perfil-usuario.svg"> ${newMessage.val().creatorName}
-                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
+                ${newMessage.val().text} <i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><span>"${newMessage.val().starCounter}"</span> <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')" ></i> <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="deleteButtonClicked(event)"></i></div>
             `
       ;
   });
@@ -63,13 +73,13 @@ function newFunction() {
   // mensaje de error
   const commentText = comment.value;
   if (commentText === '') {
-    // errorTxt.innerHTML = '<div class="alert alert-danger alertConteiner" role="alert"> Error: Debes ingresar un comentarios </div>';    
+    errorTxt.innerHTML = '<div class="alertConteiner" id="errorTxt"></div>';    
   };
 }
 function otherFunction() {
   comment.addEventListener('click', () => {
     // Hara que desaparesca mensaje de error
-    errorTxt.innerHTML = '<div id=" errorTxt"></div>';
+    errorTxt.innerHTML = '<div class="alertConteiner" id="errorTxt"></div>';
   })
     ;
 };
@@ -140,18 +150,74 @@ window.prueba = ((variable) => {
 
 // funcion para añadir amigo
 window.addFriend = ((userTarget) => {
-  const allUsersRegister = firebase.database().ref('users/');
-  allUsersRegister.on('value', function (snapshot) {
-    console.log("entró");
-    let arrayUsers = Object.entries(snapshot.val());
-    let result, id, name, email;
-    let found = arrayUsers.find(item => {
-      item.EmailUser === userTarget;
-      id = item.idUser;
-      name = item.NameUser || item.EmailUser;
-      email = item.EmailUser;
-      return result = true;
-    })
+  console.log("verificaremos si ya esta o no en tu lista de amigos");
+  const listFriends = firebase.database().ref('friends/');
+  listFriends.once('value', function (snapshot) {
+    if (snapshot.val() === null) {
+      console.log("aun no tienes una lista de amigos creada");
+      firebase.auth().onAuthStateChanged((user) => {
+        const userLogued = firebase.auth().currentUser;
+        const newUserKey = firebase.database().ref().child('friends').push().key;
+        firebase.database().ref(`friends/${newUserKey}`).set({
+          idFriend: userLogued.uid,
+          nameFriend: userLogued.displayName || userLogued.email,
+          emailFriend: userLogued.email
+        });
+      })
+    } else {
+      let arrayFriends = Object.values(snapshot.val());
+      console.log(arrayFriends);
+      let resultFriend;
+      //console.log(" arrayFriends "+arrayFriends+ " typeof "+typeof(arrayFriends));
+      let foundFriend = arrayFriends.find(item => {
+        item.emailFriend === userTarget;
+        console.log("email friend: " + item.emailFriend);
+        console.log("email user: " + userTarget);
+        return resultFriend = true;
+      })
+      if (resultFriend) {
+        console.log("añadiendo amigo");
+
+        const allUsersRegister = firebase.database().ref('users/');
+        allUsersRegister.once('value', function (snapshot) {
+          console.log("entró");
+          let result, id, name, email;
+          
+          let arrayUsers =  Object.values(snapshot.val());
+          console.log(arrayUsers);
+          /*
+          let arrUsers = arrayUsers[1];
+          console.log(" arrUsers "+arrUsers);
+          let arrUser = arrUsers[1];
+          console.log(" arrUser "+arrUser);
+          */
+         
+          let found = arrayUsers.find(item => { 
+            item.EmailUser === userTarget;
+            id = item.idUser;
+            name = item.NameUser || item.EmailUser;
+            email = item.EmailUser;
+            console.log(" id: "+id +" name: "+name+" email: "+email);
+            return result = true;
+            
+          })
+          if (result) {
+            const newFriendKey = firebase.database().ref().child('friends').push().key;
+            firebase.database().ref(`friends/${newFriendKey}`).set({
+              idFriend: id,
+              nameFriend: name || email,
+              emailFriend: email
+            });
+          }
+        });
+
+
+      } else {
+        console.log("ya esta en tu lista de amigos");
+      }
+    }
+
+
     /*
     firebase.auth().onAuthStateChanged((user) => {
     const userLogued = firebase.auth().currentUser;
@@ -162,35 +228,10 @@ window.addFriend = ((userTarget) => {
                 emailFriend: userLogued.email
               }); 
             }) */
-    if (result) {
-      console.log("verificaremos si ya esta o no en tu lista de amigos");
-      const listFriends = firebase.database().ref('friends/');
-      listFriends.on('value', function (snapshot) {
-        let arrayFriends = Object.entries(snapshot.val());
-        let resultFriend;
-        let foundFriend = arrayFriends.find(item => {
-          item.emailFriend === userTarget;
-          console.log("email friend: "+ item.emailFriend);
-          console.log("email user: "+ userTarget);
-          return resultFriend = false;
-        })
-        if (resultFriend) {
-          console.log("añadiendo amigo");
-          const newFriendKey = firebase.database().ref().child('friends').push().key;
-          firebase.database().ref(`friends/${newFriendKey}`).set({
-            idFriend: id,
-            nameFriend: name || email,
-            emailFriend: email
-          });
-        } else{
-          console.log("ya esta en tu lista de amigos");
-        }
-    
-      })
-    }
 
-  });
+  })
 });
+
 
 /** ******************************Politica de Privacidad***************************************** */
 window.privacyPolicy = (() => {
