@@ -264,7 +264,7 @@ Window.confirmar = (()=>{
   cancelar.addEventListener('click', () => {
     confirm.style.display = 'none';
    });                          
-   aceptar.addEventListener("click",function (event) {
+   aceptar.addEventListener('click',function (){
     deleteButtonClicked(event);
     confirm.style.display ='none';
    });
