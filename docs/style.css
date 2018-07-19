@@ -384,7 +384,7 @@ margin-top: 0px;
 vertical-align: initial;
 }
 
-#commentPublication{
+.commentPublication{
 	font-size: 15px;
 	font-family:'Roboto', sans-serif;
 	border: none;
