@@ -88,7 +88,7 @@
 }
 #registrate{
 	font-size: 100%;
-	color:rgb(31, 30, 30);
+	color: #303030;
 	cursor: pointer;
 	font-weight: bold;
 }
@@ -120,7 +120,9 @@
 	margin-top: 2%;
 	font-size: 20px;
 }
-
+#registrate{
+font-size: 20px;
+}
 .btnLogIn{
 	width: 50vw;
 	font-size: 22px;
@@ -134,6 +136,7 @@
 }
 .textLogin{
 	font-size: 20px;
+
 }
 }
 
@@ -151,7 +154,6 @@
 	display: none;
 		
 }
-
 
 .register{
 	margin-top:20%;	
@@ -191,6 +193,32 @@
 	cursor: pointer;
 	color:blue;
 }
+#loginBack{
+font-weight: bold;
+color: #303030;
+}
+
+@media (min-width: 768px){
+#logoRegister{
+	margin-top: -10%;	
+	text-align: center;
+	width: 50vw;
+	margin-left:24%
+	}
+
+#aceptTerm{
+	width: 20px;
+	height:20px;
+}
+.textLogin{
+	font-size: 20px;
+}
+#loginBack{
+	font-size: 20px;
+}
+}
+
+
 /****************************************fin Registro**************************************************/
 #confirm{
 	display: none;
