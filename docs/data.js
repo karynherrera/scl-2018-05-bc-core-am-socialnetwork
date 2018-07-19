@@ -75,10 +75,10 @@ firebase.database().ref('posts')
   <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div> 
               
 
-  <row class="iconComment"> "${newMessage.val().starCounter}"<i class="far fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"></i><div>
+  <row class="iconComment"><i class="fas fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"> ${newMessage.val().starCounter}<p class= "textLike">Me Gusta</p></i></div>
                              
   </section>
-               
+     
   `;
   });
 
@@ -103,11 +103,10 @@ function otherFunction() {
 */
 // Funcion preguntar eliminar
 function preguntar() {
-  confirmar = confirm('¿Deseas eliminar el comentario?');
+  confirmar = confirm('¿Esta seguro que desea eliminar el comentario?');
   if (confirmar) {
     deleteButtonClicked(event);
-    alert('¿Esta seguro que desea eliminar el comentario?');
-  } else {
+   } else {
     // Aquí pones lo que quieras Cancelar 
     alert('Diste a Cancelar');
   }
