@@ -278,6 +278,7 @@ btnProfile.addEventListener('click', () => {
   seccionCenter.style.display = 'none';
   sectionRecipes.style.display = 'none';
   sectionProfile.style.display = 'block';
+  sectionFavorite.style.display = 'none';
 });
 
 /** ******************FIN SECCION PERFIL *********************************************/
@@ -290,6 +291,7 @@ btnArrowProfile.addEventListener('click', () => {
   seccionLogin.style.display = 'none';
   sectionRecipes.style.display = 'none';
   seccionCenter.style.display = 'block'; 
+  sectionFavorite.style.display = 'none';
 });
 
 
@@ -304,6 +306,7 @@ btnRecipes.addEventListener('click', () => {
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'none';
   sectionRecipes.style.display = 'block';
+  sectionFavorite.style.display = 'none';
 });
 /** ******************FIN SECCION RECETAS*******************************************/
 
@@ -316,6 +319,7 @@ btnArrowRecipes.addEventListener('click', () => {
   seccionLogin.style.display = 'none';
   seccionCenter.style.display = 'block';
   sectionRecipes.style.display = 'none';
+  sectionFavorite.style.display = 'none';
 });
 /** ******************FIN SECCION VOLVER ATRAS RECETAS ****************************/
 
