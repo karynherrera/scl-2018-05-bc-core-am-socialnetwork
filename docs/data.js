@@ -68,15 +68,22 @@ firebase.database().ref('posts')
   <section class="enterComments" id="seccionPrincipal" data-idEdit='${newMessage.key}'>
   
   
-  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend"id="userNotFriend" onclick="window.addFriend('${userTarget}')"></i></div>
+  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" id="userNotFriend" onclick="window.addFriend('${userTarget}')"></i>
+  <i class="fas fa-user-check iconuserFriend" id="userFriend"></i> <i class="fas fa-user-check" id="userFriend"></i> 
+  </div>
 
-  <input type="text" class="contEdit inputEdit" name="contEdit" data-editcon="${newMessage.val().text}" value="${modiText}">
-  <div class = "row textComment"> ${newMessage.val().text}
+  <div class= "row textComment">
+    <div class= "textInsert"> <input type="text" class="contEdit inputEdit"       name="contEdit" data-editcon="${newMessage.val().text}" value="${modiText}">
+      ${newMessage.val().text}
+    
                
-  <i class="fas fa-user-check" id="userFriend"></i> <i class="fas fa-pencil-alt" data-edit="${newMessage.val().text}" onclick ="editPost(event)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i></div> 
-              
+    
+    <i class="fas fa-pencil-alt" data-edit="${newMessage.val().text}" onclick ="editPost(event)"></i> <i class="fas fa-trash" data-id="${newMessage.key}" onclick="preguntar()"></i><i class="fas fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"> </i>
+   
 
-  <row class="iconComment"><i class="fas fa-heart" data-like="${newMessage.key}" onclick="counterLike(event)"> ${newMessage.val().starCounter}<p class= "textLike">Me Gusta</p></i></div>
+  </div>             
+
+  <div class="row iconComment"> ${newMessage.val().starCounter}<p class= "textLike">Me Gusta</p></div>
                              
   </section>
      
