@@ -242,6 +242,7 @@ window.addFriend = ((userTarget) => {
       console.log(arrayFriends);
       let resultFriend;
       // console.log(" arrayFriends "+arrayFriends+ " typeof "+typeof(arrayFriends));
+      
       let foundFriend = arrayFriends.find(item => {
         item.emailFriend === userTarget;
         console.log('email friend: ' + item.emailFriend);
@@ -249,11 +250,12 @@ window.addFriend = ((userTarget) => {
         return resultFriend = true;
       });
       if (resultFriend) {
-        console.log('añadiendo amigo');
+        const userFriend = document.getElementById('userFriend');
+        const userNotFriend = document.getElementById('userNotFriend');
         userFriend.style.display = "block";
         userNotFriend.style.display = "none";
         const allUsersRegister = firebase.database().ref('users/');
-        allUsersRegister.once('value', function(snapshot) {
+        allUsersRegister.on('value', function(snapshot) {
           console.log('entró');
           let result, id, name, email;
           
@@ -267,13 +269,21 @@ window.addFriend = ((userTarget) => {
           */
          
           let found = arrayUsers.find(item => { 
-            item.EmailUser === userTarget;
+            if(item.EmailUser === userTarget){
+              console.log('añadiendo amigo');
             id = item.idUser;
             name = item.NameUser || item.EmailUser;
             email = item.EmailUser;
             console.log(' id: ' + id + ' name: ' + name + ' email: ' + email);
-            return result = true;
+            result = true;
+          }else{
+            console.log("no son iguales");
+            item ++;
+            result = false;
+          } 
+            return result;
           });
+        
           if (result) {
             const newFriendKey = firebase.database().ref().child('friends').push().key;
             firebase.database().ref(`friends/${newFriendKey}`).set({

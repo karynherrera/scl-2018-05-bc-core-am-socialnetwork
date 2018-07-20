@@ -626,7 +626,7 @@ p {
 	margin-right: 5px;
 }
 
-.iconFriend, .fa-pencil-alt , .fa-trash .iconuserFriend{
+.iconFriend, .fa-pencil-alt , .fa-trash .iconNotFriend{
 	margin-left: 10px;
 	color:rgb(145, 144, 144);
 }
