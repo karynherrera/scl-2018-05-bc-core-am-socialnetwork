@@ -68,7 +68,7 @@ firebase.database().ref('posts')
   <section class="enterComments" id="seccionPrincipal" data-idEdit='${newMessage.key}'>
   
   
-  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend" onclick="window.addFriend('${userTarget}')"></i></div>
+  <div class= "row photoUserComment"><img class="photouser" src ="icono/perfil-usuario.svg"> ${newMessage.val().creatorName} <i class="fas fa-user-plus iconFriend"id="userNotFriend" onclick="window.addFriend('${userTarget}')"></i></div>
 
   <input type="text" class="contEdit inputEdit" name="contEdit" data-editcon="${newMessage.val().text}" value="${modiText}">
   <div class = "row textComment"> ${newMessage.val().text}
@@ -239,7 +239,6 @@ window.addFriend = ((userTarget) => {
       console.log(arrayFriends);
       let resultFriend;
       // console.log(" arrayFriends "+arrayFriends+ " typeof "+typeof(arrayFriends));
-
       let foundFriend = arrayFriends.find(item => {
         item.emailFriend === userTarget;
         console.log('email friend: ' + item.emailFriend);
