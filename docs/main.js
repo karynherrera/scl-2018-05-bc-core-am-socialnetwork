@@ -66,7 +66,7 @@ window.onload = (() => {
           firebase.database().ref(`users/${newUserKey}`).set({
             idUser: userLogued.uid,
             NameUser: userLogued.displayName,
-            EmailUser: userLogued.email
+            EmailUser: userLogued.email,
           });
         }
 
