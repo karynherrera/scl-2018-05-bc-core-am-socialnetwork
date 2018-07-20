@@ -36,13 +36,13 @@ Para diseñar la interfaz del producto se utilizo el programa "Balsamiq" en dond
 
 Tambien se realizo el prototipo de alta fidelidad utilizando el programa "Figma":
 
-![replica](/src/img/Registroymuro.png)
+![replica](/docs/img/Registroymuro.png)
 
-![replica](/src/img/Segundoytercermuro.png)
+![replica](/docss/img/Segundoytercermuro.png)
 
-![replica](/src/img/tercerycuartomuro.png)
+![replica](/docs/img/tercerycuartomuro.png)
 
-![replica](/src/img/quintomuro.png)
+![replica](/docs/img/quintomuro.png)
 
 ## Entrevistas 
 
