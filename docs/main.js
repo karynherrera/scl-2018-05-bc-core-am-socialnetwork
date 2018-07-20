@@ -5,6 +5,7 @@ window.onload = (() => {
   const inputEmailUser = document.getElementById('inputCorreo');
   const sectionProfile = document.getElementById('sectionProfile');
   const sectionRecipes = document.getElementById('sectionRecipes');
+  const sectionFavorite = document.getElementById('sectionFavorite');
   inputEmailUser.value = '';
   const inputPasswordUser = document.getElementById('inputPass');
   inputPasswordUser.value = '';
@@ -297,7 +298,6 @@ btnArrowProfile.addEventListener('click', () => {
 /** ******************SECCION RECETAS **************************************/
 const sectionRecipes = document.getElementById('sectionRecipes');
 
-
 const btnRecipes = document.getElementById('nameIconFooterRecipes');
 btnRecipes.addEventListener('click', () => {
   sectionProfile.style.display = 'none';
@@ -318,3 +318,29 @@ btnArrowRecipes.addEventListener('click', () => {
   sectionRecipes.style.display = 'none';
 });
 /** ******************FIN SECCION VOLVER ATRAS RECETAS ****************************/
+
+/** ******************SECCION FAVORITOS **************************************/
+const sectionFavorite = document.getElementById('sectionFavorite');
+
+const btnFavorite = document.getElementById('nameIconFooterFavourite');
+btnFavorite.addEventListener('click', () => {
+  sectionProfile.style.display = 'none';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'none';
+  sectionRecipes.style.display = 'none';
+  sectionFavorite.style.display = 'block';
+});
+/** ******************FIN SECCION FAVORITOS****************************************/
+
+
+/** ******************SECCION VOLVER ATRAS FAVORITOS*************************/
+
+const btnArrowFavorite = document.getElementById('btnArrowFavorite');
+btnArrowFavorite.addEventListener('click', () => {
+  sectionProfile.style.display = 'none';
+  seccionLogin.style.display = 'none';
+  seccionCenter.style.display = 'block';
+  sectionRecipes.style.display = 'none';
+  sectionFavorite.style.display = 'none';
+});
+/** ******************FIN SECCION VOLVER ATRAS FAVORITOS****************************/
