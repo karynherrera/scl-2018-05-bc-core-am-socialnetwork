@@ -628,7 +628,7 @@ p {
 	margin-right: 5px;
 }
 
-.iconFriend,  .iconuserFriend{
+.iconFriend, 	.iconNotFriend, .iconuserFriend{
 	margin-left: 8px;
 	color:rgb(145, 144, 144);
 }
